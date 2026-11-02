@@ -31,6 +31,8 @@
   --together: #2a2f3b;
   --wine: #8a1f45;
   --wine-soft: #f5e0e8;
+  --warn: #b3382a;
+  --warn-soft: #fbe6e2;
 
   --shadow: 0 1px 2px rgb(30 34 48 / 0.06), 0 8px 24px rgb(30 34 48 / 0.06);
 }
@@ -59,6 +61,8 @@
     --together: #ece8dc;
     --wine: #e66b93;
     --wine-soft: #3a1826;
+    --warn: #ff9a8a;
+    --warn-soft: #3b2220;
 
     --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.35);
   }
@@ -415,6 +419,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 22px var(--pad) 90px; ou
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .chips li { padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink-2); font-size: 13.5px; }
 .chips b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.chips li.over { border-color: var(--warn); background: var(--warn-soft); }
+.chips li.over b, .cmp .over { color: var(--warn); }
+.cmp .over { font-weight: 600; }
 
 .detail__grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 22px; align-items: start; }
 .map-wrap { position: relative; margin-bottom: 14px; }

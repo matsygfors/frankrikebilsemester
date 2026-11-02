@@ -1,6 +1,6 @@
 // One alternative in depth: big map, full timeline, and the plan, vehicles, wine and caveats beside it.
 
-import { milestones, phaseAt, togetherAt } from './data.js';
+import { STAY_LIMIT_NIGHTS, milestones, phaseAt, togetherAt } from './data.js';
 import { esc, fmtDec, fmtInt, fmtMoment, fmtRange, hoursOf } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
@@ -22,10 +22,11 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
         <ul class="chips">
           <li><b>${k.days}</b> dagar <small>(${k.flex.min}–${k.flex.max})</small></li>
           <li><b>${fmtDec(k.sharedDays)}</b> dygn tillsammans</li>
+          <li${k.longestStay.nights > STAY_LIMIT_NIGHTS ? ' class="over"' : ''}><b>${k.longestStay.nights}</b> ${k.longestStay.nights === 1 ? 'natt' : 'nätter'} som mest på samma ort</li>
           <li><b>${fmtInt(k.fleetKm)}</b> km bil</li>
           <li><b>${fmtInt(k.driveHours)}</b> h körtid</li>
           <li><b>${k.cars}</b> ${k.cars === 1 ? 'bil' : 'bilar'}</li>
-          <li><b>${k.bezierNights}</b> nätter i Béziers</li>
+          <li><b>${k.bezierNights}</b> nätter i Béziers-trakten</li>
         </ul>
       </header>
       <div class="detail__grid">

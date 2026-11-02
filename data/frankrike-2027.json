@@ -418,9 +418,27 @@
         },
         {
           "start_day": 9,
-          "end_day_inclusive": 12,
+          "end_day_inclusive": 9,
           "title": "Béziers och vin",
-          "description": "Fyra hela dagar utan basbyte. Fem nätter inklusive ankomstnatten dag 8; avhämtning dag 12."
+          "description": "En hel dag i Béziers: staden, Canal du Midi och provning hos några vingårdar."
+        },
+        {
+          "start_day": 10,
+          "end_day_inclusive": 10,
+          "title": "Saint-Chinian",
+          "description": "Kort körning till Saint-Chinian. En natt."
+        },
+        {
+          "start_day": 11,
+          "end_day_inclusive": 11,
+          "title": "Minerve i Minervois",
+          "description": "Kort körning till Minerve. En natt."
+        },
+        {
+          "start_day": 12,
+          "end_day_inclusive": 12,
+          "title": "Faugères och avhämtning",
+          "description": "Vidare till Faugères, på vägen norrut. En natt; inköp/avhämtning dag 12."
         },
         {
           "start_day": 13,
@@ -846,7 +864,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
-          "id": "s2_leg_09",
+          "id": "s2_leg_16",
           "party_ids": [
             "A",
             "B"
@@ -854,6 +872,141 @@
           "vehicle_id": "s2_A_car",
           "mode": "car",
           "from_location_id": "beziers",
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [],
+          "start_hour": 226,
+          "end_hour": 227.5,
+          "departure_day": 10,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 35,
+          "distance_km_range": {
+            "min": 30,
+            "max": 45
+          },
+          "driving_hours": 0.7,
+          "elapsed_hours_range": {
+            "min": 1.2,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_17",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "minerve",
+          "via_location_ids": [],
+          "start_hour": 250,
+          "end_hour": 251.5,
+          "departure_day": 11,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.9,
+          "elapsed_hours_range": {
+            "min": 1.4,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                2.7465,
+                43.354
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_18",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "minerve",
+          "to_location_id": "faugeres",
+          "via_location_ids": [],
+          "start_hour": 274,
+          "end_hour": 276,
+          "departure_day": 12,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 2,
+          "distance_km": 60,
+          "distance_km_range": {
+            "min": 55,
+            "max": 70
+          },
+          "driving_hours": 1.2,
+          "elapsed_hours_range": {
+            "min": 1.7,
+            "max": 3.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.7465,
+                43.354
+              ],
+              [
+                3.19,
+                43.5658
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_09",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "faugeres",
           "to_location_id": "clermont",
           "via_location_ids": [
             "millau"
@@ -863,12 +1016,12 @@
           "departure_day": 13,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 5.5,
-          "distance_km": 340,
+          "distance_km": 330,
           "distance_km_range": {
-            "min": 320,
-            "max": 375
+            "min": 310,
+            "max": 365
           },
-          "driving_hours": 4,
+          "driving_hours": 3.9,
           "elapsed_hours_range": {
             "min": 4.5,
             "max": 7.5
@@ -879,8 +1032,8 @@
             "type": "LineString",
             "coordinates": [
               [
-                3.2158,
-                43.3442
+                3.19,
+                43.5658
               ],
               [
                 3.078,
@@ -1230,7 +1383,7 @@
           "day": 12,
           "clock_hour": 16,
           "kind": "wine_pickup",
-          "location_id": "beziers",
+          "location_id": "faugeres",
           "party_ids": [
             "A"
           ],
@@ -1263,6 +1416,9 @@
             "s2_leg_06",
             "s2_leg_07",
             "s2_leg_08",
+            "s2_leg_16",
+            "s2_leg_17",
+            "s2_leg_18",
             "s2_leg_09",
             "s2_leg_10",
             "s2_leg_12",
@@ -1279,6 +1435,9 @@
             "beaune",
             "tain",
             "beziers",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "clermont",
             "dijon",
             "frankfurt",
@@ -1286,7 +1445,7 @@
             "malmo",
             "stockholm"
           ],
-          "active_travel_days": 13
+          "active_travel_days": 16
         },
         {
           "party_id": "B",
@@ -1295,6 +1454,9 @@
             "s2_leg_06",
             "s2_leg_07",
             "s2_leg_08",
+            "s2_leg_16",
+            "s2_leg_17",
+            "s2_leg_18",
             "s2_leg_09",
             "s2_leg_10",
             "s2_leg_11"
@@ -1305,11 +1467,14 @@
             "beaune",
             "tain",
             "beziers",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "clermont",
             "dijon",
             "paris"
           ],
-          "active_travel_days": 7
+          "active_travel_days": 10
         }
       ],
       "timeline_tracks": [
@@ -1431,8 +1596,56 @@
             {
               "kind": "stay",
               "start_hour": 181.5,
-              "end_hour": 297,
+              "end_hour": 226,
               "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s2_leg_16",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 251.5,
+              "location_id": null,
+              "leg_id": "s2_leg_17",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 251.5,
+              "end_hour": 274,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 276,
+              "location_id": null,
+              "leg_id": "s2_leg_18",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 276,
+              "end_hour": 297,
+              "location_id": "faugeres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
@@ -1604,8 +1817,56 @@
             {
               "kind": "stay",
               "start_hour": 181.5,
-              "end_hour": 297,
+              "end_hour": 226,
               "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s2_leg_16",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 251.5,
+              "location_id": null,
+              "leg_id": "s2_leg_17",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 251.5,
+              "end_hour": 274,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 276,
+              "location_id": null,
+              "leg_id": "s2_leg_18",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 276,
+              "end_hour": 297,
+              "location_id": "faugeres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
@@ -1708,7 +1969,7 @@
         }
       ],
       "wine_plan": {
-        "purchase_location_id": "beziers",
+        "purchase_location_id": "faugeres",
         "purchase_day": 12,
         "buyer_party_id": "A",
         "quantity_bottles": null,
@@ -1727,52 +1988,54 @@
         "Strasbourg är valt som grundplan; Dijon eller Lyon kräver ändrade dagar och etapper.",
         "Fyra personer och inköpt vin ska rymmas inom bilens tillåtna last.",
         "B:s tågtider och biljetter för 2027 behöver kontrolleras.",
-        "Dag 1 och sista dagen är långa kördagar; korta dem med extra natt om bara en person kör."
+        "Dag 1 och sista dagen är långa kördagar; korta dem med extra natt om bara en person kör.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "En bil och enkel vintransport för A.",
         "B slipper transportdagarna genom Sverige och Tyskland.",
-        "Längre total bilresa för A än i flygalternativet."
+        "Längre total bilresa för A än i flygalternativet.",
+        "Två nätter i Béziers och en natt i varje by därefter ger variation och tid att se sig omkring, men fler boendebyten."
       ],
       "distance_summary": {
         "by_vehicle": [
           {
             "vehicle_id": "s2_A_car",
-            "intercity_km": 5630,
+            "intercity_km": 5755,
             "local_km_range": {
               "min": 120,
               "max": 250
             },
             "total_km_range": {
-              "min": 5435,
-              "max": 6470
+              "min": 5545,
+              "max": 6625
             },
-            "driving_hours_without_long_stops": 63.8
+            "driving_hours_without_long_stops": 66.5
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 5630,
+            "intercity_car_passenger_km": 5755,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1600,
+            "intercity_car_passenger_km": 1725,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 5630,
+          "intercity_km": 5755,
           "local_km_range": {
             "min": 120,
             "max": 250
           },
           "total_km_range": {
-            "min": 5435,
-            "max": 6470
+            "min": 5545,
+            "max": 6625
           },
-          "driving_hours_without_long_stops": 63.8
+          "driving_hours_without_long_stops": 66.5
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
@@ -1818,9 +2081,21 @@
         },
         {
           "start_day": 11,
+          "end_day_inclusive": 11,
+          "title": "Minerve i Minervois",
+          "description": "Från Toulouse till Minerve, en liten medeltida by vid en ravin. En natt."
+        },
+        {
+          "start_day": 12,
+          "end_day_inclusive": 12,
+          "title": "Saint-Chinian",
+          "description": "Kort körning till Saint-Chinian. En natt; provning och middag i byn."
+        },
+        {
+          "start_day": 13,
           "end_day_inclusive": 14,
           "title": "Béziers och vin",
-          "description": "Fyra nätter i trakten, exempelvis med Colombiers som bas. Provning tidigare i vistelsen, inköp/avhämtning dag 14."
+          "description": "Kort körning till Béziers, exempelvis med Colombiers som bas. Två nätter; provning och inköp/avhämtning dag 14."
         },
         {
           "start_day": 15,
@@ -2138,21 +2413,21 @@
           "vehicle_id": "s1_rental",
           "mode": "car",
           "from_location_id": "toulouse",
-          "to_location_id": "beziers",
+          "to_location_id": "minerve",
           "via_location_ids": [],
           "start_hour": 249,
           "end_hour": 252,
           "departure_day": 11,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 3,
-          "distance_km": 180,
+          "distance_km": 140,
           "distance_km_range": {
-            "min": 170,
-            "max": 200
+            "min": 130,
+            "max": 155
           },
-          "driving_hours": 2,
+          "driving_hours": 1.7,
           "elapsed_hours_range": {
-            "min": 2.5,
+            "min": 2.2,
             "max": 5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
@@ -2163,6 +2438,96 @@
               [
                 1.4442,
                 43.6047
+              ],
+              [
+                2.7465,
+                43.354
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_13",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "minerve",
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [],
+          "start_hour": 274,
+          "end_hour": 275.5,
+          "departure_day": 12,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.9,
+          "elapsed_hours_range": {
+            "min": 1.4,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.7465,
+                43.354
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_14",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 298,
+          "end_hour": 299.5,
+          "departure_day": 13,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 35,
+          "distance_km_range": {
+            "min": 30,
+            "max": 45
+          },
+          "driving_hours": 0.7,
+          "elapsed_hours_range": {
+            "min": 1.2,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
               ],
               [
                 3.2158,
@@ -2478,6 +2843,8 @@
             "s1_leg_05",
             "s1_leg_06",
             "s1_leg_07",
+            "s1_leg_13",
+            "s1_leg_14",
             "s1_leg_08",
             "s1_leg_09",
             "s1_leg_10",
@@ -2492,6 +2859,8 @@
             "la_rochelle",
             "bordeaux",
             "toulouse",
+            "minerve",
+            "saint_chinian",
             "beziers",
             "millau",
             "clermont",
@@ -2499,7 +2868,7 @@
             "paris",
             "stockholm"
           ],
-          "active_travel_days": 12
+          "active_travel_days": 14
         },
         {
           "party_id": "B",
@@ -2510,6 +2879,8 @@
             "s1_leg_05",
             "s1_leg_06",
             "s1_leg_07",
+            "s1_leg_13",
+            "s1_leg_14",
             "s1_leg_08",
             "s1_leg_09",
             "s1_leg_10",
@@ -2522,13 +2893,15 @@
             "la_rochelle",
             "bordeaux",
             "toulouse",
+            "minerve",
+            "saint_chinian",
             "beziers",
             "millau",
             "clermont",
             "bourges",
             "paris"
           ],
-          "active_travel_days": 10
+          "active_travel_days": 12
         }
       ],
       "timeline_tracks": [
@@ -2650,6 +3023,38 @@
             {
               "kind": "stay",
               "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s1_leg_13",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
+              "end_hour": 298,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 298,
+              "end_hour": 299.5,
+              "location_id": null,
+              "leg_id": "s1_leg_14",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 299.5,
               "end_hour": 345,
               "location_id": "beziers",
               "leg_id": null,
@@ -2839,6 +3244,38 @@
             {
               "kind": "stay",
               "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s1_leg_13",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
+              "end_hour": 298,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 298,
+              "end_hour": 299.5,
+              "location_id": null,
+              "leg_id": "s1_leg_14",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 299.5,
               "end_hour": 345,
               "location_id": "beziers",
               "leg_id": null,
@@ -2956,52 +3393,54 @@
         "Flygtider och bagagevillkor för sommaren 2027 är inte verifierade.",
         "Kapacitet för fyra personer, fyra resväskor och vin kan kräva större bil eller två bilar.",
         "Hyrvillkor, deposition, kilometerbegränsning och öppettid vid återlämning måste kontrolleras.",
-        "Om Parisbesöket ska ge två hela dagar, lägg till en dag."
+        "Om Parisbesöket ska ge två hela dagar, lägg till en dag.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "Bra om Paris och själva resupplevelsen väger tyngst.",
         "Svagast av alternativen för många lådor vin till Sverige.",
-        "Ingen internationell enkelvägshyra behövs i grundplanen."
+        "Ingen internationell enkelvägshyra behövs i grundplanen.",
+        "En natt i varje by i vinområdet och två i Béziers ger variation och tid att se sig omkring, men fler boendebyten."
       ],
       "distance_summary": {
         "by_vehicle": [
           {
             "vehicle_id": "s1_rental",
-            "intercity_km": 2190,
+            "intercity_km": 2225,
             "local_km_range": {
               "min": 150,
               "max": 300
             },
             "total_km_range": {
-              "min": 2210,
-              "max": 2730
+              "min": 2235,
+              "max": 2780
             },
-            "driving_hours_without_long_stops": 26.3
+            "driving_hours_without_long_stops": 27.6
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 2190,
+            "intercity_car_passenger_km": 2225,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 2190,
+            "intercity_car_passenger_km": 2225,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 2190,
+          "intercity_km": 2225,
           "local_km_range": {
             "min": 150,
             "max": 300
           },
           "total_km_range": {
-            "min": 2210,
-            "max": 2730
+            "min": 2235,
+            "max": 2780
           },
-          "driving_hours_without_long_stops": 26.3
+          "driving_hours_without_long_stops": 27.6
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
@@ -3029,27 +3468,39 @@
       "phases": [
         {
           "start_day": 1,
-          "end_day_inclusive": 5,
+          "end_day_inclusive": 6,
           "title": "A till Nice",
-          "description": "Stockholm–Malmö–Hamburg–Frankfurt–Lyon–Nice. Vägen hålls genom EU via östra Frankrike; dag 4 är en lång transportdag."
+          "description": "Stockholm–Malmö–Hamburg–Frankfurt–Mulhouse–Lyon–Nice. Vägen hålls genom EU via östra Frankrike; den långa dagen Frankfurt–Lyon är delad på två med natt i Mulhouse, så ingen kördag är längre än 60 mil."
         },
         {
-          "start_day": 6,
+          "start_day": 7,
           "end_day_inclusive": 7,
-          "title": "Två hela dagar i Nice",
-          "description": "B är redan i Nice. Boende i B:s lägenhet är en möjlighet som behöver bekräftas."
+          "title": "En hel dag i Nice",
+          "description": "B är redan i Nice och möter A på kvällen dag 6. Boende i B:s lägenhet är en möjlighet som behöver bekräftas."
         },
         {
           "start_day": 8,
           "end_day_inclusive": 9,
           "title": "Gemensamt västerut",
-          "description": "Nice–Aix-en-Provence–Béziers med en natt i Aix; ingen sammanhängande lång kustkörning."
+          "description": "Nice–Aix-en-Provence med en natt i Aix, vidare dag 9 till Saint-Chinian; ingen sammanhängande lång kustkörning."
         },
         {
           "start_day": 10,
+          "end_day_inclusive": 10,
+          "title": "Minerve i Minervois",
+          "description": "Kort körning till Minerve. En natt."
+        },
+        {
+          "start_day": 11,
+          "end_day_inclusive": 11,
+          "title": "Faugères",
+          "description": "Kort körning till Faugères. En natt."
+        },
+        {
+          "start_day": 12,
           "end_day_inclusive": 13,
           "title": "Béziers och vin",
-          "description": "Fyra hela dagar; avhämtning dag 13. Totalt fem nätter i Bézierstrakten efter ankomst dag 9."
+          "description": "Kort körning till Béziers, exempelvis med Colombiers som bas. Två nätter; provning och inköp/avhämtning dag 13."
         },
         {
           "start_day": 14,
@@ -3248,27 +3699,25 @@
           "vehicle_id": "s3_A_car",
           "mode": "car",
           "from_location_id": "frankfurt",
-          "to_location_id": "lyon",
+          "to_location_id": "mulhouse",
           "via_location_ids": [
             "karlsruhe",
-            "strasbourg",
-            "mulhouse",
-            "besancon"
+            "strasbourg"
           ],
-          "start_hour": 80,
-          "end_hour": 90,
+          "start_hour": 82,
+          "end_hour": 87,
           "departure_day": 4,
-          "departure_clock_hour": 8,
-          "planned_elapsed_hours": 10,
-          "distance_km": 720,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 5,
+          "distance_km": 335,
           "distance_km_range": {
-            "min": 680,
-            "max": 795
+            "min": 310,
+            "max": 375
           },
-          "driving_hours": 7.7,
+          "driving_hours": 3.7,
           "elapsed_hours_range": {
-            "min": 8.2,
-            "max": 12
+            "min": 4.2,
+            "max": 7.5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -3287,6 +3736,48 @@
                 7.7521,
                 48.5734
               ],
+              [
+                7.3359,
+                47.7508
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_16",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "mulhouse",
+          "to_location_id": "lyon",
+          "via_location_ids": [
+            "besancon"
+          ],
+          "start_hour": 106,
+          "end_hour": 111.5,
+          "departure_day": 5,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 5.5,
+          "distance_km": 385,
+          "distance_km_range": {
+            "min": 370,
+            "max": 420
+          },
+          "driving_hours": 4,
+          "elapsed_hours_range": {
+            "min": 4.5,
+            "max": 8
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
               [
                 7.3359,
                 47.7508
@@ -3317,9 +3808,9 @@
           "via_location_ids": [
             "aix"
           ],
-          "start_hour": 105,
-          "end_hour": 112.5,
-          "departure_day": 5,
+          "start_hour": 129,
+          "end_hour": 136.5,
+          "departure_day": 6,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 7.5,
           "distance_km": 470,
@@ -3409,22 +3900,24 @@
           "vehicle_id": "s3_A_car",
           "mode": "car",
           "from_location_id": "aix",
-          "to_location_id": "beziers",
-          "via_location_ids": [],
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [
+            "beziers"
+          ],
           "start_hour": 201,
-          "end_hour": 205,
+          "end_hour": 205.5,
           "departure_day": 9,
           "departure_clock_hour": 9,
-          "planned_elapsed_hours": 4,
-          "distance_km": 230,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 265,
           "distance_km_range": {
-            "min": 215,
-            "max": 255
+            "min": 245,
+            "max": 300
           },
-          "driving_hours": 2.6,
+          "driving_hours": 3.3,
           "elapsed_hours_range": {
-            "min": 3.1,
-            "max": 6
+            "min": 3.8,
+            "max": 6.8
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -3434,6 +3927,145 @@
               [
                 5.4474,
                 43.5297
+              ],
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_17",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "minerve",
+          "via_location_ids": [],
+          "start_hour": 226,
+          "end_hour": 227.5,
+          "departure_day": 10,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.9,
+          "elapsed_hours_range": {
+            "min": 1.4,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                2.7465,
+                43.354
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_18",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "minerve",
+          "to_location_id": "faugeres",
+          "via_location_ids": [],
+          "start_hour": 250,
+          "end_hour": 252,
+          "departure_day": 11,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 2,
+          "distance_km": 60,
+          "distance_km_range": {
+            "min": 55,
+            "max": 70
+          },
+          "driving_hours": 1.2,
+          "elapsed_hours_range": {
+            "min": 1.7,
+            "max": 3.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.7465,
+                43.354
+              ],
+              [
+                3.19,
+                43.5658
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_19",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 274,
+          "end_hour": 275.5,
+          "departure_day": 12,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 45,
+          "distance_km_range": {
+            "min": 40,
+            "max": 55
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
               ],
               [
                 3.2158,
@@ -3857,8 +4489,8 @@
       "events": [
         {
           "id": "s3_event_01",
-          "at_hour": 115,
-          "day": 5,
+          "at_hour": 139,
+          "day": 6,
           "clock_hour": 19,
           "kind": "meet",
           "location_id": "nice",
@@ -3905,9 +4537,13 @@
             "s3_leg_02",
             "s3_leg_03",
             "s3_leg_04",
+            "s3_leg_16",
             "s3_leg_05",
             "s3_leg_06",
             "s3_leg_07",
+            "s3_leg_17",
+            "s3_leg_18",
+            "s3_leg_19",
             "s3_leg_08",
             "s3_leg_09",
             "s3_leg_10",
@@ -3922,9 +4558,13 @@
             "malmo",
             "hamburg",
             "frankfurt",
+            "mulhouse",
             "lyon",
             "nice",
             "aix",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "beziers",
             "avignon",
             "nice",
@@ -3935,24 +4575,30 @@
             "malmo",
             "stockholm"
           ],
-          "active_travel_days": 15
+          "active_travel_days": 19
         },
         {
           "party_id": "B",
           "leg_ids": [
             "s3_leg_06",
             "s3_leg_07",
+            "s3_leg_17",
+            "s3_leg_18",
+            "s3_leg_19",
             "s3_leg_08",
             "s3_leg_09"
           ],
           "location_sequence": [
             "nice",
             "aix",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "beziers",
             "avignon",
             "nice"
           ],
-          "active_travel_days": 4
+          "active_travel_days": 7
         }
       ],
       "timeline_tracks": [
@@ -4010,38 +4656,54 @@
             {
               "kind": "stay",
               "start_hour": 64,
-              "end_hour": 80,
+              "end_hour": 82,
               "location_id": "frankfurt",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
-              "start_hour": 80,
-              "end_hour": 90,
+              "start_hour": 82,
+              "end_hour": 87,
               "location_id": null,
               "leg_id": "s3_leg_04",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 90,
-              "end_hour": 105,
+              "start_hour": 87,
+              "end_hour": 106,
+              "location_id": "mulhouse",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 106,
+              "end_hour": 111.5,
+              "location_id": null,
+              "leg_id": "s3_leg_16",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 111.5,
+              "end_hour": 129,
               "location_id": "lyon",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
-              "start_hour": 105,
-              "end_hour": 112.5,
+              "start_hour": 129,
+              "end_hour": 136.5,
               "location_id": null,
               "leg_id": "s3_leg_05",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 112.5,
+              "start_hour": 136.5,
               "end_hour": 177,
               "location_id": "nice",
               "leg_id": null,
@@ -4066,14 +4728,62 @@
             {
               "kind": "travel",
               "start_hour": 201,
-              "end_hour": 205,
+              "end_hour": 205.5,
               "location_id": null,
               "leg_id": "s3_leg_07",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 205,
+              "start_hour": 205.5,
+              "end_hour": 226,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s3_leg_17",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s3_leg_18",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s3_leg_19",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
               "end_hour": 321,
               "location_id": "beziers",
               "leg_id": null,
@@ -4239,14 +4949,62 @@
             {
               "kind": "travel",
               "start_hour": 201,
-              "end_hour": 205,
+              "end_hour": 205.5,
               "location_id": null,
               "leg_id": "s3_leg_07",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 205,
+              "start_hour": 205.5,
+              "end_hour": 226,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s3_leg_17",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s3_leg_18",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s3_leg_19",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
               "end_hour": 321,
               "location_id": "beziers",
               "leg_id": null,
@@ -4343,59 +5101,61 @@
         "B förutsätts vara i Nice före dag 1; eventuell resa Paris–Nice ingår inte.",
         "Bostad, gästsängar och parkering i Nice är inte bekräftade.",
         "Grundplanen väljer Frankrike i stället för Schweiz/Italien; en alternativ Alprutt kräver ny logistik och regelkontroll.",
-        "Dag 4 Frankfurt–Lyon kräver tidig avfärd och flera raster; lägg till natt om ni vill ha lugnare tempo."
+        "Frankfurt–Lyon är delat på två dagar med natt i Mulhouse; dag 6 Lyon–Nice, cirka 47 mil, är den längsta kördagen.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "Gott om tid i Nice och gemensam start/slut där.",
         "En bil under den gemensamma delen.",
-        "Mest körning för A och längst tid med vin i bilen."
+        "Mest körning för A och längst tid med vin i bilen.",
+        "En natt i varje by i vinområdet och två i Béziers ger variation och tid att se sig omkring, men fler boendebyten."
       ],
       "distance_summary": {
         "by_vehicle": [
           {
             "vehicle_id": "s3_A_car",
-            "intercity_km": 6530,
+            "intercity_km": 6710,
             "local_km_range": {
               "min": 150,
               "max": 300
             },
             "total_km_range": {
-              "min": 6320,
-              "max": 7525
+              "min": 6480,
+              "max": 7745
             },
-            "driving_hours_without_long_stops": 73.9
+            "driving_hours_without_long_stops": 77.5
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 6530,
+            "intercity_car_passenger_km": 6710,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 860,
+            "intercity_car_passenger_km": 1040,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 6530,
+          "intercity_km": 6710,
           "local_km_range": {
             "min": 150,
             "max": 300
           },
           "total_km_range": {
-            "min": 6320,
-            "max": 7525
+            "min": 6480,
+            "max": 7745
           },
-          "driving_hours_without_long_stops": 73.9
+          "driving_hours_without_long_stops": 77.5
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
       "shared_period": {
-        "start_hour": 115,
+        "start_hour": 139,
         "end_hour": 368,
-        "elapsed_days": 10.54,
+        "elapsed_days": 9.54,
         "notes": "Social gemensam period; förflyttning i samma bil avgörs av legs.party_ids och vehicle_id."
       }
     },
@@ -4428,9 +5188,27 @@
         },
         {
           "start_day": 9,
+          "end_day_inclusive": 9,
+          "title": "Saint-Chinian",
+          "description": "Gemensam resa från Vallon till Saint-Chinian. Båda bilarna följer med. En natt."
+        },
+        {
+          "start_day": 10,
+          "end_day_inclusive": 10,
+          "title": "Minerve i Minervois",
+          "description": "Kort körning till Minerve. En natt."
+        },
+        {
+          "start_day": 11,
+          "end_day_inclusive": 11,
+          "title": "Faugères",
+          "description": "Kort körning till Faugères. En natt."
+        },
+        {
+          "start_day": 12,
           "end_day_inclusive": 13,
           "title": "Béziers och vin",
-          "description": "Gemensam resa till Béziers dag 9 och fyra hela dagar där. Avhämtning dag 13; A:s vin följer A:s bil."
+          "description": "Kort körning till Béziers. Två nätter; inköp/avhämtning dag 13; A:s vin följer A:s bil."
         },
         {
           "start_day": 14,
@@ -4860,22 +5638,24 @@
           "vehicle_id": "s4_A_car",
           "mode": "car",
           "from_location_id": "vallon",
-          "to_location_id": "beziers",
-          "via_location_ids": [],
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [
+            "beziers"
+          ],
           "start_hour": 201,
-          "end_hour": 205.5,
+          "end_hour": 206,
           "departure_day": 9,
           "departure_clock_hour": 9,
-          "planned_elapsed_hours": 4.5,
-          "distance_km": 220,
+          "planned_elapsed_hours": 5,
+          "distance_km": 255,
           "distance_km_range": {
-            "min": 205,
-            "max": 245
+            "min": 235,
+            "max": 290
           },
-          "driving_hours": 3.3,
+          "driving_hours": 4,
           "elapsed_hours_range": {
-            "min": 3.8,
-            "max": 6.5
+            "min": 4.5,
+            "max": 7.5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -4889,6 +5669,10 @@
               [
                 3.2158,
                 43.3442
+              ],
+              [
+                2.9456,
+                43.4223
               ]
             ]
           },
@@ -4904,22 +5688,24 @@
           "vehicle_id": "s4_B_car",
           "mode": "car",
           "from_location_id": "vallon",
-          "to_location_id": "beziers",
-          "via_location_ids": [],
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [
+            "beziers"
+          ],
           "start_hour": 201,
-          "end_hour": 205.5,
+          "end_hour": 206,
           "departure_day": 9,
           "departure_clock_hour": 9,
-          "planned_elapsed_hours": 4.5,
-          "distance_km": 220,
+          "planned_elapsed_hours": 5,
+          "distance_km": 255,
           "distance_km_range": {
-            "min": 205,
-            "max": 245
+            "min": 235,
+            "max": 290
           },
-          "driving_hours": 3.3,
+          "driving_hours": 4,
           "elapsed_hours_range": {
-            "min": 3.8,
-            "max": 6.5
+            "min": 4.5,
+            "max": 7.5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -4933,12 +5719,280 @@
               [
                 3.2158,
                 43.3442
+              ],
+              [
+                2.9456,
+                43.4223
               ]
             ]
           },
           "road_geometry": null,
           "geometry_status": "schematic_waypoint_lines_not_navigable",
           "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_19",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "minerve",
+          "via_location_ids": [],
+          "start_hour": 226,
+          "end_hour": 227.5,
+          "departure_day": 10,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.9,
+          "elapsed_hours_range": {
+            "min": 1.4,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                2.7465,
+                43.354
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_20",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "minerve",
+          "via_location_ids": [],
+          "start_hour": 226,
+          "end_hour": 227.5,
+          "departure_day": 10,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.9,
+          "elapsed_hours_range": {
+            "min": 1.4,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                2.7465,
+                43.354
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_21",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "minerve",
+          "to_location_id": "faugeres",
+          "via_location_ids": [],
+          "start_hour": 250,
+          "end_hour": 252,
+          "departure_day": 11,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 2,
+          "distance_km": 60,
+          "distance_km_range": {
+            "min": 55,
+            "max": 70
+          },
+          "driving_hours": 1.2,
+          "elapsed_hours_range": {
+            "min": 1.7,
+            "max": 3.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.7465,
+                43.354
+              ],
+              [
+                3.19,
+                43.5658
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_22",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "minerve",
+          "to_location_id": "faugeres",
+          "via_location_ids": [],
+          "start_hour": 250,
+          "end_hour": 252,
+          "departure_day": 11,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 2,
+          "distance_km": 60,
+          "distance_km_range": {
+            "min": 55,
+            "max": 70
+          },
+          "driving_hours": 1.2,
+          "elapsed_hours_range": {
+            "min": 1.7,
+            "max": 3.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.7465,
+                43.354
+              ],
+              [
+                3.19,
+                43.5658
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_23",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 274,
+          "end_hour": 275.5,
+          "departure_day": 12,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 45,
+          "distance_km_range": {
+            "min": 40,
+            "max": 55
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_24",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 274,
+          "end_hour": 275.5,
+          "departure_day": 12,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 45,
+          "distance_km_range": {
+            "min": 40,
+            "max": 55
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
           "id": "s4_leg_08",
@@ -5476,6 +6530,9 @@
             "s4_leg_04",
             "s4_leg_06",
             "s4_leg_07",
+            "s4_leg_19",
+            "s4_leg_21",
+            "s4_leg_23",
             "s4_leg_08",
             "s4_leg_12",
             "s4_leg_13",
@@ -5490,6 +6547,9 @@
             "frankfurt",
             "beaune",
             "vallon",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "beziers",
             "avignon",
             "dijon",
@@ -5498,7 +6558,7 @@
             "malmo",
             "stockholm"
           ],
-          "active_travel_days": 12
+          "active_travel_days": 15
         },
         {
           "party_id": "B",
@@ -5506,6 +6566,9 @@
             "s4_leg_05",
             "s4_leg_09",
             "s4_leg_10",
+            "s4_leg_20",
+            "s4_leg_22",
+            "s4_leg_24",
             "s4_leg_11",
             "s4_leg_17",
             "s4_leg_18"
@@ -5514,12 +6577,15 @@
             "paris",
             "beaune",
             "vallon",
+            "saint_chinian",
+            "minerve",
+            "faugeres",
             "beziers",
             "avignon",
             "beaune",
             "paris"
           ],
-          "active_travel_days": 6
+          "active_travel_days": 9
         }
       ],
       "timeline_tracks": [
@@ -5617,14 +6683,62 @@
             {
               "kind": "travel",
               "start_hour": 201,
-              "end_hour": 205.5,
+              "end_hour": 206,
               "location_id": null,
               "leg_id": "s4_leg_07",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 205.5,
+              "start_hour": 206,
+              "end_hour": 226,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s4_leg_19",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s4_leg_21",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s4_leg_23",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
               "end_hour": 321,
               "location_id": "beziers",
               "leg_id": null,
@@ -5774,14 +6888,62 @@
             {
               "kind": "travel",
               "start_hour": 201,
-              "end_hour": 205.5,
+              "end_hour": 206,
               "location_id": null,
               "leg_id": "s4_leg_10",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 205.5,
+              "start_hour": 206,
+              "end_hour": 226,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 226,
+              "end_hour": 227.5,
+              "location_id": null,
+              "leg_id": "s4_leg_20",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 227.5,
+              "end_hour": 250,
+              "location_id": "minerve",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 250,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s4_leg_22",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 274,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 274,
+              "end_hour": 275.5,
+              "location_id": null,
+              "leg_id": "s4_leg_24",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 275.5,
               "end_hour": 321,
               "location_id": "beziers",
               "leg_id": null,
@@ -5915,65 +7077,67 @@
         "Två bilar ger högre sammanlagd bränsle-, vägavgifts- och parkeringskostnad.",
         "B:s bil är inte bekräftad; grundplanen kräver en separat bokning Paris–Paris.",
         "Möte först i Ardèche eller Provence är möjliga omplaneringar, inte färdiga alternativa tidslinjer.",
-        "Om B vill avsluta i Nice i stället för Paris behöver hyrbilens återlämning och eventuell enkelvägsavgift kontrolleras."
+        "Om B vill avsluta i Nice i stället för Paris behöver hyrbilens återlämning och eventuell enkelvägsavgift kontrolleras.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "B kan ansluta senare och resa hem tidigare.",
         "Två bilar ger frihet och lastutrymme.",
-        "Högst gemensam fordonskostnad trots kortare körsträcka för A än Nicealternativet."
+        "Högst gemensam fordonskostnad trots kortare körsträcka för A än Nicealternativet.",
+        "En natt i varje by i vinområdet och två i Béziers ger variation och tid att se sig omkring, men fler boendebyten."
       ],
       "distance_summary": {
         "by_vehicle": [
           {
             "vehicle_id": "s4_A_car",
-            "intercity_km": 5540,
+            "intercity_km": 5720,
             "local_km_range": {
               "min": 120,
               "max": 250
             },
             "total_km_range": {
-              "min": 5355,
-              "max": 6380
+              "min": 5515,
+              "max": 6600
             },
-            "driving_hours_without_long_stops": 63.6
+            "driving_hours_without_long_stops": 67.2
           },
           {
             "vehicle_id": "s4_B_car",
-            "intercity_km": 1710,
+            "intercity_km": 1890,
             "local_km_range": {
               "min": 80,
               "max": 180
             },
             "total_km_range": {
-              "min": 1685,
-              "max": 2080
+              "min": 1845,
+              "max": 2300
             },
-            "driving_hours_without_long_stops": 20.5
+            "driving_hours_without_long_stops": 24.1
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 5540,
+            "intercity_car_passenger_km": 5720,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1710,
+            "intercity_car_passenger_km": 1890,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 7250,
+          "intercity_km": 7610,
           "local_km_range": {
             "min": 200,
             "max": 430
           },
           "total_km_range": {
-            "min": 7040,
-            "max": 8460
+            "min": 7360,
+            "max": 8900
           },
-          "driving_hours_without_long_stops": 84.1
+          "driving_hours_without_long_stops": 91.3
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
@@ -5987,7 +7151,7 @@
     {
       "id": "s5",
       "title": "Flyg till Paris, kort – en hyrbil, ut via Auvergne, hem via Bourgogne",
-      "summary": "Kort variant av Flyg till Paris: ungefär en vecka tillsammans i en gemensam hyrbil, söderut via Auvergne till Béziers och hem via Bourgogne. Mindre variation än den långa rutten, men tiden tillsammans är mer än halverad.",
+      "summary": "Kort variant av Flyg till Paris: ungefär en vecka tillsammans i en gemensam hyrbil, söderut via Auvergne till vinbyarna vid Béziers och hem via Bourgogne, med högst två nätter på varje ställe. Mindre variation än den långa rutten, men tiden tillsammans är mer än halverad.",
       "duration_days": 9,
       "duration_flex_days": {
         "min": 8,
@@ -6013,9 +7177,21 @@
         },
         {
           "start_day": 3,
+          "end_day_inclusive": 3,
+          "title": "Faugères",
+          "description": "Via Millau till Faugères. En natt i vinbyarna norr om Béziers."
+        },
+        {
+          "start_day": 4,
+          "end_day_inclusive": 4,
+          "title": "Saint-Chinian",
+          "description": "Kort körning till Saint-Chinian. En natt, med provning hos några vingårdar."
+        },
+        {
+          "start_day": 5,
           "end_day_inclusive": 6,
           "title": "Béziers och vin",
-          "description": "Via Millau till Béziers dag 3. Fyra nätter i trakten, exempelvis med Colombiers som bas. Provning tidigare i vistelsen, inköp/avhämtning dag 6."
+          "description": "Kort körning till Béziers, exempelvis med Colombiers som bas. Två nätter; provning och inköp/avhämtning dag 6."
         },
         {
           "start_day": 7,
@@ -6148,7 +7324,7 @@
           "vehicle_id": "s5_rental",
           "mode": "car",
           "from_location_id": "clermont",
-          "to_location_id": "beziers",
+          "to_location_id": "faugeres",
           "via_location_ids": [
             "millau"
           ],
@@ -6157,15 +7333,15 @@
           "departure_day": 3,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 5.5,
-          "distance_km": 340,
+          "distance_km": 350,
           "distance_km_range": {
-            "min": 320,
-            "max": 375
+            "min": 330,
+            "max": 390
           },
-          "driving_hours": 4,
+          "driving_hours": 4.2,
           "elapsed_hours_range": {
-            "min": 4.5,
-            "max": 7.5
+            "min": 4.7,
+            "max": 8
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -6181,6 +7357,96 @@
                 44.1
               ],
               [
+                3.19,
+                43.5658
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s5_leg_04",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s5_rental",
+          "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [],
+          "start_hour": 82,
+          "end_hour": 83.5,
+          "departure_day": 4,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s5_leg_05",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s5_rental",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 106,
+          "end_hour": 107.5,
+          "departure_day": 5,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 35,
+          "distance_km_range": {
+            "min": 30,
+            "max": 45
+          },
+          "driving_hours": 0.7,
+          "elapsed_hours_range": {
+            "min": 1.2,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
                 3.2158,
                 43.3442
               ]
@@ -6191,7 +7457,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
-          "id": "s5_leg_04",
+          "id": "s5_leg_06",
           "party_ids": [
             "A",
             "B"
@@ -6247,7 +7513,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Lång dag: dela på körningen eller lägg till en natt vid Lyon."
         },
         {
-          "id": "s5_leg_05",
+          "id": "s5_leg_07",
           "party_ids": [
             "A",
             "B"
@@ -6292,7 +7558,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
-          "id": "s5_leg_06",
+          "id": "s5_leg_08",
           "party_ids": [
             "A"
           ],
@@ -6413,18 +7679,22 @@
             "s5_leg_03",
             "s5_leg_04",
             "s5_leg_05",
-            "s5_leg_06"
+            "s5_leg_06",
+            "s5_leg_07",
+            "s5_leg_08"
           ],
           "location_sequence": [
             "stockholm",
             "paris",
             "clermont",
+            "faugeres",
+            "saint_chinian",
             "beziers",
             "beaune",
             "paris",
             "stockholm"
           ],
-          "active_travel_days": 6
+          "active_travel_days": 8
         },
         {
           "party_id": "B",
@@ -6432,16 +7702,20 @@
             "s5_leg_02",
             "s5_leg_03",
             "s5_leg_04",
-            "s5_leg_05"
+            "s5_leg_05",
+            "s5_leg_06",
+            "s5_leg_07"
           ],
           "location_sequence": [
             "paris",
             "clermont",
+            "faugeres",
+            "saint_chinian",
             "beziers",
             "beaune",
             "paris"
           ],
-          "active_travel_days": 4
+          "active_travel_days": 6
         }
       ],
       "timeline_tracks": [
@@ -6499,6 +7773,38 @@
             {
               "kind": "stay",
               "start_hour": 62.5,
+              "end_hour": 82,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 82,
+              "end_hour": 83.5,
+              "location_id": null,
+              "leg_id": "s5_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 83.5,
+              "end_hour": 106,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 106,
+              "end_hour": 107.5,
+              "location_id": null,
+              "leg_id": "s5_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 107.5,
               "end_hour": 153,
               "location_id": "beziers",
               "leg_id": null,
@@ -6509,7 +7815,7 @@
               "start_hour": 153,
               "end_hour": 161,
               "location_id": null,
-              "leg_id": "s5_leg_04",
+              "leg_id": "s5_leg_06",
               "position_precision": "schematic_estimate"
             },
             {
@@ -6525,7 +7831,7 @@
               "start_hour": 177,
               "end_hour": 181.5,
               "location_id": null,
-              "leg_id": "s5_leg_05",
+              "leg_id": "s5_leg_07",
               "position_precision": "schematic_estimate"
             },
             {
@@ -6541,7 +7847,7 @@
               "start_hour": 201,
               "end_hour": 208,
               "location_id": null,
-              "leg_id": "s5_leg_06",
+              "leg_id": "s5_leg_08",
               "position_precision": "schematic_estimate"
             },
             {
@@ -6592,6 +7898,38 @@
             {
               "kind": "stay",
               "start_hour": 62.5,
+              "end_hour": 82,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 82,
+              "end_hour": 83.5,
+              "location_id": null,
+              "leg_id": "s5_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 83.5,
+              "end_hour": 106,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 106,
+              "end_hour": 107.5,
+              "location_id": null,
+              "leg_id": "s5_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 107.5,
               "end_hour": 153,
               "location_id": "beziers",
               "leg_id": null,
@@ -6602,7 +7940,7 @@
               "start_hour": 153,
               "end_hour": 161,
               "location_id": null,
-              "leg_id": "s5_leg_04",
+              "leg_id": "s5_leg_06",
               "position_precision": "schematic_estimate"
             },
             {
@@ -6618,7 +7956,7 @@
               "start_hour": 177,
               "end_hour": 181.5,
               "location_id": null,
-              "leg_id": "s5_leg_05",
+              "leg_id": "s5_leg_07",
               "position_precision": "schematic_estimate"
             },
             {
@@ -6677,11 +8015,13 @@
         "Flygtider och bagagevillkor för sommaren 2027 är inte verifierade.",
         "Kapacitet för fyra personer, fyra resväskor och vin kan kräva större bil eller två bilar.",
         "Hyrvillkor, deposition, kilometerbegränsning och öppettid vid återlämning måste kontrolleras.",
-        "Dag 7 är en lång körning, cirka 510 km och knappt sex timmars körtid utan raster: den kräver två förare som turas om, annars en extra natt vid Lyon."
+        "Dag 7 är en lång körning, cirka 510 km och knappt sex timmars körtid utan raster: den kräver två förare som turas om, annars en extra natt vid Lyon.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "Tiden tillsammans är mer än halverad jämfört med den långa varianten.",
-        "Mindre variation: ingen Normandie eller Atlantkust, och Paris blir bara en natt vid ankomsten och en före flyget hem.",
+        "Inget stopp längre än två nätter: en natt i Faugères och Saint-Chinian och två i Béziers ger variation men fler boendebyten.",
+        "Mindre variation än den långa rutten: ingen Normandie eller Atlantkust, och Paris blir bara en natt vid ankomsten och en före flyget hem.",
         "Fortfarande svagast av alternativen för många lådor vin till Sverige.",
         "Vill ni ha två hela dagar i Paris, lägg till en dag i början."
       ],
@@ -6689,41 +8029,41 @@
         "by_vehicle": [
           {
             "vehicle_id": "s5_rental",
-            "intercity_km": 1605,
+            "intercity_km": 1690,
             "local_km_range": {
               "min": 150,
               "max": 300
             },
             "total_km_range": {
-              "min": 1660,
-              "max": 2075
+              "min": 1735,
+              "max": 2185
             },
-            "driving_hours_without_long_stops": 18.6
+            "driving_hours_without_long_stops": 20.3
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 1605,
+            "intercity_car_passenger_km": 1690,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1605,
+            "intercity_car_passenger_km": 1690,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 1605,
+          "intercity_km": 1690,
           "local_km_range": {
             "min": 150,
             "max": 300
           },
           "total_km_range": {
-            "min": 1660,
-            "max": 2075
+            "min": 1735,
+            "max": 2185
           },
-          "driving_hours_without_long_stops": 18.6
+          "driving_hours_without_long_stops": 20.3
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
@@ -6737,7 +8077,7 @@
     {
       "id": "s6",
       "title": "Flyg till Paris, kort, två bilar – samma rutt, en hyrbil var",
-      "summary": "Samma rutt och tider som den korta varianten med en gemensam bil, men varje par har sin egen hyrbil: frihet att lämna eller stanna på egen hand och mer lastutrymme, mot ungefär dubbla bilkostnader.",
+      "summary": "Samma rutt och tider som den korta varianten med en gemensam bil, med högst två nätter på varje ställe, men varje par har sin egen hyrbil: frihet att lämna eller stanna på egen hand och mer lastutrymme, mot ungefär dubbla bilkostnader.",
       "duration_days": 9,
       "duration_flex_days": {
         "min": 8,
@@ -6763,9 +8103,21 @@
         },
         {
           "start_day": 3,
+          "end_day_inclusive": 3,
+          "title": "Faugères",
+          "description": "Via Millau till Faugères. En natt i vinbyarna norr om Béziers."
+        },
+        {
+          "start_day": 4,
+          "end_day_inclusive": 4,
+          "title": "Saint-Chinian",
+          "description": "Kort körning till Saint-Chinian. En natt, med provning hos några vingårdar."
+        },
+        {
+          "start_day": 5,
           "end_day_inclusive": 6,
           "title": "Béziers och vin",
-          "description": "Via Millau till Béziers dag 3. Fyra nätter i trakten, exempelvis med Colombiers som bas. Provning tidigare i vistelsen, inköp/avhämtning dag 6."
+          "description": "Kort körning till Béziers, exempelvis med Colombiers som bas. Två nätter; provning och inköp/avhämtning dag 6."
         },
         {
           "start_day": 7,
@@ -6958,7 +8310,7 @@
           "vehicle_id": "s6_A_car",
           "mode": "car",
           "from_location_id": "clermont",
-          "to_location_id": "beziers",
+          "to_location_id": "faugeres",
           "via_location_ids": [
             "millau"
           ],
@@ -6967,15 +8319,15 @@
           "departure_day": 3,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 5.5,
-          "distance_km": 340,
+          "distance_km": 350,
           "distance_km_range": {
-            "min": 320,
-            "max": 375
+            "min": 330,
+            "max": 390
           },
-          "driving_hours": 4,
+          "driving_hours": 4.2,
           "elapsed_hours_range": {
-            "min": 4.5,
-            "max": 7.5
+            "min": 4.7,
+            "max": 8
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -6991,8 +8343,8 @@
                 44.1
               ],
               [
-                3.2158,
-                43.3442
+                3.19,
+                43.5658
               ]
             ]
           },
@@ -7008,7 +8360,7 @@
           "vehicle_id": "s6_B_car",
           "mode": "car",
           "from_location_id": "clermont",
-          "to_location_id": "beziers",
+          "to_location_id": "faugeres",
           "via_location_ids": [
             "millau"
           ],
@@ -7017,15 +8369,15 @@
           "departure_day": 3,
           "departure_clock_hour": 9,
           "planned_elapsed_hours": 5.5,
-          "distance_km": 340,
+          "distance_km": 350,
           "distance_km_range": {
-            "min": 320,
-            "max": 375
+            "min": 330,
+            "max": 390
           },
-          "driving_hours": 4,
+          "driving_hours": 4.2,
           "elapsed_hours_range": {
-            "min": 4.5,
-            "max": 7.5
+            "min": 4.7,
+            "max": 8
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -7041,8 +8393,8 @@
                 44.1
               ],
               [
-                3.2158,
-                43.3442
+                3.19,
+                43.5658
               ]
             ]
           },
@@ -7057,6 +8409,182 @@
           ],
           "vehicle_id": "s6_A_car",
           "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [],
+          "start_hour": 82,
+          "end_hour": 83.5,
+          "departure_day": 4,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s6_leg_07",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s6_B_car",
+          "mode": "car",
+          "from_location_id": "faugeres",
+          "to_location_id": "saint_chinian",
+          "via_location_ids": [],
+          "start_hour": 82,
+          "end_hour": 83.5,
+          "departure_day": 4,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 40,
+          "distance_km_range": {
+            "min": 35,
+            "max": 50
+          },
+          "driving_hours": 0.8,
+          "elapsed_hours_range": {
+            "min": 1.3,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.19,
+                43.5658
+              ],
+              [
+                2.9456,
+                43.4223
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s6_leg_08",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s6_A_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 106,
+          "end_hour": 107.5,
+          "departure_day": 5,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 35,
+          "distance_km_range": {
+            "min": 30,
+            "max": 45
+          },
+          "driving_hours": 0.7,
+          "elapsed_hours_range": {
+            "min": 1.2,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s6_leg_09",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s6_B_car",
+          "mode": "car",
+          "from_location_id": "saint_chinian",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 106,
+          "end_hour": 107.5,
+          "departure_day": 5,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 1.5,
+          "distance_km": 35,
+          "distance_km_range": {
+            "min": 30,
+            "max": 45
+          },
+          "driving_hours": 0.7,
+          "elapsed_hours_range": {
+            "min": 1.2,
+            "max": 3
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.9456,
+                43.4223
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s6_leg_10",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s6_A_car",
+          "mode": "car",
           "from_location_id": "beziers",
           "to_location_id": "beaune",
           "via_location_ids": [
@@ -7106,7 +8634,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Lång dag: dela på körningen eller lägg till en natt vid Lyon."
         },
         {
-          "id": "s6_leg_07",
+          "id": "s6_leg_11",
           "party_ids": [
             "B"
           ],
@@ -7161,7 +8689,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Lång dag: dela på körningen eller lägg till en natt vid Lyon."
         },
         {
-          "id": "s6_leg_08",
+          "id": "s6_leg_12",
           "party_ids": [
             "A"
           ],
@@ -7205,7 +8733,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
-          "id": "s6_leg_09",
+          "id": "s6_leg_13",
           "party_ids": [
             "B"
           ],
@@ -7249,7 +8777,7 @@
           "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
         },
         {
-          "id": "s6_leg_10",
+          "id": "s6_leg_14",
           "party_ids": [
             "A"
           ],
@@ -7370,18 +8898,22 @@
             "s6_leg_04",
             "s6_leg_06",
             "s6_leg_08",
-            "s6_leg_10"
+            "s6_leg_10",
+            "s6_leg_12",
+            "s6_leg_14"
           ],
           "location_sequence": [
             "stockholm",
             "paris",
             "clermont",
+            "faugeres",
+            "saint_chinian",
             "beziers",
             "beaune",
             "paris",
             "stockholm"
           ],
-          "active_travel_days": 6
+          "active_travel_days": 8
         },
         {
           "party_id": "B",
@@ -7389,16 +8921,20 @@
             "s6_leg_03",
             "s6_leg_05",
             "s6_leg_07",
-            "s6_leg_09"
+            "s6_leg_09",
+            "s6_leg_11",
+            "s6_leg_13"
           ],
           "location_sequence": [
             "paris",
             "clermont",
+            "faugeres",
+            "saint_chinian",
             "beziers",
             "beaune",
             "paris"
           ],
-          "active_travel_days": 4
+          "active_travel_days": 6
         }
       ],
       "timeline_tracks": [
@@ -7456,6 +8992,38 @@
             {
               "kind": "stay",
               "start_hour": 62.5,
+              "end_hour": 82,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 82,
+              "end_hour": 83.5,
+              "location_id": null,
+              "leg_id": "s6_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 83.5,
+              "end_hour": 106,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 106,
+              "end_hour": 107.5,
+              "location_id": null,
+              "leg_id": "s6_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 107.5,
               "end_hour": 153,
               "location_id": "beziers",
               "leg_id": null,
@@ -7466,7 +9034,7 @@
               "start_hour": 153,
               "end_hour": 161,
               "location_id": null,
-              "leg_id": "s6_leg_06",
+              "leg_id": "s6_leg_10",
               "position_precision": "schematic_estimate"
             },
             {
@@ -7482,7 +9050,7 @@
               "start_hour": 177,
               "end_hour": 181.5,
               "location_id": null,
-              "leg_id": "s6_leg_08",
+              "leg_id": "s6_leg_12",
               "position_precision": "schematic_estimate"
             },
             {
@@ -7498,7 +9066,7 @@
               "start_hour": 201,
               "end_hour": 208,
               "location_id": null,
-              "leg_id": "s6_leg_10",
+              "leg_id": "s6_leg_14",
               "position_precision": "schematic_estimate"
             },
             {
@@ -7549,6 +9117,38 @@
             {
               "kind": "stay",
               "start_hour": 62.5,
+              "end_hour": 82,
+              "location_id": "faugeres",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 82,
+              "end_hour": 83.5,
+              "location_id": null,
+              "leg_id": "s6_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 83.5,
+              "end_hour": 106,
+              "location_id": "saint_chinian",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 106,
+              "end_hour": 107.5,
+              "location_id": null,
+              "leg_id": "s6_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 107.5,
               "end_hour": 153,
               "location_id": "beziers",
               "leg_id": null,
@@ -7559,7 +9159,7 @@
               "start_hour": 153,
               "end_hour": 161,
               "location_id": null,
-              "leg_id": "s6_leg_07",
+              "leg_id": "s6_leg_11",
               "position_precision": "schematic_estimate"
             },
             {
@@ -7575,7 +9175,7 @@
               "start_hour": 177,
               "end_hour": 181.5,
               "location_id": null,
-              "leg_id": "s6_leg_09",
+              "leg_id": "s6_leg_13",
               "position_precision": "schematic_estimate"
             },
             {
@@ -7645,10 +9245,12 @@
         "Två bilar ger högre sammanlagd bränsle-, vägavgifts- och parkeringskostnad.",
         "B:s bil är inte bekräftad; grundplanen kräver en separat hyrbil Paris–Paris.",
         "Hyrvillkor, deposition, kilometerbegränsning och öppettid vid återlämning måste kontrolleras för båda bilarna.",
-        "Dag 7 är en lång körning, cirka 510 km och knappt sex timmars körtid utan raster; varje par kan dela körningen själva eller lägga till en natt vid Lyon."
+        "Dag 7 är en lång körning, cirka 510 km och knappt sex timmars körtid utan raster; varje par kan dela körningen själva eller lägga till en natt vid Lyon.",
+        "Boende en natt i taget i vinbyarna kan vara svårt att få i sommarsäsong; boka tidigt."
       ],
       "tradeoffs": [
         "Varje par styr över sin egen bil och kan lämna eller stanna på egen hand.",
+        "Inget stopp längre än två nätter: en natt i Faugères och Saint-Chinian och två i Béziers ger variation men fler boendebyten.",
         "Mer lastutrymme i Frankrike, men flygets bagagetak för A:s vin är oförändrat.",
         "Ungefär dubbla bilkilometer och bilkostnader jämfört med en gemensam bil.",
         "Tiden tillsammans är densamma som i varianten med en bil; bara fordonen skiljer."
@@ -7657,54 +9259,54 @@
         "by_vehicle": [
           {
             "vehicle_id": "s6_A_car",
-            "intercity_km": 1605,
+            "intercity_km": 1690,
             "local_km_range": {
               "min": 100,
               "max": 200
             },
             "total_km_range": {
-              "min": 1610,
-              "max": 1975
+              "min": 1685,
+              "max": 2085
             },
-            "driving_hours_without_long_stops": 18.6
+            "driving_hours_without_long_stops": 20.3
           },
           {
             "vehicle_id": "s6_B_car",
-            "intercity_km": 1605,
+            "intercity_km": 1690,
             "local_km_range": {
               "min": 100,
               "max": 200
             },
             "total_km_range": {
-              "min": 1610,
-              "max": 1975
+              "min": 1685,
+              "max": 2085
             },
-            "driving_hours_without_long_stops": 18.6
+            "driving_hours_without_long_stops": 20.3
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 1605,
+            "intercity_car_passenger_km": 1690,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1605,
+            "intercity_car_passenger_km": 1690,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 3210,
+          "intercity_km": 3380,
           "local_km_range": {
             "min": 200,
             "max": 400
           },
           "total_km_range": {
-            "min": 3220,
-            "max": 3950
+            "min": 3370,
+            "max": 4170
           },
-          "driving_hours_without_long_stops": 37.2
+          "driving_hours_without_long_stops": 40.6
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },

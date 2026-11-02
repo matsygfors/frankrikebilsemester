@@ -1,7 +1,7 @@
 // "Jämför": the alternatives side by side on one shared clock.
 
-import { togetherAt } from './data.js';
-import { countWord, esc, fmtDec, fmtInt, fmtRange } from './format.js';
+import { DRIVE_LIMIT_KM, STAY_LIMIT_NIGHTS, isLongDrive, togetherAt } from './data.js';
+import { countWord, esc, fmtDec, fmtInt, fmtRange, plural } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
 import { legendHTML } from './legend.js';
@@ -135,13 +135,14 @@ function table(scenarios, tags) {
     ['Passar om', (s) => esc(tags.get(s.id) ?? '–')],
     ['Resdagar', (s) => `${s.kpis.days} <small>(${s.kpis.flex.min}–${s.kpis.flex.max})</small>${bar(s.kpis.days, maxDays)}`],
     ['Tillsammans', (s) => `${fmtDec(s.kpis.sharedDays)} dygn`],
+    ['Längst på samma ort', stayCell],
     ['Så reser A', (s) => esc(modesText(s, 'A'))],
     ['Så reser B', (s) => esc(modesText(s, 'B'))],
     ['Fordon', (s) => s.raw.vehicles.map((v) => esc(vehicleLine(s, v))).join('<br>')],
     ['Bilkilometer', (s) => `${fmtInt(s.kpis.fleetKm)} km<small> mellan orter, alla bilar<br>${fmtRange(s.kpis.totalKmRange)} km inkl. lokalt</small>${bar(s.kpis.fleetKm, maxKm)}`],
     ['Körtid', (s) => `${fmtInt(s.kpis.driveHours)} h<small> utan långa stopp</small>${bar(s.kpis.driveHours, maxHours)}`],
-    ['Längsta kördag', (s) => `${fmtDec(s.kpis.longest.driving_hours)} h · ${fmtInt(s.kpis.longest.distance_km)} km<small><br>${esc(legTitle(s, s.kpis.longest))}, dag ${s.kpis.longest.departure_day}</small>`],
-    ['Nätter i Béziers', (s) => s.kpis.bezierNights],
+    ['Längsta kördag', longestDriveCell],
+    ['Nätter i Béziers-trakten', (s) => s.kpis.bezierNights],
     ['Vin hem', (s) => esc(WINE_TRANSPORT[s.raw.wine_plan.transport_method])],
     ['Fördelar och avvägningar', (s) => list(s.raw.tradeoffs)],
     ['Osäkerheter', (s) => list(s.raw.uncertainties)],
@@ -150,4 +151,18 @@ function table(scenarios, tags) {
     <thead><tr><td></td>${scenarios.map((s) => `<th scope="col"><a href="#/${s.number}"><span class="num">${s.number}</span>${esc(s.title)}</a><small>${esc(s.subtitle)}</small></th>`).join('')}</tr></thead>
     <tbody>${rows.map(([label, cell]) => `<tr><th scope="row">${label}</th>${scenarios.map((s) => `<td>${cell(s)}</td>`).join('')}</tr>`).join('')}</tbody>
   </table></div>`;
+}
+
+/** "7 h · 615 km" and which day, flagged when it is well over 60 mil. */
+function longestDriveCell(s) {
+  const l = s.kpis.longest;
+  const over = isLongDrive(l.distance_km);
+  return `<span class="${over ? 'over' : ''}">${fmtDec(l.driving_hours)} h · ${fmtInt(l.distance_km)} km</span><small><br>${esc(legTitle(s, l))}, dag ${l.departure_day}${over ? `<br>mer än ${DRIVE_LIMIT_KM / 10} mil` : ''}</small>`;
+}
+
+/** "4 nätter" and where, flagged when it is more than the group would like to stay in one place. */
+function stayCell(s) {
+  const { nights, loc } = s.kpis.longestStay;
+  const over = nights > STAY_LIMIT_NIGHTS;
+  return `<span class="${over ? 'over' : ''}">${plural(nights, 'natt', 'nätter')}</span><small> i ${esc(loc.short)}${over ? `<br>mer än ${STAY_LIMIT_NIGHTS}` : ''}</small>`;
 }

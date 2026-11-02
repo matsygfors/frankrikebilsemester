@@ -93,6 +93,14 @@ export function segmentAt(segments, t) {
 /** Number of midnights strictly inside (start, end). */
 export const countNights = (start, end) => Math.max(0, Math.ceil(end / 24) - 1 - Math.floor(start / 24));
 
+/** The most nights the group would like to spend together in one place. */
+export const STAY_LIMIT_NIGHTS = 2;
+
+/** The longest day's drive the group is happy with: about 60 mil. */
+export const DRIVE_LIMIT_KM = 600;
+/** With a little margin, so that Stockholm–Malmö (61 mil) still goes. */
+export const isLongDrive = (km) => km > DRIVE_LIMIT_KM * 1.05;
+
 /**
  * Stretches where both couples are together, clipped to the scenario's shared_period:
  * 'vehicle' = same leg, 'convoy' = same trip in two vehicles, 'place' = staying in the same place.
@@ -174,8 +182,26 @@ function buildKpis(scn) {
     cars: raw.vehicles.length,
     longest,
     byParty,
-    bezierNights: scn.places.get('beziers')?.nights.A ?? 0,
+    bezierNights: sum([...scn.places.values()].filter((p) => inWineArea(p.loc)).map((p) => p.nights.A ?? 0)),
+    longestStay: longestStayTogether(scn),
   };
+}
+
+// Béziers and the villages around it that the data lists as bases or wine areas.
+const inWineArea = (loc) => loc.id === 'beziers' || loc.kind === 'optional_base' || loc.kind === 'optional_wine_area';
+
+/** The longest stretch the couples spend together in one place: where, for how many hours and nights. */
+function longestStayTogether(scn) {
+  const stays = scn.tracks.get('A').filter((s) => s.kind === 'stay');
+  let best = null;
+  for (const x of scn.together) {
+    if (x.how !== 'place') continue;
+    const hours = x.t1 - x.t0;
+    if (best && hours <= best.hours) continue;
+    const stay = stays.find((s) => s.start_hour <= x.t0 && x.t0 < s.end_hour);
+    best = { loc: scn.locations.get(stay.location_id), hours, nights: countNights(x.t0, x.t1) };
+  }
+  return best;
 }
 
 /** Where a party is at trip time t: staying somewhere, or part-way along a route. */
