@@ -1,0 +1,6190 @@
+{
+  "$schema": "./frankrike-2027.schema.json",
+  "schema_version": "1.0.0",
+  "title": "Fyra resescenarier till Béziers sommaren 2027",
+  "language": "sv-SE",
+  "created_date": "2026-11-01",
+  "planning_year": 2027,
+  "planning_status": "rough_unbooked_estimates",
+  "timezone": "Europe/Stockholm",
+  "parties": [
+    {
+      "id": "A",
+      "label": "Par A",
+      "people_count": 2,
+      "origin_location_id": "stockholm",
+      "available_home_location_ids": [
+        "stockholm"
+      ],
+      "car_availability": "own_car_assumed_for_scenarios_2_3_4",
+      "goal": "Resa till Béziers och köpa vin för eget hushåll."
+    },
+    {
+      "id": "B",
+      "label": "Par B",
+      "people_count": 2,
+      "origin_location_id": null,
+      "available_home_location_ids": [
+        "paris",
+        "nice"
+      ],
+      "car_availability": "unknown",
+      "goal": "Gemensam resa från Paris eller Nice; datum och vinmängd öppna."
+    }
+  ],
+  "assumptions": [
+    "Stockholm är start/slut för A. Exakta adresser, resdatum, antal förare, biltyp, drivmedel och vinmängd är okända.",
+    "Ingen bokning, prisoffert, hotellkontroll, tidtabell för 2027 eller exakt ruttberäkning har gjorts. Körsträckor och körtider är egna grova bedömningar.",
+    "Grundvägen Sverige–Tyskland går på väg via Öresundsbron och Storebæltsbron. Färja är ett alternativ med andra tider, priser och kilometer och ingår inte i grundberäkningen.",
+    "Bilscenarierna håller sig inom Sverige, Danmark, Tyskland och Frankrike. Ingen transit genom Schweiz, Norge eller Storbritannien ingår.",
+    "Transportdagar på 500–700 km kräver raster och fungerar bäst med minst två förare som kan turas om. En lång dag ersätts med en extra natt om ni vill köra lugnare.",
+    "Tidslinjens klockslag är illustrativa planeringsfönster. Alla aktuella länder har samma lokala sommartid. Senare datumval måste hanteras som kalenderdagar i respektive europeisk tidszon.",
+    "B:s lägenheter är möjliga baser; tillgänglighet, gästsängar och parkering är inte bekräftade.",
+    "Kostnader är inte beräknade. Jämför senare drivmedel/laddning, broar, franska motorvägsavgifter, parkering, boende, flyg/tåg, hyrbil och vintransport. Kontrollera miljözoner och eventuell Crit’Air för de valda orterna enligt då gällande regler.",
+    "Juni eller tidig juli är ett första planeringsförslag om ni kan välja fritt. Kontrollera helger, ledigheter, vingårdsöppettider och trafikprognoser för de verkliga datumen.",
+    "Varje scenarios dag 1 är en egen relativ start. Jämförelse mellan scenarierna gäller resdagar, inte samtidiga kalenderdatum."
+  ],
+  "locations": [
+    {
+      "id": "stockholm",
+      "name": "Stockholm",
+      "country_code": "SE",
+      "latitude": 59.3293,
+      "longitude": 18.0686,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "malmo",
+      "name": "Malmö",
+      "country_code": "SE",
+      "latitude": 55.605,
+      "longitude": 13.0038,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "copenhagen",
+      "name": "Köpenhamn",
+      "country_code": "DK",
+      "latitude": 55.6761,
+      "longitude": 12.5683,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "odense",
+      "name": "Odense",
+      "country_code": "DK",
+      "latitude": 55.4038,
+      "longitude": 10.4024,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "kolding",
+      "name": "Kolding",
+      "country_code": "DK",
+      "latitude": 55.4904,
+      "longitude": 9.4722,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "hamburg",
+      "name": "Hamburg",
+      "country_code": "DE",
+      "latitude": 53.5511,
+      "longitude": 9.9937,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "hannover",
+      "name": "Hannover",
+      "country_code": "DE",
+      "latitude": 52.3759,
+      "longitude": 9.732,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "kassel",
+      "name": "Kassel",
+      "country_code": "DE",
+      "latitude": 51.3127,
+      "longitude": 9.4797,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "frankfurt",
+      "name": "Frankfurt am Main",
+      "country_code": "DE",
+      "latitude": 50.1109,
+      "longitude": 8.6821,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "karlsruhe",
+      "name": "Karlsruhe",
+      "country_code": "DE",
+      "latitude": 49.0069,
+      "longitude": 8.4037,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "strasbourg",
+      "name": "Strasbourg",
+      "country_code": "FR",
+      "latitude": 48.5734,
+      "longitude": 7.7521,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "mulhouse",
+      "name": "Mulhouse",
+      "country_code": "FR",
+      "latitude": 47.7508,
+      "longitude": 7.3359,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "besancon",
+      "name": "Besançon",
+      "country_code": "FR",
+      "latitude": 47.2378,
+      "longitude": 6.0241,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "dijon",
+      "name": "Dijon",
+      "country_code": "FR",
+      "latitude": 47.322,
+      "longitude": 5.0415,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "beaune",
+      "name": "Beaune / Bourgogne",
+      "country_code": "FR",
+      "latitude": 47.026,
+      "longitude": 4.84,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "lyon",
+      "name": "Lyon",
+      "country_code": "FR",
+      "latitude": 45.764,
+      "longitude": 4.8357,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "tain",
+      "name": "Tain-l’Hermitage / norra Rhônedalen",
+      "country_code": "FR",
+      "latitude": 45.0715,
+      "longitude": 4.8391,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "nice",
+      "name": "Nice",
+      "country_code": "FR",
+      "latitude": 43.7102,
+      "longitude": 7.262,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "aix",
+      "name": "Aix-en-Provence",
+      "country_code": "FR",
+      "latitude": 43.5297,
+      "longitude": 5.4474,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "avignon",
+      "name": "Avignon / Provence",
+      "country_code": "FR",
+      "latitude": 43.9493,
+      "longitude": 4.8055,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "montelimar",
+      "name": "Montélimar",
+      "country_code": "FR",
+      "latitude": 44.5589,
+      "longitude": 4.7508,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "vallon",
+      "name": "Vallon-Pont-d’Arc / Ardèche",
+      "country_code": "FR",
+      "latitude": 44.406,
+      "longitude": 4.393,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "beziers",
+      "name": "Béziers",
+      "country_code": "FR",
+      "latitude": 43.3442,
+      "longitude": 3.2158,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "colombiers",
+      "name": "Colombiers nära Béziers",
+      "country_code": "FR",
+      "latitude": 43.3135,
+      "longitude": 3.1397,
+      "kind": "optional_base",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "saint_chinian",
+      "name": "Saint-Chinian",
+      "country_code": "FR",
+      "latitude": 43.4223,
+      "longitude": 2.9456,
+      "kind": "optional_wine_area",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "faugeres",
+      "name": "Faugères",
+      "country_code": "FR",
+      "latitude": 43.5658,
+      "longitude": 3.19,
+      "kind": "optional_wine_area",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "minerve",
+      "name": "Minerve / Minervois",
+      "country_code": "FR",
+      "latitude": 43.354,
+      "longitude": 2.7465,
+      "kind": "optional_wine_area",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "paris",
+      "name": "Paris",
+      "country_code": "FR",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "bayeux",
+      "name": "Bayeux / Normandie",
+      "country_code": "FR",
+      "latitude": 49.2765,
+      "longitude": -0.7031,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "saint_malo",
+      "name": "Saint-Malo",
+      "country_code": "FR",
+      "latitude": 48.6493,
+      "longitude": -2.0257,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "rennes",
+      "name": "Rennes",
+      "country_code": "FR",
+      "latitude": 48.1173,
+      "longitude": -1.6778,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "nantes",
+      "name": "Nantes",
+      "country_code": "FR",
+      "latitude": 47.2184,
+      "longitude": -1.5536,
+      "kind": "route_anchor",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "la_rochelle",
+      "name": "La Rochelle / Atlantkusten",
+      "country_code": "FR",
+      "latitude": 46.1603,
+      "longitude": -1.1511,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "bordeaux",
+      "name": "Bordeaux",
+      "country_code": "FR",
+      "latitude": 44.8378,
+      "longitude": -0.5792,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "toulouse",
+      "name": "Toulouse",
+      "country_code": "FR",
+      "latitude": 43.6047,
+      "longitude": 1.4442,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "millau",
+      "name": "Millau",
+      "country_code": "FR",
+      "latitude": 44.1,
+      "longitude": 3.078,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "clermont",
+      "name": "Clermont-Ferrand / Auvergne",
+      "country_code": "FR",
+      "latitude": 45.7772,
+      "longitude": 3.087,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
+      "id": "bourges",
+      "name": "Bourges / Berry",
+      "country_code": "FR",
+      "latitude": 47.081,
+      "longitude": 2.3988,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "s1",
+      "title": "Flyg till Paris – Normandie och Atlanten, hem via inlandet",
+      "summary": "Mest variation och Paris på köpet; måttliga kördagar i Frankrike, men vinhemtransporten behöver lösas separat.",
+      "duration_days": 19,
+      "duration_flex_days": {
+        "min": 17,
+        "max": 22
+      },
+      "start_date": null,
+      "party_initial_location_ids": {
+        "A": "stockholm",
+        "B": "paris"
+      },
+      "phases": [
+        {
+          "start_day": 1,
+          "end_day_inclusive": 2,
+          "title": "Paris och första mötet",
+          "description": "A flyger till Paris; B är redan där. Två dagar inklusive ankomstdagen, utan hyrbil."
+        },
+        {
+          "start_day": 3,
+          "end_day_inclusive": 5,
+          "title": "Normandie och Bretagne",
+          "description": "Paris–Bayeux, en heldag i Normandie och vidare till Saint-Malo. Bretagne passeras; detta är inte en fullständig kustsemester."
+        },
+        {
+          "start_day": 6,
+          "end_day_inclusive": 10,
+          "title": "Atlantkust och sydväst",
+          "description": "Via Rennes/Nantes till La Rochelle, därefter Bordeaux och Toulouse. Två nätter i både La Rochelle och Bordeaux."
+        },
+        {
+          "start_day": 11,
+          "end_day_inclusive": 14,
+          "title": "Béziers och vin",
+          "description": "Fyra nätter i trakten, exempelvis med Colombiers som bas. Provning tidigare i vistelsen, inköp/avhämtning dag 14."
+        },
+        {
+          "start_day": 15,
+          "end_day_inclusive": 18,
+          "title": "Inlandet tillbaka till Paris",
+          "description": "Via Millau, Clermont-Ferrand och Bourges. Lämna hyrbil vid återkomsten dag 18 och sov i Paris."
+        },
+        {
+          "start_day": 19,
+          "end_day_inclusive": 19,
+          "title": "Skilje och flyg hem",
+          "description": "A flyger till Stockholm; B stannar i Paris. Ingen lång bilresa samma dag som flyget."
+        }
+      ],
+      "vehicles": [
+        {
+          "id": "s1_rental",
+          "owner_party_id": null,
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "kind": "rental_car",
+          "pickup_location_id": "paris",
+          "return_location_id": "paris",
+          "availability_confirmed": false,
+          "seats_required": 4,
+          "notes": "En rymlig hyrbil för fyra och bagage är grundplan. Hämta först dag 3 och lämna dag 18; alla förare ska omfattas av avtalet. Två bilar är ett utrymmesalternativ som kräver omräkning av fordonskilometer och kostnad."
+        }
+      ],
+      "legs": [
+        {
+          "id": "s1_leg_01",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": null,
+          "mode": "flight",
+          "from_location_id": "stockholm",
+          "to_location_id": "paris",
+          "via_location_ids": [],
+          "start_hour": 9,
+          "end_hour": 16,
+          "departure_day": 1,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": null,
+          "distance_km_range": null,
+          "driving_hours": null,
+          "elapsed_hours_range": {
+            "min": 6,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                18.0686,
+                59.3293
+              ],
+              [
+                2.3522,
+                48.8566
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Illustrativt tidsfönster, inte en bokad avgång. Stad till stad inklusive anslutning/transfer; ingen exakt flygplats eller station vald."
+        },
+        {
+          "id": "s1_leg_02",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "paris",
+          "to_location_id": "bayeux",
+          "via_location_ids": [],
+          "start_hour": 57,
+          "end_hour": 62,
+          "departure_day": 3,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 5,
+          "distance_km": 270,
+          "distance_km_range": {
+            "min": 255,
+            "max": 300
+          },
+          "driving_hours": 3.3,
+          "elapsed_hours_range": {
+            "min": 3.8,
+            "max": 7
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.3522,
+                48.8566
+              ],
+              [
+                -0.7031,
+                49.2765
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_03",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "bayeux",
+          "to_location_id": "saint_malo",
+          "via_location_ids": [],
+          "start_hour": 105,
+          "end_hour": 108.5,
+          "departure_day": 5,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 170,
+          "distance_km_range": {
+            "min": 160,
+            "max": 190
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -0.7031,
+                49.2765
+              ],
+              [
+                -2.0257,
+                48.6493
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_04",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "saint_malo",
+          "to_location_id": "la_rochelle",
+          "via_location_ids": [
+            "rennes",
+            "nantes"
+          ],
+          "start_hour": 129,
+          "end_hour": 135,
+          "departure_day": 6,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 6,
+          "distance_km": 350,
+          "distance_km_range": {
+            "min": 330,
+            "max": 390
+          },
+          "driving_hours": 4.2,
+          "elapsed_hours_range": {
+            "min": 4.7,
+            "max": 8
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -2.0257,
+                48.6493
+              ],
+              [
+                -1.6778,
+                48.1173
+              ],
+              [
+                -1.5536,
+                47.2184
+              ],
+              [
+                -1.1511,
+                46.1603
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_05",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "la_rochelle",
+          "to_location_id": "bordeaux",
+          "via_location_ids": [],
+          "start_hour": 177,
+          "end_hour": 180.5,
+          "departure_day": 8,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 190,
+          "distance_km_range": {
+            "min": 180,
+            "max": 210
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -1.1511,
+                46.1603
+              ],
+              [
+                -0.5792,
+                44.8378
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_06",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "bordeaux",
+          "to_location_id": "toulouse",
+          "via_location_ids": [],
+          "start_hour": 225,
+          "end_hour": 229,
+          "departure_day": 10,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4,
+          "distance_km": 245,
+          "distance_km_range": {
+            "min": 230,
+            "max": 270
+          },
+          "driving_hours": 2.8,
+          "elapsed_hours_range": {
+            "min": 3.3,
+            "max": 6
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -0.5792,
+                44.8378
+              ],
+              [
+                1.4442,
+                43.6047
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_07",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "toulouse",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 249,
+          "end_hour": 252,
+          "departure_day": 11,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3,
+          "distance_km": 180,
+          "distance_km_range": {
+            "min": 170,
+            "max": 200
+          },
+          "driving_hours": 2,
+          "elapsed_hours_range": {
+            "min": 2.5,
+            "max": 5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                1.4442,
+                43.6047
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_08",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "beziers",
+          "to_location_id": "millau",
+          "via_location_ids": [],
+          "start_hour": 345,
+          "end_hour": 348,
+          "departure_day": 15,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3,
+          "distance_km": 115,
+          "distance_km_range": {
+            "min": 105,
+            "max": 130
+          },
+          "driving_hours": 1.5,
+          "elapsed_hours_range": {
+            "min": 2.0,
+            "max": 5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                3.078,
+                44.1
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_09",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "millau",
+          "to_location_id": "clermont",
+          "via_location_ids": [],
+          "start_hour": 369,
+          "end_hour": 373,
+          "departure_day": 16,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4,
+          "distance_km": 230,
+          "distance_km_range": {
+            "min": 215,
+            "max": 255
+          },
+          "driving_hours": 2.7,
+          "elapsed_hours_range": {
+            "min": 3.2,
+            "max": 6
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.078,
+                44.1
+              ],
+              [
+                3.087,
+                45.7772
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_10",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "clermont",
+          "to_location_id": "bourges",
+          "via_location_ids": [],
+          "start_hour": 393,
+          "end_hour": 396.5,
+          "departure_day": 17,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 190,
+          "distance_km_range": {
+            "min": 180,
+            "max": 210
+          },
+          "driving_hours": 2.2,
+          "elapsed_hours_range": {
+            "min": 2.7,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.087,
+                45.7772
+              ],
+              [
+                2.3988,
+                47.081
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_11",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s1_rental",
+          "mode": "car",
+          "from_location_id": "bourges",
+          "to_location_id": "paris",
+          "via_location_ids": [],
+          "start_hour": 417,
+          "end_hour": 421.5,
+          "departure_day": 18,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 250,
+          "distance_km_range": {
+            "min": 235,
+            "max": 275
+          },
+          "driving_hours": 3,
+          "elapsed_hours_range": {
+            "min": 3.5,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.3988,
+                47.081
+              ],
+              [
+                2.3522,
+                48.8566
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s1_leg_12",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": null,
+          "mode": "flight",
+          "from_location_id": "paris",
+          "to_location_id": "stockholm",
+          "via_location_ids": [],
+          "start_hour": 441,
+          "end_hour": 448,
+          "departure_day": 19,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": null,
+          "distance_km_range": null,
+          "driving_hours": null,
+          "elapsed_hours_range": {
+            "min": 6,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.3522,
+                48.8566
+              ],
+              [
+                18.0686,
+                59.3293
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Illustrativt tidsfönster, inte en bokad avgång. Stad till stad inklusive anslutning/transfer; ingen exakt flygplats eller station vald."
+        }
+      ],
+      "events": [
+        {
+          "id": "s1_event_01",
+          "at_hour": 18,
+          "day": 1,
+          "clock_hour": 18,
+          "kind": "meet",
+          "location_id": "paris",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Möte i Paris",
+          "status": "illustrative"
+        },
+        {
+          "id": "s1_event_02",
+          "at_hour": 56.5,
+          "day": 3,
+          "clock_hour": 8.5,
+          "kind": "vehicle_pickup",
+          "location_id": "paris",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Hämta hyrbil",
+          "status": "illustrative"
+        },
+        {
+          "id": "s1_event_03",
+          "at_hour": 328,
+          "day": 14,
+          "clock_hour": 16,
+          "kind": "wine_pickup",
+          "location_id": "beziers",
+          "party_ids": [
+            "A"
+          ],
+          "title": "Avhämtning av vin",
+          "status": "illustrative"
+        },
+        {
+          "id": "s1_event_04",
+          "at_hour": 423,
+          "day": 18,
+          "clock_hour": 15,
+          "kind": "vehicle_return",
+          "location_id": "paris",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Lämna hyrbil i Paris",
+          "status": "illustrative"
+        },
+        {
+          "id": "s1_event_05",
+          "at_hour": 440,
+          "day": 19,
+          "clock_hour": 8,
+          "kind": "split",
+          "location_id": "paris",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "A reser hem; B stannar",
+          "status": "illustrative"
+        }
+      ],
+      "party_routes": [
+        {
+          "party_id": "A",
+          "leg_ids": [
+            "s1_leg_01",
+            "s1_leg_02",
+            "s1_leg_03",
+            "s1_leg_04",
+            "s1_leg_05",
+            "s1_leg_06",
+            "s1_leg_07",
+            "s1_leg_08",
+            "s1_leg_09",
+            "s1_leg_10",
+            "s1_leg_11",
+            "s1_leg_12"
+          ],
+          "location_sequence": [
+            "stockholm",
+            "paris",
+            "bayeux",
+            "saint_malo",
+            "la_rochelle",
+            "bordeaux",
+            "toulouse",
+            "beziers",
+            "millau",
+            "clermont",
+            "bourges",
+            "paris",
+            "stockholm"
+          ],
+          "active_travel_days": 12
+        },
+        {
+          "party_id": "B",
+          "leg_ids": [
+            "s1_leg_02",
+            "s1_leg_03",
+            "s1_leg_04",
+            "s1_leg_05",
+            "s1_leg_06",
+            "s1_leg_07",
+            "s1_leg_08",
+            "s1_leg_09",
+            "s1_leg_10",
+            "s1_leg_11"
+          ],
+          "location_sequence": [
+            "paris",
+            "bayeux",
+            "saint_malo",
+            "la_rochelle",
+            "bordeaux",
+            "toulouse",
+            "beziers",
+            "millau",
+            "clermont",
+            "bourges",
+            "paris"
+          ],
+          "active_travel_days": 10
+        }
+      ],
+      "timeline_tracks": [
+        {
+          "party_id": "A",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 9,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 9,
+              "end_hour": 16,
+              "location_id": null,
+              "leg_id": "s1_leg_01",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 16,
+              "end_hour": 57,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 57,
+              "end_hour": 62,
+              "location_id": null,
+              "leg_id": "s1_leg_02",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 62,
+              "end_hour": 105,
+              "location_id": "bayeux",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 108.5,
+              "location_id": null,
+              "leg_id": "s1_leg_03",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 108.5,
+              "end_hour": 129,
+              "location_id": "saint_malo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 129,
+              "end_hour": 135,
+              "location_id": null,
+              "leg_id": "s1_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 135,
+              "end_hour": 177,
+              "location_id": "la_rochelle",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 180.5,
+              "location_id": null,
+              "leg_id": "s1_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 180.5,
+              "end_hour": 225,
+              "location_id": "bordeaux",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 225,
+              "end_hour": 229,
+              "location_id": null,
+              "leg_id": "s1_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 229,
+              "end_hour": 249,
+              "location_id": "toulouse",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 249,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s1_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 345,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 345,
+              "end_hour": 348,
+              "location_id": null,
+              "leg_id": "s1_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 348,
+              "end_hour": 369,
+              "location_id": "millau",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 369,
+              "end_hour": 373,
+              "location_id": null,
+              "leg_id": "s1_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 373,
+              "end_hour": 393,
+              "location_id": "clermont",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 393,
+              "end_hour": 396.5,
+              "location_id": null,
+              "leg_id": "s1_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 396.5,
+              "end_hour": 417,
+              "location_id": "bourges",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 417,
+              "end_hour": 421.5,
+              "location_id": null,
+              "leg_id": "s1_leg_11",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 421.5,
+              "end_hour": 441,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 441,
+              "end_hour": 448,
+              "location_id": null,
+              "leg_id": "s1_leg_12",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 448,
+              "end_hour": 456,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        },
+        {
+          "party_id": "B",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 57,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 57,
+              "end_hour": 62,
+              "location_id": null,
+              "leg_id": "s1_leg_02",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 62,
+              "end_hour": 105,
+              "location_id": "bayeux",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 108.5,
+              "location_id": null,
+              "leg_id": "s1_leg_03",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 108.5,
+              "end_hour": 129,
+              "location_id": "saint_malo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 129,
+              "end_hour": 135,
+              "location_id": null,
+              "leg_id": "s1_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 135,
+              "end_hour": 177,
+              "location_id": "la_rochelle",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 180.5,
+              "location_id": null,
+              "leg_id": "s1_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 180.5,
+              "end_hour": 225,
+              "location_id": "bordeaux",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 225,
+              "end_hour": 229,
+              "location_id": null,
+              "leg_id": "s1_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 229,
+              "end_hour": 249,
+              "location_id": "toulouse",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 249,
+              "end_hour": 252,
+              "location_id": null,
+              "leg_id": "s1_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 252,
+              "end_hour": 345,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 345,
+              "end_hour": 348,
+              "location_id": null,
+              "leg_id": "s1_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 348,
+              "end_hour": 369,
+              "location_id": "millau",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 369,
+              "end_hour": 373,
+              "location_id": null,
+              "leg_id": "s1_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 373,
+              "end_hour": 393,
+              "location_id": "clermont",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 393,
+              "end_hour": 396.5,
+              "location_id": null,
+              "leg_id": "s1_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 396.5,
+              "end_hour": 417,
+              "location_id": "bourges",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 417,
+              "end_hour": 421.5,
+              "location_id": null,
+              "leg_id": "s1_leg_11",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 421.5,
+              "end_hour": 456,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        }
+      ],
+      "alternative_meetings": [
+        {
+          "id": "s1_paris",
+          "location_id": "paris",
+          "gateway_location_id": "paris",
+          "is_baseline": true,
+          "requires_replan": false,
+          "B_access": "B är redan i Paris.",
+          "benefit": "Ger gemensamt Parisbesök.",
+          "schedule_impact": "Ingår i grundplanen.",
+          "complete_alternative_timeline_included": true
+        }
+      ],
+      "local_driving_allowances": [
+        {
+          "vehicle_id": "s1_rental",
+          "distance_km_range": {
+            "min": 150,
+            "max": 300
+          },
+          "included_in_legs": false,
+          "included_in_distance_summary": true,
+          "notes": "Separat marginal för vingårdar, restauranger och lokala utflykter. Inte inlagd som påhittade exakta körningar på tidslinjen."
+        }
+      ],
+      "wine_plan": {
+        "purchase_location_id": "beziers",
+        "purchase_day": 14,
+        "buyer_party_id": "A",
+        "quantity_bottles": null,
+        "bottle_litres_assumption": 0.75,
+        "transport_method": "checked_baggage_or_seller_arranged_shipping",
+        "vehicle_id": "s1_rental",
+        "destination_location_id": "stockholm",
+        "seller_shipping_confirmed": false,
+        "notes": "Hyrbilen transporterar vinet inom Frankrike till Paris. Ett mindre inköp kan gå i godkänt, skyddat incheckat bagage. För flera lådor: be säljaren ordna leverans till Sverige och uttryckligen bekräfta svensk alkoholskatt och övriga avgifter. En vanlig paketbokning är inte en färdig lösning.",
+        "source_ids": [
+          "tull_alcohol",
+          "skatt_alcohol"
+        ]
+      },
+      "uncertainties": [
+        "Flygtider och bagagevillkor för sommaren 2027 är inte verifierade.",
+        "Kapacitet för fyra personer, fyra resväskor och vin kan kräva större bil eller två bilar.",
+        "Hyrvillkor, deposition, kilometerbegränsning och öppettid vid återlämning måste kontrolleras.",
+        "Om Parisbesöket ska ge två hela dagar, lägg till en dag."
+      ],
+      "tradeoffs": [
+        "Bra om Paris och själva resupplevelsen väger tyngst.",
+        "Svagast av alternativen för många lådor vin till Sverige.",
+        "Ingen internationell enkelvägshyra behövs i grundplanen."
+      ],
+      "distance_summary": {
+        "by_vehicle": [
+          {
+            "vehicle_id": "s1_rental",
+            "intercity_km": 2190,
+            "local_km_range": {
+              "min": 150,
+              "max": 300
+            },
+            "total_km_range": {
+              "min": 2210,
+              "max": 2730
+            },
+            "driving_hours_without_long_stops": 26.3
+          }
+        ],
+        "by_party": [
+          {
+            "party_id": "A",
+            "intercity_car_passenger_km": 2190,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          },
+          {
+            "party_id": "B",
+            "intercity_car_passenger_km": 2190,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          }
+        ],
+        "fleet": {
+          "intercity_km": 2190,
+          "local_km_range": {
+            "min": 150,
+            "max": 300
+          },
+          "total_km_range": {
+            "min": 2210,
+            "max": 2730
+          },
+          "driving_hours_without_long_stops": 26.3
+        },
+        "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
+      },
+      "shared_period": {
+        "start_hour": 18,
+        "end_hour": 440,
+        "elapsed_days": 17.58,
+        "notes": "Social gemensam period; förflyttning i samma bil avgörs av legs.party_ids och vehicle_id."
+      }
+    },
+    {
+      "id": "s2",
+      "title": "Egen bil från Sverige – möte i Strasbourg",
+      "summary": "Bästa grundalternativet för vininköp med egen bil och rimlig anslutning från Paris.",
+      "duration_days": 20,
+      "duration_flex_days": {
+        "min": 18,
+        "max": 23
+      },
+      "start_date": null,
+      "party_initial_location_ids": {
+        "A": "stockholm",
+        "B": "paris"
+      },
+      "phases": [
+        {
+          "start_day": 1,
+          "end_day_inclusive": 4,
+          "title": "A kör söderut; B ansluter med tåg",
+          "description": "A kör Stockholm–Malmö–Hamburg–Frankfurt–Strasbourg på fyra dagar. B tar tåg från Paris dag 4; möte på eftermiddagen."
+        },
+        {
+          "start_day": 5,
+          "end_day_inclusive": 8,
+          "title": "Gemensamt genom Bourgogne och Rhône",
+          "description": "Via Dijon till Beaune, med en vilodag där, sedan Tain-l’Hermitage och Béziers."
+        },
+        {
+          "start_day": 9,
+          "end_day_inclusive": 12,
+          "title": "Béziers och vin",
+          "description": "Fyra hela dagar utan basbyte. Fem nätter inklusive ankomstnatten dag 8; avhämtning dag 12."
+        },
+        {
+          "start_day": 13,
+          "end_day_inclusive": 15,
+          "title": "Gemensamt norrut, skilje i Dijon",
+          "description": "Via Clermont-Ferrand till Dijon. B tar tåget till Paris dag 15, A stannar med bilen."
+        },
+        {
+          "start_day": 16,
+          "end_day_inclusive": 20,
+          "title": "Reserv och A:s hemresa",
+          "description": "Dag 16 är reserv/vila i Dijon; dag 17–20 Frankfurt–Hamburg–Malmö–Stockholm."
+        }
+      ],
+      "vehicles": [
+        {
+          "id": "s2_A_car",
+          "owner_party_id": "A",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "kind": "own_car",
+          "pickup_location_id": "stockholm",
+          "return_location_id": "stockholm",
+          "availability_confirmed": false,
+          "seats_required": 4,
+          "notes": "A:s egen bil hela vägen. B åker tåg till mötet och tillbaka till Paris; kontrollera lastutrymmet när alla fyra sitter i bilen."
+        }
+      ],
+      "legs": [
+        {
+          "id": "s2_leg_01",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "stockholm",
+          "to_location_id": "malmo",
+          "via_location_ids": [],
+          "start_hour": 9,
+          "end_hour": 18,
+          "departure_day": 1,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                18.0686,
+                59.3293
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_02",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "copenhagen",
+            "odense",
+            "kolding"
+          ],
+          "start_hour": 33,
+          "end_hour": 41,
+          "departure_day": 2,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_03",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "hannover",
+            "kassel"
+          ],
+          "start_hour": 57,
+          "end_hour": 64,
+          "departure_day": 3,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_04",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "strasbourg",
+          "via_location_ids": [
+            "karlsruhe"
+          ],
+          "start_hour": 81,
+          "end_hour": 85,
+          "departure_day": 4,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4,
+          "distance_km": 220,
+          "distance_km_range": {
+            "min": 205,
+            "max": 245
+          },
+          "driving_hours": 2.5,
+          "elapsed_hours_range": {
+            "min": 3.0,
+            "max": 6
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                7.7521,
+                48.5734
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_05",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": null,
+          "mode": "train",
+          "from_location_id": "paris",
+          "to_location_id": "strasbourg",
+          "via_location_ids": [],
+          "start_hour": 82,
+          "end_hour": 85.5,
+          "departure_day": 4,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": null,
+          "distance_km_range": null,
+          "driving_hours": null,
+          "elapsed_hours_range": {
+            "min": 2.5,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [
+            "sncf_strasbourg"
+          ],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.3522,
+                48.8566
+              ],
+              [
+                7.7521,
+                48.5734
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Cirka 1 h 45 min–2 h 15 min för ett lämpligt snabbtåg i dagens utbud, plus marginal till/från station. Välj en faktisk avgång senare."
+        },
+        {
+          "id": "s2_leg_06",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "strasbourg",
+          "to_location_id": "beaune",
+          "via_location_ids": [
+            "dijon"
+          ],
+          "start_hour": 105,
+          "end_hour": 110.5,
+          "departure_day": 5,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 5.5,
+          "distance_km": 370,
+          "distance_km_range": {
+            "min": 350,
+            "max": 410
+          },
+          "driving_hours": 4.0,
+          "elapsed_hours_range": {
+            "min": 4.5,
+            "max": 7.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                5.0415,
+                47.322
+              ],
+              [
+                4.84,
+                47.026
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_07",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "beaune",
+          "to_location_id": "tain",
+          "via_location_ids": [],
+          "start_hour": 153,
+          "end_hour": 157,
+          "departure_day": 7,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4,
+          "distance_km": 250,
+          "distance_km_range": {
+            "min": 235,
+            "max": 275
+          },
+          "driving_hours": 3,
+          "elapsed_hours_range": {
+            "min": 3.5,
+            "max": 6
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.84,
+                47.026
+              ],
+              [
+                4.8391,
+                45.0715
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_08",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "tain",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 177,
+          "end_hour": 181.5,
+          "departure_day": 8,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 300,
+          "distance_km_range": {
+            "min": 285,
+            "max": 330
+          },
+          "driving_hours": 3.3,
+          "elapsed_hours_range": {
+            "min": 3.8,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8391,
+                45.0715
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_09",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "beziers",
+          "to_location_id": "clermont",
+          "via_location_ids": [
+            "millau"
+          ],
+          "start_hour": 297,
+          "end_hour": 302.5,
+          "departure_day": 13,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 5.5,
+          "distance_km": 340,
+          "distance_km_range": {
+            "min": 320,
+            "max": 375
+          },
+          "driving_hours": 4,
+          "elapsed_hours_range": {
+            "min": 4.5,
+            "max": 7.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                3.078,
+                44.1
+              ],
+              [
+                3.087,
+                45.7772
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_10",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "clermont",
+          "to_location_id": "dijon",
+          "via_location_ids": [],
+          "start_hour": 321,
+          "end_hour": 326.5,
+          "departure_day": 14,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 5.5,
+          "distance_km": 340,
+          "distance_km_range": {
+            "min": 320,
+            "max": 375
+          },
+          "driving_hours": 4,
+          "elapsed_hours_range": {
+            "min": 4.5,
+            "max": 7.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.087,
+                45.7772
+              ],
+              [
+                5.0415,
+                47.322
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_11",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": null,
+          "mode": "train",
+          "from_location_id": "dijon",
+          "to_location_id": "paris",
+          "via_location_ids": [],
+          "start_hour": 346,
+          "end_hour": 349,
+          "departure_day": 15,
+          "departure_clock_hour": 10,
+          "planned_elapsed_hours": 3,
+          "distance_km": null,
+          "distance_km_range": null,
+          "driving_hours": null,
+          "elapsed_hours_range": {
+            "min": 2,
+            "max": 5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [
+            "sncf_dijon"
+          ],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                5.0415,
+                47.322
+              ],
+              [
+                2.3522,
+                48.8566
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Snabbtåg cirka 1,5–2 timmar plus stationsmarginal; kontrollera vald avgång 2027."
+        },
+        {
+          "id": "s2_leg_12",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "dijon",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "besancon",
+            "mulhouse",
+            "strasbourg",
+            "karlsruhe"
+          ],
+          "start_hour": 393,
+          "end_hour": 401,
+          "departure_day": 17,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 560,
+          "distance_km_range": {
+            "min": 530,
+            "max": 620
+          },
+          "driving_hours": 6.0,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                5.0415,
+                47.322
+              ],
+              [
+                6.0241,
+                47.2378
+              ],
+              [
+                7.3359,
+                47.7508
+              ],
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_13",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "kassel",
+            "hannover"
+          ],
+          "start_hour": 417,
+          "end_hour": 424,
+          "departure_day": 18,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_14",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "malmo",
+          "via_location_ids": [
+            "kolding",
+            "odense",
+            "copenhagen"
+          ],
+          "start_hour": 441,
+          "end_hour": 449,
+          "departure_day": 19,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s2_leg_15",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s2_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "stockholm",
+          "via_location_ids": [],
+          "start_hour": 465,
+          "end_hour": 474,
+          "departure_day": 20,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                18.0686,
+                59.3293
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        }
+      ],
+      "events": [
+        {
+          "id": "s2_event_01",
+          "at_hour": 88,
+          "day": 4,
+          "clock_hour": 16,
+          "kind": "meet",
+          "location_id": "strasbourg",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Möte i Strasbourg",
+          "status": "illustrative"
+        },
+        {
+          "id": "s2_event_02",
+          "at_hour": 280,
+          "day": 12,
+          "clock_hour": 16,
+          "kind": "wine_pickup",
+          "location_id": "beziers",
+          "party_ids": [
+            "A"
+          ],
+          "title": "Avhämtning av vin",
+          "status": "illustrative"
+        },
+        {
+          "id": "s2_event_03",
+          "at_hour": 345,
+          "day": 15,
+          "clock_hour": 9,
+          "kind": "split",
+          "location_id": "dijon",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "B tar tåget hem till Paris",
+          "status": "illustrative"
+        }
+      ],
+      "party_routes": [
+        {
+          "party_id": "A",
+          "leg_ids": [
+            "s2_leg_01",
+            "s2_leg_02",
+            "s2_leg_03",
+            "s2_leg_04",
+            "s2_leg_06",
+            "s2_leg_07",
+            "s2_leg_08",
+            "s2_leg_09",
+            "s2_leg_10",
+            "s2_leg_12",
+            "s2_leg_13",
+            "s2_leg_14",
+            "s2_leg_15"
+          ],
+          "location_sequence": [
+            "stockholm",
+            "malmo",
+            "hamburg",
+            "frankfurt",
+            "strasbourg",
+            "beaune",
+            "tain",
+            "beziers",
+            "clermont",
+            "dijon",
+            "frankfurt",
+            "hamburg",
+            "malmo",
+            "stockholm"
+          ],
+          "active_travel_days": 13
+        },
+        {
+          "party_id": "B",
+          "leg_ids": [
+            "s2_leg_05",
+            "s2_leg_06",
+            "s2_leg_07",
+            "s2_leg_08",
+            "s2_leg_09",
+            "s2_leg_10",
+            "s2_leg_11"
+          ],
+          "location_sequence": [
+            "paris",
+            "strasbourg",
+            "beaune",
+            "tain",
+            "beziers",
+            "clermont",
+            "dijon",
+            "paris"
+          ],
+          "active_travel_days": 7
+        }
+      ],
+      "timeline_tracks": [
+        {
+          "party_id": "A",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 9,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 9,
+              "end_hour": 18,
+              "location_id": null,
+              "leg_id": "s2_leg_01",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 18,
+              "end_hour": 33,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 33,
+              "end_hour": 41,
+              "location_id": null,
+              "leg_id": "s2_leg_02",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 41,
+              "end_hour": 57,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 57,
+              "end_hour": 64,
+              "location_id": null,
+              "leg_id": "s2_leg_03",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 64,
+              "end_hour": 81,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 81,
+              "end_hour": 85,
+              "location_id": null,
+              "leg_id": "s2_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 85,
+              "end_hour": 105,
+              "location_id": "strasbourg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 110.5,
+              "location_id": null,
+              "leg_id": "s2_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 110.5,
+              "end_hour": 153,
+              "location_id": "beaune",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 153,
+              "end_hour": 157,
+              "location_id": null,
+              "leg_id": "s2_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 157,
+              "end_hour": 177,
+              "location_id": "tain",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 181.5,
+              "location_id": null,
+              "leg_id": "s2_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 181.5,
+              "end_hour": 297,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 297,
+              "end_hour": 302.5,
+              "location_id": null,
+              "leg_id": "s2_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 302.5,
+              "end_hour": 321,
+              "location_id": "clermont",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 326.5,
+              "location_id": null,
+              "leg_id": "s2_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 326.5,
+              "end_hour": 393,
+              "location_id": "dijon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 393,
+              "end_hour": 401,
+              "location_id": null,
+              "leg_id": "s2_leg_12",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 401,
+              "end_hour": 417,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 417,
+              "end_hour": 424,
+              "location_id": null,
+              "leg_id": "s2_leg_13",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 424,
+              "end_hour": 441,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 441,
+              "end_hour": 449,
+              "location_id": null,
+              "leg_id": "s2_leg_14",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 449,
+              "end_hour": 465,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 465,
+              "end_hour": 474,
+              "location_id": null,
+              "leg_id": "s2_leg_15",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 474,
+              "end_hour": 480,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        },
+        {
+          "party_id": "B",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 82,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 82,
+              "end_hour": 85.5,
+              "location_id": null,
+              "leg_id": "s2_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 85.5,
+              "end_hour": 105,
+              "location_id": "strasbourg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 110.5,
+              "location_id": null,
+              "leg_id": "s2_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 110.5,
+              "end_hour": 153,
+              "location_id": "beaune",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 153,
+              "end_hour": 157,
+              "location_id": null,
+              "leg_id": "s2_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 157,
+              "end_hour": 177,
+              "location_id": "tain",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 181.5,
+              "location_id": null,
+              "leg_id": "s2_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 181.5,
+              "end_hour": 297,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 297,
+              "end_hour": 302.5,
+              "location_id": null,
+              "leg_id": "s2_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 302.5,
+              "end_hour": 321,
+              "location_id": "clermont",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 326.5,
+              "location_id": null,
+              "leg_id": "s2_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 326.5,
+              "end_hour": 346,
+              "location_id": "dijon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 346,
+              "end_hour": 349,
+              "location_id": null,
+              "leg_id": "s2_leg_11",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 349,
+              "end_hour": 480,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        }
+      ],
+      "alternative_meetings": [
+        {
+          "id": "s2_strasbourg",
+          "location_id": "strasbourg",
+          "gateway_location_id": "strasbourg",
+          "is_baseline": true,
+          "requires_replan": false,
+          "B_access": "B tar snabbtåg från Paris, ungefär 1 h 45 min–2 h 15 min tågtid plus anslutning.",
+          "benefit": "A möter B tidigt utan stor västlig omväg.",
+          "schedule_impact": "Dag 4 i grundplanen.",
+          "complete_alternative_timeline_included": true
+        },
+        {
+          "id": "s2_dijon",
+          "location_id": "dijon",
+          "gateway_location_id": "dijon",
+          "is_baseline": false,
+          "requires_replan": true,
+          "B_access": "B tar snabbtåg från Paris, ungefär 1,5–2 timmar plus anslutning.",
+          "benefit": "B slipper Strasbourg–Bourgogne i bil.",
+          "schedule_impact": "Flytta mötet till dag 5 och släpp eller korta Strasbourg; räkna om gemensamma dagar.",
+          "complete_alternative_timeline_included": false
+        },
+        {
+          "id": "s2_lyon",
+          "location_id": "lyon",
+          "gateway_location_id": "lyon",
+          "is_baseline": false,
+          "requires_replan": true,
+          "B_access": "B tar snabbtåg från Paris, ungefär 2 timmar plus anslutning.",
+          "benefit": "B ansluter närmare södern.",
+          "schedule_impact": "A når Lyon först dag 5–6 med detta tempo; korta nordliga besök eller förläng resan.",
+          "complete_alternative_timeline_included": false
+        }
+      ],
+      "local_driving_allowances": [
+        {
+          "vehicle_id": "s2_A_car",
+          "distance_km_range": {
+            "min": 120,
+            "max": 250
+          },
+          "included_in_legs": false,
+          "included_in_distance_summary": true,
+          "notes": "Separat marginal för vingårdar, restauranger och lokala utflykter. Inte inlagd som påhittade exakta körningar på tidslinjen."
+        }
+      ],
+      "wine_plan": {
+        "purchase_location_id": "beziers",
+        "purchase_day": 12,
+        "buyer_party_id": "A",
+        "quantity_bottles": null,
+        "bottle_litres_assumption": 0.75,
+        "transport_method": "own_car_self_transport",
+        "vehicle_id": "s2_A_car",
+        "destination_location_id": "stockholm",
+        "seller_shipping_confirmed": false,
+        "notes": "A reser själv med sitt eget vin hem via Frankrike, Tyskland, Danmark och Sverige. B:s inköp och slutdestination hanteras separat; räkna inte med att A automatiskt kan ta hem B:s vin som eget resandeinfört vin.",
+        "source_ids": [
+          "tull_alcohol",
+          "skatt_alcohol"
+        ]
+      },
+      "uncertainties": [
+        "Strasbourg är valt som grundplan; Dijon eller Lyon kräver ändrade dagar och etapper.",
+        "Fyra personer och inköpt vin ska rymmas inom bilens tillåtna last.",
+        "B:s tågtider och biljetter för 2027 behöver kontrolleras.",
+        "Dag 1 och sista dagen är långa kördagar; korta dem med extra natt om bara en person kör."
+      ],
+      "tradeoffs": [
+        "En bil och enkel vintransport för A.",
+        "B slipper transportdagarna genom Sverige och Tyskland.",
+        "Längre total bilresa för A än i flygalternativet."
+      ],
+      "distance_summary": {
+        "by_vehicle": [
+          {
+            "vehicle_id": "s2_A_car",
+            "intercity_km": 5630,
+            "local_km_range": {
+              "min": 120,
+              "max": 250
+            },
+            "total_km_range": {
+              "min": 5435,
+              "max": 6470
+            },
+            "driving_hours_without_long_stops": 63.8
+          }
+        ],
+        "by_party": [
+          {
+            "party_id": "A",
+            "intercity_car_passenger_km": 5630,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          },
+          {
+            "party_id": "B",
+            "intercity_car_passenger_km": 1600,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          }
+        ],
+        "fleet": {
+          "intercity_km": 5630,
+          "local_km_range": {
+            "min": 120,
+            "max": 250
+          },
+          "total_km_range": {
+            "min": 5435,
+            "max": 6470
+          },
+          "driving_hours_without_long_stops": 63.8
+        },
+        "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
+      },
+      "shared_period": {
+        "start_hour": 88,
+        "end_hour": 345,
+        "elapsed_days": 10.71,
+        "notes": "Social gemensam period; förflyttning i samma bil avgörs av legs.party_ids och vehicle_id."
+      }
+    },
+    {
+      "id": "s3",
+      "title": "Egen bil via Nice – gemensamt västerut till Béziers",
+      "summary": "Bäst om Nicevistelsen är ett eget mål; den längsta bilresan för A.",
+      "duration_days": 22,
+      "duration_flex_days": {
+        "min": 20,
+        "max": 25
+      },
+      "start_date": null,
+      "party_initial_location_ids": {
+        "A": "stockholm",
+        "B": "nice"
+      },
+      "phases": [
+        {
+          "start_day": 1,
+          "end_day_inclusive": 5,
+          "title": "A till Nice",
+          "description": "Stockholm–Malmö–Hamburg–Frankfurt–Lyon–Nice. Vägen hålls genom EU via östra Frankrike; dag 4 är en lång transportdag."
+        },
+        {
+          "start_day": 6,
+          "end_day_inclusive": 7,
+          "title": "Två hela dagar i Nice",
+          "description": "B är redan i Nice. Boende i B:s lägenhet är en möjlighet som behöver bekräftas."
+        },
+        {
+          "start_day": 8,
+          "end_day_inclusive": 9,
+          "title": "Gemensamt västerut",
+          "description": "Nice–Aix-en-Provence–Béziers med en natt i Aix; ingen sammanhängande lång kustkörning."
+        },
+        {
+          "start_day": 10,
+          "end_day_inclusive": 13,
+          "title": "Béziers och vin",
+          "description": "Fyra hela dagar; avhämtning dag 13. Totalt fem nätter i Bézierstrakten efter ankomst dag 9."
+        },
+        {
+          "start_day": 14,
+          "end_day_inclusive": 15,
+          "title": "Gemensamt tillbaka till Nice",
+          "description": "Via Avignon, där ni övernattar, och därefter till Nice. B:s rundresa slutar i Nice."
+        },
+        {
+          "start_day": 16,
+          "end_day_inclusive": 22,
+          "title": "A norrut",
+          "description": "Nice–Lyon–Dijon, vila/reserv dag 18 och sedan Frankfurt–Hamburg–Malmö–Stockholm."
+        }
+      ],
+      "vehicles": [
+        {
+          "id": "s3_A_car",
+          "owner_party_id": "A",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "kind": "own_car",
+          "pickup_location_id": "stockholm",
+          "return_location_id": "stockholm",
+          "availability_confirmed": false,
+          "seats_required": 4,
+          "notes": "A:s bil. B hämtas och lämnas i Nice, vilket gör båda parens fortsatta logistik enkel men ökar A:s körsträcka."
+        }
+      ],
+      "legs": [
+        {
+          "id": "s3_leg_01",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "stockholm",
+          "to_location_id": "malmo",
+          "via_location_ids": [],
+          "start_hour": 9,
+          "end_hour": 18,
+          "departure_day": 1,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                18.0686,
+                59.3293
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_02",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "copenhagen",
+            "odense",
+            "kolding"
+          ],
+          "start_hour": 33,
+          "end_hour": 41,
+          "departure_day": 2,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_03",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "hannover",
+            "kassel"
+          ],
+          "start_hour": 57,
+          "end_hour": 64,
+          "departure_day": 3,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_04",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "lyon",
+          "via_location_ids": [
+            "karlsruhe",
+            "strasbourg",
+            "mulhouse",
+            "besancon"
+          ],
+          "start_hour": 80,
+          "end_hour": 90,
+          "departure_day": 4,
+          "departure_clock_hour": 8,
+          "planned_elapsed_hours": 10,
+          "distance_km": 720,
+          "distance_km_range": {
+            "min": 680,
+            "max": 795
+          },
+          "driving_hours": 7.7,
+          "elapsed_hours_range": {
+            "min": 8.2,
+            "max": 12
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                7.3359,
+                47.7508
+              ],
+              [
+                6.0241,
+                47.2378
+              ],
+              [
+                4.8357,
+                45.764
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_05",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "lyon",
+          "to_location_id": "nice",
+          "via_location_ids": [
+            "aix"
+          ],
+          "start_hour": 105,
+          "end_hour": 112.5,
+          "departure_day": 5,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7.5,
+          "distance_km": 470,
+          "distance_km_range": {
+            "min": 445,
+            "max": 520
+          },
+          "driving_hours": 5.3,
+          "elapsed_hours_range": {
+            "min": 5.8,
+            "max": 9.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                5.4474,
+                43.5297
+              ],
+              [
+                7.262,
+                43.7102
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_06",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "nice",
+          "to_location_id": "aix",
+          "via_location_ids": [],
+          "start_hour": 177,
+          "end_hour": 180.5,
+          "departure_day": 8,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 180,
+          "distance_km_range": {
+            "min": 170,
+            "max": 200
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                7.262,
+                43.7102
+              ],
+              [
+                5.4474,
+                43.5297
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_07",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "aix",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 201,
+          "end_hour": 205,
+          "departure_day": 9,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4,
+          "distance_km": 230,
+          "distance_km_range": {
+            "min": 215,
+            "max": 255
+          },
+          "driving_hours": 2.6,
+          "elapsed_hours_range": {
+            "min": 3.1,
+            "max": 6
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                5.4474,
+                43.5297
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_08",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "beziers",
+          "to_location_id": "avignon",
+          "via_location_ids": [],
+          "start_hour": 321,
+          "end_hour": 324.5,
+          "departure_day": 14,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 190,
+          "distance_km_range": {
+            "min": 180,
+            "max": 210
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                4.8055,
+                43.9493
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_09",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "avignon",
+          "to_location_id": "nice",
+          "via_location_ids": [],
+          "start_hour": 345,
+          "end_hour": 349.5,
+          "departure_day": 15,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 260,
+          "distance_km_range": {
+            "min": 245,
+            "max": 290
+          },
+          "driving_hours": 3.1,
+          "elapsed_hours_range": {
+            "min": 3.6,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8055,
+                43.9493
+              ],
+              [
+                7.262,
+                43.7102
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_10",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "nice",
+          "to_location_id": "lyon",
+          "via_location_ids": [
+            "aix"
+          ],
+          "start_hour": 369,
+          "end_hour": 376.5,
+          "departure_day": 16,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7.5,
+          "distance_km": 470,
+          "distance_km_range": {
+            "min": 445,
+            "max": 520
+          },
+          "driving_hours": 5.3,
+          "elapsed_hours_range": {
+            "min": 5.8,
+            "max": 9.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                7.262,
+                43.7102
+              ],
+              [
+                5.4474,
+                43.5297
+              ],
+              [
+                4.8357,
+                45.764
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_11",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "lyon",
+          "to_location_id": "dijon",
+          "via_location_ids": [],
+          "start_hour": 393,
+          "end_hour": 396.5,
+          "departure_day": 17,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 200,
+          "distance_km_range": {
+            "min": 190,
+            "max": 225
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                5.0415,
+                47.322
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_12",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "dijon",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "besancon",
+            "mulhouse",
+            "strasbourg",
+            "karlsruhe"
+          ],
+          "start_hour": 441,
+          "end_hour": 449,
+          "departure_day": 19,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 560,
+          "distance_km_range": {
+            "min": 530,
+            "max": 620
+          },
+          "driving_hours": 6.0,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                5.0415,
+                47.322
+              ],
+              [
+                6.0241,
+                47.2378
+              ],
+              [
+                7.3359,
+                47.7508
+              ],
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_13",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "kassel",
+            "hannover"
+          ],
+          "start_hour": 465,
+          "end_hour": 472,
+          "departure_day": 20,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_14",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "malmo",
+          "via_location_ids": [
+            "kolding",
+            "odense",
+            "copenhagen"
+          ],
+          "start_hour": 489,
+          "end_hour": 497,
+          "departure_day": 21,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s3_leg_15",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s3_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "stockholm",
+          "via_location_ids": [],
+          "start_hour": 513,
+          "end_hour": 522,
+          "departure_day": 22,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                18.0686,
+                59.3293
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        }
+      ],
+      "events": [
+        {
+          "id": "s3_event_01",
+          "at_hour": 115,
+          "day": 5,
+          "clock_hour": 19,
+          "kind": "meet",
+          "location_id": "nice",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Möte i Nice",
+          "status": "illustrative"
+        },
+        {
+          "id": "s3_event_02",
+          "at_hour": 304,
+          "day": 13,
+          "clock_hour": 16,
+          "kind": "wine_pickup",
+          "location_id": "beziers",
+          "party_ids": [
+            "A"
+          ],
+          "title": "Avhämtning av vin",
+          "status": "illustrative"
+        },
+        {
+          "id": "s3_event_03",
+          "at_hour": 368,
+          "day": 16,
+          "clock_hour": 8,
+          "kind": "split",
+          "location_id": "nice",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "B stannar i Nice; A kör hem",
+          "status": "illustrative"
+        }
+      ],
+      "party_routes": [
+        {
+          "party_id": "A",
+          "leg_ids": [
+            "s3_leg_01",
+            "s3_leg_02",
+            "s3_leg_03",
+            "s3_leg_04",
+            "s3_leg_05",
+            "s3_leg_06",
+            "s3_leg_07",
+            "s3_leg_08",
+            "s3_leg_09",
+            "s3_leg_10",
+            "s3_leg_11",
+            "s3_leg_12",
+            "s3_leg_13",
+            "s3_leg_14",
+            "s3_leg_15"
+          ],
+          "location_sequence": [
+            "stockholm",
+            "malmo",
+            "hamburg",
+            "frankfurt",
+            "lyon",
+            "nice",
+            "aix",
+            "beziers",
+            "avignon",
+            "nice",
+            "lyon",
+            "dijon",
+            "frankfurt",
+            "hamburg",
+            "malmo",
+            "stockholm"
+          ],
+          "active_travel_days": 15
+        },
+        {
+          "party_id": "B",
+          "leg_ids": [
+            "s3_leg_06",
+            "s3_leg_07",
+            "s3_leg_08",
+            "s3_leg_09"
+          ],
+          "location_sequence": [
+            "nice",
+            "aix",
+            "beziers",
+            "avignon",
+            "nice"
+          ],
+          "active_travel_days": 4
+        }
+      ],
+      "timeline_tracks": [
+        {
+          "party_id": "A",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 9,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 9,
+              "end_hour": 18,
+              "location_id": null,
+              "leg_id": "s3_leg_01",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 18,
+              "end_hour": 33,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 33,
+              "end_hour": 41,
+              "location_id": null,
+              "leg_id": "s3_leg_02",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 41,
+              "end_hour": 57,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 57,
+              "end_hour": 64,
+              "location_id": null,
+              "leg_id": "s3_leg_03",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 64,
+              "end_hour": 80,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 80,
+              "end_hour": 90,
+              "location_id": null,
+              "leg_id": "s3_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 90,
+              "end_hour": 105,
+              "location_id": "lyon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 112.5,
+              "location_id": null,
+              "leg_id": "s3_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 112.5,
+              "end_hour": 177,
+              "location_id": "nice",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 180.5,
+              "location_id": null,
+              "leg_id": "s3_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 180.5,
+              "end_hour": 201,
+              "location_id": "aix",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 201,
+              "end_hour": 205,
+              "location_id": null,
+              "leg_id": "s3_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 205,
+              "end_hour": 321,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 324.5,
+              "location_id": null,
+              "leg_id": "s3_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 324.5,
+              "end_hour": 345,
+              "location_id": "avignon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 345,
+              "end_hour": 349.5,
+              "location_id": null,
+              "leg_id": "s3_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 349.5,
+              "end_hour": 369,
+              "location_id": "nice",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 369,
+              "end_hour": 376.5,
+              "location_id": null,
+              "leg_id": "s3_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 376.5,
+              "end_hour": 393,
+              "location_id": "lyon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 393,
+              "end_hour": 396.5,
+              "location_id": null,
+              "leg_id": "s3_leg_11",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 396.5,
+              "end_hour": 441,
+              "location_id": "dijon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 441,
+              "end_hour": 449,
+              "location_id": null,
+              "leg_id": "s3_leg_12",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 449,
+              "end_hour": 465,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 465,
+              "end_hour": 472,
+              "location_id": null,
+              "leg_id": "s3_leg_13",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 472,
+              "end_hour": 489,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 489,
+              "end_hour": 497,
+              "location_id": null,
+              "leg_id": "s3_leg_14",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 497,
+              "end_hour": 513,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 513,
+              "end_hour": 522,
+              "location_id": null,
+              "leg_id": "s3_leg_15",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 522,
+              "end_hour": 528,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        },
+        {
+          "party_id": "B",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 177,
+              "location_id": "nice",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 177,
+              "end_hour": 180.5,
+              "location_id": null,
+              "leg_id": "s3_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 180.5,
+              "end_hour": 201,
+              "location_id": "aix",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 201,
+              "end_hour": 205,
+              "location_id": null,
+              "leg_id": "s3_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 205,
+              "end_hour": 321,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 324.5,
+              "location_id": null,
+              "leg_id": "s3_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 324.5,
+              "end_hour": 345,
+              "location_id": "avignon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 345,
+              "end_hour": 349.5,
+              "location_id": null,
+              "leg_id": "s3_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 349.5,
+              "end_hour": 528,
+              "location_id": "nice",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        }
+      ],
+      "alternative_meetings": [
+        {
+          "id": "s3_nice",
+          "location_id": "nice",
+          "gateway_location_id": "nice",
+          "is_baseline": true,
+          "requires_replan": false,
+          "B_access": "B är redan i Nice.",
+          "benefit": "Gemensam start och slut nära B:s bostad.",
+          "schedule_impact": "Ingår i grundplanen.",
+          "complete_alternative_timeline_included": true
+        },
+        {
+          "id": "s3_aix",
+          "location_id": "aix",
+          "gateway_location_id": "aix",
+          "is_baseline": false,
+          "requires_replan": true,
+          "B_access": "B behöver egen transport från Nice till Aix; bil eller verifierad kollektivtrafik och transfer.",
+          "benefit": "A kan slippa köra ner till Nice.",
+          "schedule_impact": "Blir en annan variant: ta bort Nicebesök och planera B:s hemresa separat.",
+          "complete_alternative_timeline_included": false
+        }
+      ],
+      "local_driving_allowances": [
+        {
+          "vehicle_id": "s3_A_car",
+          "distance_km_range": {
+            "min": 150,
+            "max": 300
+          },
+          "included_in_legs": false,
+          "included_in_distance_summary": true,
+          "notes": "Separat marginal för vingårdar, restauranger och lokala utflykter. Inte inlagd som påhittade exakta körningar på tidslinjen."
+        }
+      ],
+      "wine_plan": {
+        "purchase_location_id": "beziers",
+        "purchase_day": 13,
+        "buyer_party_id": "A",
+        "quantity_bottles": null,
+        "bottle_litres_assumption": 0.75,
+        "transport_method": "own_car_self_transport",
+        "vehicle_id": "s3_A_car",
+        "destination_location_id": "stockholm",
+        "seller_shipping_confirmed": false,
+        "notes": "A kör själv hem sitt vin. Returen via Nice innebär fler varma transportdagar: ta in lådorna i svalt boende över natten och undvik att lämna dem i en parkerad varm bil. B kan behålla sina egna inköp i Nice.",
+        "source_ids": [
+          "tull_alcohol",
+          "skatt_alcohol"
+        ]
+      },
+      "uncertainties": [
+        "B förutsätts vara i Nice före dag 1; eventuell resa Paris–Nice ingår inte.",
+        "Bostad, gästsängar och parkering i Nice är inte bekräftade.",
+        "Grundplanen väljer Frankrike i stället för Schweiz/Italien; en alternativ Alprutt kräver ny logistik och regelkontroll.",
+        "Dag 4 Frankfurt–Lyon kräver tidig avfärd och flera raster; lägg till natt om ni vill ha lugnare tempo."
+      ],
+      "tradeoffs": [
+        "Gott om tid i Nice och gemensam start/slut där.",
+        "En bil under den gemensamma delen.",
+        "Mest körning för A och längst tid med vin i bilen."
+      ],
+      "distance_summary": {
+        "by_vehicle": [
+          {
+            "vehicle_id": "s3_A_car",
+            "intercity_km": 6530,
+            "local_km_range": {
+              "min": 150,
+              "max": 300
+            },
+            "total_km_range": {
+              "min": 6320,
+              "max": 7525
+            },
+            "driving_hours_without_long_stops": 73.9
+          }
+        ],
+        "by_party": [
+          {
+            "party_id": "A",
+            "intercity_car_passenger_km": 6530,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          },
+          {
+            "party_id": "B",
+            "intercity_car_passenger_km": 860,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          }
+        ],
+        "fleet": {
+          "intercity_km": 6530,
+          "local_km_range": {
+            "min": 150,
+            "max": 300
+          },
+          "total_km_range": {
+            "min": 6320,
+            "max": 7525
+          },
+          "driving_hours_without_long_stops": 73.9
+        },
+        "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
+      },
+      "shared_period": {
+        "start_hour": 115,
+        "end_hour": 368,
+        "elapsed_days": 10.54,
+        "notes": "Social gemensam period; förflyttning i samma bil avgörs av legs.party_ids och vehicle_id."
+      }
+    },
+    {
+      "id": "s4",
+      "title": "Separata resor – möte i Bourgogne, skilje i Provence",
+      "summary": "Mest flexibel plan med två bilar, gemensam vecka i södern och olika reslängd för paren.",
+      "duration_days": 21,
+      "duration_flex_days": {
+        "min": 19,
+        "max": 24
+      },
+      "start_date": null,
+      "party_initial_location_ids": {
+        "A": "stockholm",
+        "B": "paris"
+      },
+      "phases": [
+        {
+          "start_day": 1,
+          "end_day_inclusive": 5,
+          "title": "Separat till Bourgogne",
+          "description": "A kör via Malmö, Hamburg och Frankfurt till Beaune dag 4. B kör från Paris dag 5; möte samma eftermiddag och möjlighet till vila för A."
+        },
+        {
+          "start_day": 6,
+          "end_day_inclusive": 8,
+          "title": "Bourgogne och Ardèche",
+          "description": "En hel dag i Bourgogne, vidare till Vallon-Pont-d’Arc dag 7 och en dag i Ardèche. Båda bilarna följer med."
+        },
+        {
+          "start_day": 9,
+          "end_day_inclusive": 13,
+          "title": "Béziers och vin",
+          "description": "Gemensam resa till Béziers dag 9 och fyra hela dagar där. Avhämtning dag 13; A:s vin följer A:s bil."
+        },
+        {
+          "start_day": 14,
+          "end_day_inclusive": 15,
+          "title": "Provence",
+          "description": "Till Avignon dag 14 och en hel dag utan basbyte. Gemensam del slutar här."
+        },
+        {
+          "start_day": 16,
+          "end_day_inclusive": 21,
+          "title": "Skilda hemresor",
+          "description": "A kör till Dijon, tar reservdag 17 och fortsätter hem via Frankfurt, Hamburg och Malmö. B kör Avignon–Beaune–Paris dag 16–17; hyrbilen återlämnas där."
+        }
+      ],
+      "vehicles": [
+        {
+          "id": "s4_A_car",
+          "owner_party_id": "A",
+          "party_ids": [
+            "A"
+          ],
+          "kind": "own_car",
+          "pickup_location_id": "stockholm",
+          "return_location_id": "stockholm",
+          "availability_confirmed": false,
+          "seats_required": 2,
+          "notes": "A behåller sin bil och sitt vin hela vägen. A och B har varsin bil under gemensamma resdagar."
+        },
+        {
+          "id": "s4_B_car",
+          "owner_party_id": "B",
+          "party_ids": [
+            "B"
+          ],
+          "kind": "rental_car",
+          "pickup_location_id": "paris",
+          "return_location_id": "paris",
+          "availability_confirmed": false,
+          "seats_required": 2,
+          "notes": "Grundplan: B hyr bil i Paris dag 5 och lämnar i Paris dag 17. Om B har egen tillgänglig bil kan den ersätta hyrbilen. B:s innehav av bostad betyder inte att bil finns."
+        }
+      ],
+      "legs": [
+        {
+          "id": "s4_leg_01",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "stockholm",
+          "to_location_id": "malmo",
+          "via_location_ids": [],
+          "start_hour": 9,
+          "end_hour": 18,
+          "departure_day": 1,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                18.0686,
+                59.3293
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_02",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "copenhagen",
+            "odense",
+            "kolding"
+          ],
+          "start_hour": 33,
+          "end_hour": 41,
+          "departure_day": 2,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_03",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "hannover",
+            "kassel"
+          ],
+          "start_hour": 57,
+          "end_hour": 64,
+          "departure_day": 3,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_04",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "beaune",
+          "via_location_ids": [
+            "karlsruhe",
+            "strasbourg",
+            "mulhouse",
+            "besancon"
+          ],
+          "start_hour": 81,
+          "end_hour": 89,
+          "departure_day": 4,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 570,
+          "distance_km_range": {
+            "min": 540,
+            "max": 630
+          },
+          "driving_hours": 6.2,
+          "elapsed_hours_range": {
+            "min": 6.7,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                7.3359,
+                47.7508
+              ],
+              [
+                6.0241,
+                47.2378
+              ],
+              [
+                4.84,
+                47.026
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_05",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "paris",
+          "to_location_id": "beaune",
+          "via_location_ids": [],
+          "start_hour": 105,
+          "end_hour": 109.5,
+          "departure_day": 5,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 315,
+          "distance_km_range": {
+            "min": 295,
+            "max": 350
+          },
+          "driving_hours": 3.5,
+          "elapsed_hours_range": {
+            "min": 4.0,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                2.3522,
+                48.8566
+              ],
+              [
+                4.84,
+                47.026
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_06",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "beaune",
+          "to_location_id": "vallon",
+          "via_location_ids": [
+            "lyon",
+            "montelimar"
+          ],
+          "start_hour": 153,
+          "end_hour": 159,
+          "departure_day": 7,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 6,
+          "distance_km": 350,
+          "distance_km_range": {
+            "min": 330,
+            "max": 390
+          },
+          "driving_hours": 4.3,
+          "elapsed_hours_range": {
+            "min": 4.8,
+            "max": 8
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.84,
+                47.026
+              ],
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                4.7508,
+                44.5589
+              ],
+              [
+                4.393,
+                44.406
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_09",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "beaune",
+          "to_location_id": "vallon",
+          "via_location_ids": [
+            "lyon",
+            "montelimar"
+          ],
+          "start_hour": 153,
+          "end_hour": 159,
+          "departure_day": 7,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 6,
+          "distance_km": 350,
+          "distance_km_range": {
+            "min": 330,
+            "max": 390
+          },
+          "driving_hours": 4.3,
+          "elapsed_hours_range": {
+            "min": 4.8,
+            "max": 8
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.84,
+                47.026
+              ],
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                4.7508,
+                44.5589
+              ],
+              [
+                4.393,
+                44.406
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_07",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "vallon",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 201,
+          "end_hour": 205.5,
+          "departure_day": 9,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 220,
+          "distance_km_range": {
+            "min": 205,
+            "max": 245
+          },
+          "driving_hours": 3.3,
+          "elapsed_hours_range": {
+            "min": 3.8,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.393,
+                44.406
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_10",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "vallon",
+          "to_location_id": "beziers",
+          "via_location_ids": [],
+          "start_hour": 201,
+          "end_hour": 205.5,
+          "departure_day": 9,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 220,
+          "distance_km_range": {
+            "min": 205,
+            "max": 245
+          },
+          "driving_hours": 3.3,
+          "elapsed_hours_range": {
+            "min": 3.8,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.393,
+                44.406
+              ],
+              [
+                3.2158,
+                43.3442
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_08",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "beziers",
+          "to_location_id": "avignon",
+          "via_location_ids": [],
+          "start_hour": 321,
+          "end_hour": 324.5,
+          "departure_day": 14,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 190,
+          "distance_km_range": {
+            "min": 180,
+            "max": 210
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                4.8055,
+                43.9493
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_11",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "beziers",
+          "to_location_id": "avignon",
+          "via_location_ids": [],
+          "start_hour": 321,
+          "end_hour": 324.5,
+          "departure_day": 14,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 3.5,
+          "distance_km": 190,
+          "distance_km_range": {
+            "min": 180,
+            "max": 210
+          },
+          "driving_hours": 2.3,
+          "elapsed_hours_range": {
+            "min": 2.8,
+            "max": 5.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3.2158,
+                43.3442
+              ],
+              [
+                4.8055,
+                43.9493
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Gemensam resdag i två bilar. Samma korridor men en fordonsrörelse per bil; räkna inte ihop dem som en enda bil."
+        },
+        {
+          "id": "s4_leg_12",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "avignon",
+          "to_location_id": "dijon",
+          "via_location_ids": [
+            "lyon"
+          ],
+          "start_hour": 369,
+          "end_hour": 375,
+          "departure_day": 16,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 6,
+          "distance_km": 400,
+          "distance_km_range": {
+            "min": 380,
+            "max": 445
+          },
+          "driving_hours": 4.5,
+          "elapsed_hours_range": {
+            "min": 5.0,
+            "max": 8
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8055,
+                43.9493
+              ],
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                5.0415,
+                47.322
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_17",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "avignon",
+          "to_location_id": "beaune",
+          "via_location_ids": [
+            "lyon"
+          ],
+          "start_hour": 369,
+          "end_hour": 374,
+          "departure_day": 16,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 5,
+          "distance_km": 320,
+          "distance_km_range": {
+            "min": 300,
+            "max": 355
+          },
+          "driving_hours": 3.6,
+          "elapsed_hours_range": {
+            "min": 4.1,
+            "max": 7
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.8055,
+                43.9493
+              ],
+              [
+                4.8357,
+                45.764
+              ],
+              [
+                4.84,
+                47.026
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_18",
+          "party_ids": [
+            "B"
+          ],
+          "vehicle_id": "s4_B_car",
+          "mode": "car",
+          "from_location_id": "beaune",
+          "to_location_id": "paris",
+          "via_location_ids": [],
+          "start_hour": 393,
+          "end_hour": 397.5,
+          "departure_day": 17,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 4.5,
+          "distance_km": 315,
+          "distance_km_range": {
+            "min": 295,
+            "max": 350
+          },
+          "driving_hours": 3.5,
+          "elapsed_hours_range": {
+            "min": 4.0,
+            "max": 6.5
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                4.84,
+                47.026
+              ],
+              [
+                2.3522,
+                48.8566
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_13",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "dijon",
+          "to_location_id": "frankfurt",
+          "via_location_ids": [
+            "besancon",
+            "mulhouse",
+            "strasbourg",
+            "karlsruhe"
+          ],
+          "start_hour": 417,
+          "end_hour": 425,
+          "departure_day": 18,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 560,
+          "distance_km_range": {
+            "min": 530,
+            "max": 620
+          },
+          "driving_hours": 6.0,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                5.0415,
+                47.322
+              ],
+              [
+                6.0241,
+                47.2378
+              ],
+              [
+                7.3359,
+                47.7508
+              ],
+              [
+                7.7521,
+                48.5734
+              ],
+              [
+                8.4037,
+                49.0069
+              ],
+              [
+                8.6821,
+                50.1109
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_14",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "frankfurt",
+          "to_location_id": "hamburg",
+          "via_location_ids": [
+            "kassel",
+            "hannover"
+          ],
+          "start_hour": 441,
+          "end_hour": 448,
+          "departure_day": 19,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 7,
+          "distance_km": 500,
+          "distance_km_range": {
+            "min": 475,
+            "max": 550
+          },
+          "driving_hours": 5.5,
+          "elapsed_hours_range": {
+            "min": 6.0,
+            "max": 9
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                8.6821,
+                50.1109
+              ],
+              [
+                9.4797,
+                51.3127
+              ],
+              [
+                9.732,
+                52.3759
+              ],
+              [
+                9.9937,
+                53.5511
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_15",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "hamburg",
+          "to_location_id": "malmo",
+          "via_location_ids": [
+            "kolding",
+            "odense",
+            "copenhagen"
+          ],
+          "start_hour": 465,
+          "end_hour": 473,
+          "departure_day": 20,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 8,
+          "distance_km": 510,
+          "distance_km_range": {
+            "min": 480,
+            "max": 565
+          },
+          "driving_hours": 6,
+          "elapsed_hours_range": {
+            "min": 6.5,
+            "max": 10
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                9.9937,
+                53.5511
+              ],
+              [
+                9.4722,
+                55.4904
+              ],
+              [
+                10.4024,
+                55.4038
+              ],
+              [
+                12.5683,
+                55.6761
+              ],
+              [
+                13.0038,
+                55.605
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        },
+        {
+          "id": "s4_leg_16",
+          "party_ids": [
+            "A"
+          ],
+          "vehicle_id": "s4_A_car",
+          "mode": "car",
+          "from_location_id": "malmo",
+          "to_location_id": "stockholm",
+          "via_location_ids": [],
+          "start_hour": 489,
+          "end_hour": 498,
+          "departure_day": 21,
+          "departure_clock_hour": 9,
+          "planned_elapsed_hours": 9,
+          "distance_km": 615,
+          "distance_km_range": {
+            "min": 580,
+            "max": 680
+          },
+          "driving_hours": 7,
+          "elapsed_hours_range": {
+            "min": 7.5,
+            "max": 11
+          },
+          "estimate_status": "planning_estimate_not_routing_api_or_timetable",
+          "source_ids": [],
+          "route_overview": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                13.0038,
+                55.605
+              ],
+              [
+                18.0686,
+                59.3293
+              ]
+            ]
+          },
+          "road_geometry": null,
+          "geometry_status": "schematic_waypoint_lines_not_navigable",
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer."
+        }
+      ],
+      "events": [
+        {
+          "id": "s4_event_01",
+          "at_hour": 104,
+          "day": 5,
+          "clock_hour": 8,
+          "kind": "vehicle_pickup",
+          "location_id": "paris",
+          "party_ids": [
+            "B"
+          ],
+          "title": "B hämtar hyrbil",
+          "status": "illustrative"
+        },
+        {
+          "id": "s4_event_02",
+          "at_hour": 112,
+          "day": 5,
+          "clock_hour": 16,
+          "kind": "meet",
+          "location_id": "beaune",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Möte i Bourgogne",
+          "status": "illustrative"
+        },
+        {
+          "id": "s4_event_03",
+          "at_hour": 304,
+          "day": 13,
+          "clock_hour": 16,
+          "kind": "wine_pickup",
+          "location_id": "beziers",
+          "party_ids": [
+            "A"
+          ],
+          "title": "Avhämtning av vin",
+          "status": "illustrative"
+        },
+        {
+          "id": "s4_event_04",
+          "at_hour": 368,
+          "day": 16,
+          "clock_hour": 8,
+          "kind": "split",
+          "location_id": "avignon",
+          "party_ids": [
+            "A",
+            "B"
+          ],
+          "title": "Skilda hemresor från Provence",
+          "status": "illustrative"
+        },
+        {
+          "id": "s4_event_05",
+          "at_hour": 399,
+          "day": 17,
+          "clock_hour": 15,
+          "kind": "vehicle_return",
+          "location_id": "paris",
+          "party_ids": [
+            "B"
+          ],
+          "title": "B lämnar hyrbilen i Paris",
+          "status": "illustrative"
+        }
+      ],
+      "party_routes": [
+        {
+          "party_id": "A",
+          "leg_ids": [
+            "s4_leg_01",
+            "s4_leg_02",
+            "s4_leg_03",
+            "s4_leg_04",
+            "s4_leg_06",
+            "s4_leg_07",
+            "s4_leg_08",
+            "s4_leg_12",
+            "s4_leg_13",
+            "s4_leg_14",
+            "s4_leg_15",
+            "s4_leg_16"
+          ],
+          "location_sequence": [
+            "stockholm",
+            "malmo",
+            "hamburg",
+            "frankfurt",
+            "beaune",
+            "vallon",
+            "beziers",
+            "avignon",
+            "dijon",
+            "frankfurt",
+            "hamburg",
+            "malmo",
+            "stockholm"
+          ],
+          "active_travel_days": 12
+        },
+        {
+          "party_id": "B",
+          "leg_ids": [
+            "s4_leg_05",
+            "s4_leg_09",
+            "s4_leg_10",
+            "s4_leg_11",
+            "s4_leg_17",
+            "s4_leg_18"
+          ],
+          "location_sequence": [
+            "paris",
+            "beaune",
+            "vallon",
+            "beziers",
+            "avignon",
+            "beaune",
+            "paris"
+          ],
+          "active_travel_days": 6
+        }
+      ],
+      "timeline_tracks": [
+        {
+          "party_id": "A",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 9,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 9,
+              "end_hour": 18,
+              "location_id": null,
+              "leg_id": "s4_leg_01",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 18,
+              "end_hour": 33,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 33,
+              "end_hour": 41,
+              "location_id": null,
+              "leg_id": "s4_leg_02",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 41,
+              "end_hour": 57,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 57,
+              "end_hour": 64,
+              "location_id": null,
+              "leg_id": "s4_leg_03",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 64,
+              "end_hour": 81,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 81,
+              "end_hour": 89,
+              "location_id": null,
+              "leg_id": "s4_leg_04",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 89,
+              "end_hour": 153,
+              "location_id": "beaune",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 153,
+              "end_hour": 159,
+              "location_id": null,
+              "leg_id": "s4_leg_06",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 159,
+              "end_hour": 201,
+              "location_id": "vallon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 201,
+              "end_hour": 205.5,
+              "location_id": null,
+              "leg_id": "s4_leg_07",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 205.5,
+              "end_hour": 321,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 324.5,
+              "location_id": null,
+              "leg_id": "s4_leg_08",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 324.5,
+              "end_hour": 369,
+              "location_id": "avignon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 369,
+              "end_hour": 375,
+              "location_id": null,
+              "leg_id": "s4_leg_12",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 375,
+              "end_hour": 417,
+              "location_id": "dijon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 417,
+              "end_hour": 425,
+              "location_id": null,
+              "leg_id": "s4_leg_13",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 425,
+              "end_hour": 441,
+              "location_id": "frankfurt",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 441,
+              "end_hour": 448,
+              "location_id": null,
+              "leg_id": "s4_leg_14",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 448,
+              "end_hour": 465,
+              "location_id": "hamburg",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 465,
+              "end_hour": 473,
+              "location_id": null,
+              "leg_id": "s4_leg_15",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 473,
+              "end_hour": 489,
+              "location_id": "malmo",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 489,
+              "end_hour": 498,
+              "location_id": null,
+              "leg_id": "s4_leg_16",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 498,
+              "end_hour": 504,
+              "location_id": "stockholm",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        },
+        {
+          "party_id": "B",
+          "segments": [
+            {
+              "kind": "stay",
+              "start_hour": 0,
+              "end_hour": 105,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 105,
+              "end_hour": 109.5,
+              "location_id": null,
+              "leg_id": "s4_leg_05",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 109.5,
+              "end_hour": 153,
+              "location_id": "beaune",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 153,
+              "end_hour": 159,
+              "location_id": null,
+              "leg_id": "s4_leg_09",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 159,
+              "end_hour": 201,
+              "location_id": "vallon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 201,
+              "end_hour": 205.5,
+              "location_id": null,
+              "leg_id": "s4_leg_10",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 205.5,
+              "end_hour": 321,
+              "location_id": "beziers",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 321,
+              "end_hour": 324.5,
+              "location_id": null,
+              "leg_id": "s4_leg_11",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 324.5,
+              "end_hour": 369,
+              "location_id": "avignon",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 369,
+              "end_hour": 374,
+              "location_id": null,
+              "leg_id": "s4_leg_17",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 374,
+              "end_hour": 393,
+              "location_id": "beaune",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            },
+            {
+              "kind": "travel",
+              "start_hour": 393,
+              "end_hour": 397.5,
+              "location_id": null,
+              "leg_id": "s4_leg_18",
+              "position_precision": "schematic_estimate"
+            },
+            {
+              "kind": "stay",
+              "start_hour": 397.5,
+              "end_hour": 504,
+              "location_id": "paris",
+              "leg_id": null,
+              "position_precision": "base_location_not_live_gps"
+            }
+          ]
+        }
+      ],
+      "alternative_meetings": [
+        {
+          "id": "s4_bourgogne",
+          "location_id": "beaune",
+          "gateway_location_id": "dijon",
+          "is_baseline": true,
+          "requires_replan": false,
+          "B_access": "B kör Paris–Beaune cirka 315 km; alternativt tåg till Dijon och hyrbil/transfer vidare.",
+          "benefit": "Lugn gemensam resa söderut med vinregioner på vägen.",
+          "schedule_impact": "Dag 5 i grundplanen.",
+          "complete_alternative_timeline_included": true
+        },
+        {
+          "id": "s4_ardeche",
+          "location_id": "vallon",
+          "gateway_location_id": "montelimar",
+          "is_baseline": false,
+          "requires_replan": true,
+          "B_access": "Bil från Paris eller tåg till Montélimar och förbokad hyrbil/transfer cirka 50–60 km till Vallon.",
+          "benefit": "B ansluter senare; A kan ha Bourgogne för sig själva.",
+          "schedule_impact": "Flytta mötet ungefär till dag 7–8; B:s bilhämtning och retur måste ritas om.",
+          "complete_alternative_timeline_included": false
+        },
+        {
+          "id": "s4_provence",
+          "location_id": "avignon",
+          "gateway_location_id": "avignon",
+          "is_baseline": false,
+          "requires_replan": true,
+          "B_access": "Tåg Paris–Avignon med stationsval och transfer att kontrollera, eller bil från Nice via Aix.",
+          "benefit": "Bra om B utgår från Nice eller vill ha kortare gemensam resa.",
+          "schedule_impact": "Om möte sker före Béziers: lägg Avignon före Béziers och bygg om dag 7–16; nuvarande Avignonbesök är på återvägen.",
+          "complete_alternative_timeline_included": false
+        }
+      ],
+      "local_driving_allowances": [
+        {
+          "vehicle_id": "s4_A_car",
+          "distance_km_range": {
+            "min": 120,
+            "max": 250
+          },
+          "included_in_legs": false,
+          "included_in_distance_summary": true,
+          "notes": "Separat marginal för vingårdar, restauranger och lokala utflykter. Inte inlagd som påhittade exakta körningar på tidslinjen."
+        },
+        {
+          "vehicle_id": "s4_B_car",
+          "distance_km_range": {
+            "min": 80,
+            "max": 180
+          },
+          "included_in_legs": false,
+          "included_in_distance_summary": true,
+          "notes": "Separat marginal för vingårdar, restauranger och lokala utflykter. Inte inlagd som påhittade exakta körningar på tidslinjen."
+        }
+      ],
+      "wine_plan": {
+        "purchase_location_id": "beziers",
+        "purchase_day": 13,
+        "buyer_party_id": "A",
+        "quantity_bottles": null,
+        "bottle_litres_assumption": 0.75,
+        "transport_method": "own_car_self_transport",
+        "vehicle_id": "s4_A_car",
+        "destination_location_id": "stockholm",
+        "seller_shipping_confirmed": false,
+        "notes": "A:s vin och resenärer går hem i A:s bil. B:s vin stannar i B:s egen transport till Paris i grundplanen. Två bilar ger mer bagageutrymme, men vin får inte flyttas över till A för transport till Sverige utan att skattefrågan först är löst.",
+        "source_ids": [
+          "tull_alcohol",
+          "skatt_alcohol"
+        ]
+      },
+      "uncertainties": [
+        "Två bilar ger högre sammanlagd bränsle-, vägavgifts- och parkeringskostnad.",
+        "B:s bil är inte bekräftad; grundplanen kräver en separat bokning Paris–Paris.",
+        "Möte först i Ardèche eller Provence är möjliga omplaneringar, inte färdiga alternativa tidslinjer.",
+        "Om B vill avsluta i Nice i stället för Paris behöver hyrbilens återlämning och eventuell enkelvägsavgift kontrolleras."
+      ],
+      "tradeoffs": [
+        "B kan ansluta senare och resa hem tidigare.",
+        "Två bilar ger frihet och lastutrymme.",
+        "Högst gemensam fordonskostnad trots kortare körsträcka för A än Nicealternativet."
+      ],
+      "distance_summary": {
+        "by_vehicle": [
+          {
+            "vehicle_id": "s4_A_car",
+            "intercity_km": 5540,
+            "local_km_range": {
+              "min": 120,
+              "max": 250
+            },
+            "total_km_range": {
+              "min": 5355,
+              "max": 6380
+            },
+            "driving_hours_without_long_stops": 63.6
+          },
+          {
+            "vehicle_id": "s4_B_car",
+            "intercity_km": 1710,
+            "local_km_range": {
+              "min": 80,
+              "max": 180
+            },
+            "total_km_range": {
+              "min": 1685,
+              "max": 2080
+            },
+            "driving_hours_without_long_stops": 20.5
+          }
+        ],
+        "by_party": [
+          {
+            "party_id": "A",
+            "intercity_car_passenger_km": 5540,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          },
+          {
+            "party_id": "B",
+            "intercity_car_passenger_km": 1710,
+            "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
+          }
+        ],
+        "fleet": {
+          "intercity_km": 7250,
+          "local_km_range": {
+            "min": 200,
+            "max": 430
+          },
+          "total_km_range": {
+            "min": 7040,
+            "max": 8460
+          },
+          "driving_hours_without_long_stops": 84.1
+        },
+        "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
+      },
+      "shared_period": {
+        "start_hour": 112,
+        "end_hour": 368,
+        "elapsed_days": 10.67,
+        "notes": "Social gemensam period; förflyttning i samma bil avgörs av legs.party_ids och vehicle_id."
+      }
+    }
+  ],
+  "wine_logistics": {
+    "rules_checked_date": "2026-11-01",
+    "recheck_before_departure": true,
+    "self_transport": "Vid egen resa från annat EU-land: minst 20 år, egen transport och eget eller hushållets personliga bruk. Spara inköpsunderlag.",
+    "reference_quantity": "90 liter vin/andra jästa drycker, varav högst 60 liter mousserande, är en referensnivå i bedömningen av personligt bruk, inte en automatisk tillåten kvot. Ingen kvot räknas ihop för de två paren.",
+    "shipping": "När säljaren ordnar transport till Sverige ska hanteringen av svensk alkoholskatt bekräftas. När köparen ordnar transportör eller vän gäller andra registrerings- och skattekrav; kontakta Skatteverket innan detta väljs.",
+    "flight": "Planera skyddat incheckat bagage och kontrollera valt bolags villkor. För vanligt vin under 24 volymprocent är 5 liter inte en allmän flyggräns; vikt, emballage, biljett och införselregler styr ändå.",
+    "payload_example": {
+      "bottles": 60,
+      "wine_litres": 45,
+      "estimated_packaged_mass_kg_range": {
+        "min": 75,
+        "max": 90
+      },
+      "status": "packing_assumption_not_measured",
+      "notes": "Räknat med 1,25–1,5 kg per 75 cl-flaska inklusive glas och andel emballage; kontrollera faktiska lådor och bilens återstående tillåtna last efter personer och packning."
+    },
+    "handling": "Köp/avhämta sent under Béziersvistelsen. Säkra lasten och ordna sval förvaring på hotellstopp; ingen tillåten lastkapacitet är fastställd.",
+    "optional_visit_location_ids": [
+      "saint_chinian",
+      "faugeres",
+      "minerve"
+    ],
+    "visit_booking_status": "not_checked",
+    "source_ids": [
+      "tull_alcohol",
+      "skatt_alcohol",
+      "skatt_carrier",
+      "air_france_wine",
+      "bts_wine"
+    ]
+  },
+  "open_questions": [
+    "Vilka veckor sommaren 2027 och hur många semesterdagar har respektive par?",
+    "Hur mycket vin vill A respektive B köpa, och till vilket land/adress ska det?",
+    "Vilken bil har A, hur mycket last ryms och kan minst två personer köra?",
+    "Är B i Paris eller Nice före resan, och vill de återvända till samma bostad?",
+    "Vill ni åka fyra i en bil eller prioritera två bilar och större frihet?",
+    "Hur många hela dagar önskar ni i Paris respektive Nice?",
+    "Vilken dygnsbudget och önskad högsta körtid har ni?"
+  ],
+  "web_app_contract": {
+    "purpose": "Underlag till Claude för en interaktiv jämförelse med karta, tidslinje, båda parens positioner och möten; inget webbbygge eller publicering har beställts här.",
+    "time_model": {
+      "unit": "hours_from_trip_day_1_midnight",
+      "day_numbering": "1-based",
+      "formula": "at_hour = (day - 1) * 24 + clock_hour",
+      "interval_convention": "[start_hour, end_hour); sista slutpunkten får visas som slutläge",
+      "calendar_start_date": null,
+      "calendar_mapping": "Välj startdatum i UI; lägg till heltalsdagar som lokala kalenderdagar och därefter klocktid. Skapa inga bokade avgångar från dessa uppskattningar."
+    },
+    "entity_links": "Alla *_location_id länkar till locations.id. party_ids länkar till parties.id. leg_ids länkar inom scenariot till legs.id; vehicle_id länkar till scenarios[].vehicles.id. source_ids länkar till sources.id.",
+    "position_algorithm": "För vald tid: hitta partens timeline_tracks-segment. Vid stay visas platsens centrum. Vid travel slås leg_id upp; interpolera längs route_overview efter kumulativ geometrisk längd för en schematisk animation. Det är ingen prognos för exakt position. Om road_geometry senare finns, använd den i stället.",
+    "shared_car_algorithm": "A och B på samma leg_id delar fordon och kan visas med en gemensam markör med båda färgerna. Scenario 4 har separata leg_id/vehicle_id på samma väg; visa två markörer med visuell förskjutning och räkna båda bilarna.",
+    "distance_algorithm": "Visa distance_summary.by_vehicle för fordonsbelastning och fleet för total fordonskostnad. Summera inte party-kilometer som fordonskilometer. Lokala marginaler ingår separat och får inte läggas till två gånger.",
+    "map_rules": [
+      "GeoJSON använder [longitude, latitude], locations använder namngivna latitude/longitude.",
+      "route_overview innehåller raka linjer via grova ortsankare. Visa dem streckade och märk dem schematisk rutt.",
+      "Hämta väggeometri från vald routingmotor först vid verkligt webbbygge. Kör inte navigering efter underlagets linjer.",
+      "Stationer, flygplatser, hotell och vingårdar behöver senare exakta koordinater; stadspunkter är avsiktliga.",
+      "Vid stay kan paret göra lokala utflykter; markören visar basorten."
+    ],
+    "suggested_controls": [
+      "Välj ett av fyra scenarier.",
+      "Dra tidslinjen i timmar/dagar och spela/pausa.",
+      "Visa A, B, gemensamma etapper, möten och skiljen.",
+      "Visa respektive bils och parets sträckor separat.",
+      "Välj startdatum, antal resdagar och max körtid per dag.",
+      "Visa alternativa mötesplatser som förslag; begär omräkning innan de blir aktiv rutt.",
+      "Visa vinmängd och beräknad last utan att lova laglig eller fysisk kapacitet."
+    ],
+    "change_rules": [
+      "Flytta en etapp: uppdatera alla berörda parter, delat fordon, efterföljande tidslinjesegment, mötes-/skiljehändelser, faser och totalsummor.",
+      "Ändrad mötesplats kan innebära nytt tåg, hyrbil, boende och returpunkt. requires_replan=true får inte behandlas som en färdig variant.",
+      "duration_flex_days är en målram, inte redan genererade kortare/längre resor.",
+      "Låt okända datum, kostnader och vinmängder vara null tills användaren väljer dem.",
+      "Transport och last kräver separata bekräftelser; lägenhet i en stad innebär inte att bil finns där."
+    ],
+    "validation_rules": [
+      "Alla referenser ska finnas och id ska vara unika inom sin samling.",
+      "Varje part har exakt ett sammanhängande tidslinjespår från 0 till duration_days*24 utan överlapp eller luckor.",
+      "Varje travel-segment ska motsvara en etapp för rätt part med exakt samma tider.",
+      "Varje etapp börjar där partens föregående segment slutade.",
+      "Alla parter i en mötes-/skiljehändelse ska vara på händelsens plats.",
+      "En bil får inte ha överlappande etapper och alla car-etapper kräver vehicle_id.",
+      "Schema validerar struktur; kontroller av referenser, tid och totalsummor kräver separat logik."
+    ]
+  },
+  "recommendation": {
+    "first_choice_scenario_id": "s2",
+    "reason": "Egen bil ger enkel hemtransport av A:s vin, medan B kan ansluta med tåg från Paris utan att göra transportresan genom norra Europa.",
+    "if_paris_is_priority": "s1",
+    "if_nice_is_priority": "s3",
+    "if_independence_is_priority": "s4"
+  },
+  "sources": [
+    {
+      "id": "tull_alcohol",
+      "title": "Tullverket: Handla alkohol på din resa",
+      "url": "https://www.tullverket.se/privat/paresan/handlaparesan/handlavarormedsarskildareglerpadinresa/handlaalkoholpadinresa.4.7df61c5915510cfe9e71072d.html",
+      "checked_date": "2026-11-01",
+      "scope": "Svensk resandeinförsel från EU, personligt bruk och referensnivåer."
+    },
+    {
+      "id": "skatt_alcohol",
+      "title": "Skatteverket: Alkoholskatt",
+      "url": "https://www.skatteverket.se/privat/skatter/alkoholskatt.4.71004e4c133e23bf6db800078754.html",
+      "checked_date": "2026-11-01",
+      "scope": "Skillnaden mellan egen transport, transport som köparen ordnar och distansförsäljning."
+    },
+    {
+      "id": "skatt_carrier",
+      "title": "Skatteverket: Föra in alkohol från ett annat EU-land",
+      "url": "https://www.skatteverket.se/privat/skatter/alkoholskattforprivatpersoner/forainalkoholfranettannatlandieu.4.71004e4c133e23bf6db800078761.html",
+      "checked_date": "2026-11-01",
+      "scope": "Krav när köparen anlitar transportör eller mellanhand."
+    },
+    {
+      "id": "sncf_strasbourg",
+      "title": "SNCF Connect: Paris–Strasbourg",
+      "url": "https://www.sncf-connect.com/train/trajet/paris/strasbourg",
+      "checked_date": "2026-11-01",
+      "scope": "Nuvarande restidsordning; inte avgångslöfte för sommaren 2027."
+    },
+    {
+      "id": "sncf_dijon",
+      "title": "SNCF Connect: Paris–Dijon",
+      "url": "https://www.sncf-connect.com/train/horaires/paris/dijon",
+      "checked_date": "2026-11-01",
+      "scope": "Nuvarande restidsordning; inte verifierad sommartidtabell 2027."
+    },
+    {
+      "id": "sncf_lyon",
+      "title": "SNCF Connect: Paris–Lyon",
+      "url": "https://www.sncf-connect.com/fr-ch/train/trajet/paris/lyon",
+      "checked_date": "2026-11-01",
+      "scope": "Snabbtåg omkring två timmar i nuvarande utbud."
+    },
+    {
+      "id": "europcar_driver",
+      "title": "Europcar: lägga till förare",
+      "url": "https://www.europcar.fr/fr-fr/faq?question=puis-je-enregistrer-un-conducteur-additionnel-en-cours-de-location",
+      "checked_date": "2026-11-01",
+      "scope": "Exempel på krav att extra förare registreras och visar dokument; avtalet för den valda uthyraren styr."
+    },
+    {
+      "id": "critair",
+      "title": "Service Public: Crit’Air",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33371",
+      "checked_date": "2026-11-01",
+      "scope": "Kontrollpunkt för utlandsregistrerad bil och aktuella miljözonskrav."
+    },
+    {
+      "id": "bison",
+      "title": "Bison Futé: trafikprognoser",
+      "url": "https://www.bison-fute.gouv.fr/calendrier-bison-fute%2C10739.html",
+      "checked_date": "2026-11-01",
+      "scope": "Kontrollera kalender och detaljerade trafikprognoser när 2027 finns tillgängligt."
+    },
+    {
+      "id": "air_france_wine",
+      "title": "Air France: alkoholhaltiga drycker i bagage",
+      "url": "https://wwws.airfrance.fr/en/information/bagages/popin_produits-interdits-et-reglementes/produits-interdits-et-reglementes-11",
+      "checked_date": "2026-11-01",
+      "scope": "Exempel på flygbolagsvillkor; valt flygbolags vikt-, emballage- och dryckesregler måste kontrolleras."
+    },
+    {
+      "id": "bts_wine",
+      "title": "Bratislava Airport: baggage restrictions",
+      "url": "https://www.bts.aero/en/information/safety-regulations/prohibited-items-faq/",
+      "checked_date": "2026-11-01",
+      "scope": "Förklarar att 5-litersgränsen för 24–70 procent inte är en allmän mängdgräns för vanligt vin; flygbolagsvillkor gäller också."
+    },
+    {
+      "id": "mappy_nice_beziers",
+      "title": "Mappy: Nice–Béziers",
+      "url": "https://fr.mappy.com/itineraire/nice/beziers",
+      "checked_date": "2026-11-01",
+      "scope": "Länk för senare kontroll av vägval; inte källa till ett exakt verifierat kilometerantal i denna fil."
+    },
+    {
+      "id": "mappy_bourgogne",
+      "title": "Mappy: Strasbourg–Beaune",
+      "url": "https://fr.mappy.com/itineraire/strasbourg/beaune",
+      "checked_date": "2026-11-01",
+      "scope": "Stickprov för avståndsordning; underlagets etapp går via Dijon och är därför längre."
+    },
+    {
+      "id": "mappy_dijon",
+      "title": "Mappy: Strasbourg–Dijon",
+      "url": "https://fr.mappy.com/itineraire/strasbourg/dijon",
+      "checked_date": "2026-11-01",
+      "scope": "Stickprov för korridoren genom Alsace och Bourgogne."
+    },
+    {
+      "id": "mappy_auvergne",
+      "title": "Mappy: Millau–Clermont-Ferrand",
+      "url": "https://fr.mappy.com/itineraire/millau/clermont-ferrand",
+      "checked_date": "2026-11-01",
+      "scope": "Stickprov för inlandsreturens avståndsordning."
+    }
+  ]
+}

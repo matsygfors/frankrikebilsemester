@@ -1,0 +1,11 @@
+{
+  "name": "frankrikebilsemester",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fyra resealternativ till Béziers sommaren 2027, visualiserade på karta och tidslinje.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test"
+  }
+}

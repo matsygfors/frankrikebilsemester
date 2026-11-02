@@ -1,0 +1,1268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Béziers 2027 travel planning dataset v1",
+  "description": "Structure for the supplied scenario dataset. Referential and temporal checks also required.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "title": {
+      "type": "string"
+    },
+    "language": {
+      "const": "sv-SE"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "planning_year": {
+      "const": 2027
+    },
+    "planning_status": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "parties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/party"
+      },
+      "minItems": 2
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      },
+      "minItems": 1
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scenario"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "wine_logistics": {
+      "$ref": "#/$defs/wine_logistics"
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0
+    },
+    "web_app_contract": {
+      "$ref": "#/$defs/web_contract"
+    },
+    "recommendation": {
+      "type": "object",
+      "properties": {
+        "first_choice_scenario_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "if_paris_is_priority": {
+          "type": "string"
+        },
+        "if_nice_is_priority": {
+          "type": "string"
+        },
+        "if_independence_is_priority": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_choice_scenario_id",
+        "reason",
+        "if_paris_is_priority",
+        "if_nice_is_priority",
+        "if_independence_is_priority"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "$schema",
+    "schema_version",
+    "title",
+    "language",
+    "created_date",
+    "planning_year",
+    "planning_status",
+    "timezone",
+    "parties",
+    "assumptions",
+    "locations",
+    "scenarios",
+    "wine_logistics",
+    "open_questions",
+    "web_app_contract",
+    "recommendation",
+    "sources"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ],
+      "additionalProperties": false
+    },
+    "party": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "people_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "origin_location_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "available_home_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "car_availability": {
+          "type": "string"
+        },
+        "goal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "people_count",
+        "origin_location_id",
+        "available_home_location_ids",
+        "car_availability",
+        "goal"
+      ],
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "kind": {
+          "type": "string"
+        },
+        "coordinate_accuracy": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "country_code",
+        "latitude",
+        "longitude",
+        "kind",
+        "coordinate_accuracy"
+      ],
+      "additionalProperties": false
+    },
+    "phase": {
+      "type": "object",
+      "properties": {
+        "start_day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_day_inclusive": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "start_day",
+        "end_day_inclusive",
+        "title",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "vehicle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "owner_party_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "party_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "kind": {
+          "enum": [
+            "own_car",
+            "rental_car"
+          ]
+        },
+        "pickup_location_id": {
+          "type": "string"
+        },
+        "return_location_id": {
+          "type": "string"
+        },
+        "availability_confirmed": {
+          "type": "boolean"
+        },
+        "seats_required": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "owner_party_id",
+        "party_ids",
+        "kind",
+        "pickup_location_id",
+        "return_location_id",
+        "availability_confirmed",
+        "seats_required",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "LineString"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "additionalProperties": false
+    },
+    "leg": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "party_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "vehicle_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "car",
+            "flight",
+            "train"
+          ]
+        },
+        "from_location_id": {
+          "type": "string"
+        },
+        "to_location_id": {
+          "type": "string"
+        },
+        "via_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "start_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "end_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "departure_day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "departure_clock_hour": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 24
+        },
+        "planned_elapsed_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "distance_km": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "distance_km_range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "driving_hours": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "elapsed_hours_range": {
+          "$ref": "#/$defs/range"
+        },
+        "estimate_status": {
+          "type": "string"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "route_overview": {
+          "$ref": "#/$defs/geometry"
+        },
+        "road_geometry": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/geometry"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "geometry_status": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "party_ids",
+        "vehicle_id",
+        "mode",
+        "from_location_id",
+        "to_location_id",
+        "via_location_ids",
+        "start_hour",
+        "end_hour",
+        "departure_day",
+        "departure_clock_hour",
+        "planned_elapsed_hours",
+        "distance_km",
+        "distance_km_range",
+        "driving_hours",
+        "elapsed_hours_range",
+        "estimate_status",
+        "source_ids",
+        "route_overview",
+        "road_geometry",
+        "geometry_status",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "at_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "clock_hour": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 24
+        },
+        "kind": {
+          "enum": [
+            "meet",
+            "split",
+            "wine_pickup",
+            "vehicle_pickup",
+            "vehicle_return"
+          ]
+        },
+        "location_id": {
+          "type": "string"
+        },
+        "party_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "at_hour",
+        "day",
+        "clock_hour",
+        "kind",
+        "location_id",
+        "party_ids",
+        "title",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "party_route": {
+      "type": "object",
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "leg_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "location_sequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "active_travel_days": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "party_id",
+        "leg_ids",
+        "location_sequence",
+        "active_travel_days"
+      ],
+      "additionalProperties": false
+    },
+    "segment": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "stay",
+            "travel"
+          ]
+        },
+        "start_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "end_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "location_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "leg_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "position_precision": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "start_hour",
+        "end_hour",
+        "location_id",
+        "leg_id",
+        "position_precision"
+      ],
+      "additionalProperties": false
+    },
+    "track": {
+      "type": "object",
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/segment"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "party_id",
+        "segments"
+      ],
+      "additionalProperties": false
+    },
+    "alternative": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "location_id": {
+          "type": "string"
+        },
+        "gateway_location_id": {
+          "type": "string"
+        },
+        "is_baseline": {
+          "type": "boolean"
+        },
+        "requires_replan": {
+          "type": "boolean"
+        },
+        "B_access": {
+          "type": "string"
+        },
+        "benefit": {
+          "type": "string"
+        },
+        "schedule_impact": {
+          "type": "string"
+        },
+        "complete_alternative_timeline_included": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "location_id",
+        "gateway_location_id",
+        "is_baseline",
+        "requires_replan",
+        "B_access",
+        "benefit",
+        "schedule_impact",
+        "complete_alternative_timeline_included"
+      ],
+      "additionalProperties": false
+    },
+    "local": {
+      "type": "object",
+      "properties": {
+        "vehicle_id": {
+          "type": "string"
+        },
+        "distance_km_range": {
+          "$ref": "#/$defs/range"
+        },
+        "included_in_legs": {
+          "type": "boolean"
+        },
+        "included_in_distance_summary": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "vehicle_id",
+        "distance_km_range",
+        "included_in_legs",
+        "included_in_distance_summary",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "wine": {
+      "type": "object",
+      "properties": {
+        "purchase_location_id": {
+          "type": "string"
+        },
+        "purchase_day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "buyer_party_id": {
+          "type": "string"
+        },
+        "quantity_bottles": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "bottle_litres_assumption": {
+          "type": "number",
+          "minimum": 0
+        },
+        "transport_method": {
+          "type": "string"
+        },
+        "vehicle_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "destination_location_id": {
+          "type": "string"
+        },
+        "seller_shipping_confirmed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "purchase_location_id",
+        "purchase_day",
+        "buyer_party_id",
+        "quantity_bottles",
+        "bottle_litres_assumption",
+        "transport_method",
+        "vehicle_id",
+        "destination_location_id",
+        "seller_shipping_confirmed",
+        "notes",
+        "source_ids"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "checked_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "checked_date",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "distances": {
+      "type": "object",
+      "properties": {
+        "by_vehicle": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "vehicle_id": {
+                "type": "string"
+              },
+              "intercity_km": {
+                "type": "number",
+                "minimum": 0
+              },
+              "local_km_range": {
+                "$ref": "#/$defs/range"
+              },
+              "total_km_range": {
+                "$ref": "#/$defs/range"
+              },
+              "driving_hours_without_long_stops": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "vehicle_id",
+              "intercity_km",
+              "local_km_range",
+              "total_km_range",
+              "driving_hours_without_long_stops"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "by_party": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "party_id": {
+                "type": "string"
+              },
+              "intercity_car_passenger_km": {
+                "type": "number",
+                "minimum": 0
+              },
+              "notes": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "party_id",
+              "intercity_car_passenger_km",
+              "notes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2
+        },
+        "fleet": {
+          "type": "object",
+          "properties": {
+            "intercity_km": {
+              "type": "number",
+              "minimum": 0
+            },
+            "local_km_range": {
+              "$ref": "#/$defs/range"
+            },
+            "total_km_range": {
+              "$ref": "#/$defs/range"
+            },
+            "driving_hours_without_long_stops": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "intercity_km",
+            "local_km_range",
+            "total_km_range",
+            "driving_hours_without_long_stops"
+          ],
+          "additionalProperties": false
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "by_vehicle",
+        "by_party",
+        "fleet",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "duration_days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duration_flex_days": {
+          "$ref": "#/$defs/range"
+        },
+        "start_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "party_initial_location_ids": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "string"
+            },
+            "B": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        },
+        "phases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/phase"
+          },
+          "minItems": 1
+        },
+        "vehicles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vehicle"
+          },
+          "minItems": 1
+        },
+        "legs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/leg"
+          },
+          "minItems": 1
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          },
+          "minItems": 1
+        },
+        "party_routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/party_route"
+          },
+          "minItems": 2
+        },
+        "timeline_tracks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/track"
+          },
+          "minItems": 2
+        },
+        "alternative_meetings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alternative"
+          },
+          "minItems": 1
+        },
+        "local_driving_allowances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/local"
+          },
+          "minItems": 1
+        },
+        "wine_plan": {
+          "$ref": "#/$defs/wine"
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "tradeoffs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "distance_summary": {
+          "$ref": "#/$defs/distances"
+        },
+        "shared_period": {
+          "type": "object",
+          "properties": {
+            "start_hour": {
+              "type": "number",
+              "minimum": 0
+            },
+            "end_hour": {
+              "type": "number",
+              "minimum": 0
+            },
+            "elapsed_days": {
+              "type": "number",
+              "minimum": 0
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start_hour",
+            "end_hour",
+            "elapsed_days",
+            "notes"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "duration_days",
+        "duration_flex_days",
+        "start_date",
+        "party_initial_location_ids",
+        "phases",
+        "vehicles",
+        "legs",
+        "events",
+        "party_routes",
+        "timeline_tracks",
+        "alternative_meetings",
+        "local_driving_allowances",
+        "wine_plan",
+        "uncertainties",
+        "tradeoffs",
+        "distance_summary",
+        "shared_period"
+      ],
+      "additionalProperties": false
+    },
+    "wine_logistics": {
+      "type": "object",
+      "properties": {
+        "rules_checked_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "recheck_before_departure": {
+          "type": "boolean"
+        },
+        "self_transport": {
+          "type": "string"
+        },
+        "reference_quantity": {
+          "type": "string"
+        },
+        "shipping": {
+          "type": "string"
+        },
+        "flight": {
+          "type": "string"
+        },
+        "payload_example": {
+          "type": "object",
+          "properties": {
+            "bottles": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "wine_litres": {
+              "type": "number",
+              "minimum": 0
+            },
+            "estimated_packaged_mass_kg_range": {
+              "$ref": "#/$defs/range"
+            },
+            "status": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "bottles",
+            "wine_litres",
+            "estimated_packaged_mass_kg_range",
+            "status",
+            "notes"
+          ],
+          "additionalProperties": false
+        },
+        "handling": {
+          "type": "string"
+        },
+        "optional_visit_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "visit_booking_status": {
+          "type": "string"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "rules_checked_date",
+        "recheck_before_departure",
+        "self_transport",
+        "reference_quantity",
+        "shipping",
+        "flight",
+        "payload_example",
+        "handling",
+        "optional_visit_location_ids",
+        "visit_booking_status",
+        "source_ids"
+      ],
+      "additionalProperties": false
+    },
+    "web_contract": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "time_model": {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "type": "string"
+            },
+            "day_numbering": {
+              "type": "string"
+            },
+            "formula": {
+              "type": "string"
+            },
+            "interval_convention": {
+              "type": "string"
+            },
+            "calendar_start_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "calendar_mapping": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit",
+            "day_numbering",
+            "formula",
+            "interval_convention",
+            "calendar_start_date",
+            "calendar_mapping"
+          ],
+          "additionalProperties": false
+        },
+        "entity_links": {
+          "type": "string"
+        },
+        "position_algorithm": {
+          "type": "string"
+        },
+        "shared_car_algorithm": {
+          "type": "string"
+        },
+        "distance_algorithm": {
+          "type": "string"
+        },
+        "map_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "suggested_controls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "change_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "validation_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "purpose",
+        "time_model",
+        "entity_links",
+        "position_algorithm",
+        "shared_car_algorithm",
+        "distance_algorithm",
+        "map_rules",
+        "suggested_controls",
+        "change_rules",
+        "validation_rules"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
