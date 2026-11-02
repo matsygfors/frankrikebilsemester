@@ -12,7 +12,7 @@ import { EVENT_ICON, eventTip, placeTip, routeTip } from './text.js';
 const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-// One shared frame for the France view, so the four alternatives can be compared at the same scale.
+// One shared frame for the France view, so the alternatives can be compared at the same scale.
 const FRANCE = [[42.5, -3.6], [49.9, 9.2]];
 const EVENT_ORDER = ['wine_pickup', 'meet', 'split', 'vehicle_pickup', 'vehicle_return'];
 const TOGETHER_DEG = 0.02; // closer than ~2 km: draw the two couple markers side by side

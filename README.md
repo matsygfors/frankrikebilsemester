@@ -1,6 +1,6 @@
 # Frankrike 2027
 
-Fyra sätt att ta sig till Béziers sommaren 2027, visualiserade på karta och tidslinje så att vi kan prata om dem.
+Sätt att ta sig till Béziers sommaren 2027, visualiserade på karta och tidslinje så att vi kan prata om dem: fyra grundalternativ och två korta varianter av Flyg till Paris.
 Par A åker från Stockholm och vill köpa vin kring Béziers. Par B har bostäder i Paris och Nice.
 Allt är grova planeringsuppskattningar: inget är bokat och körsträckor och tider är egna bedömningar.
 
@@ -15,8 +15,8 @@ Inga beroenden att installera. Sidan behöver internet för kartbiblioteket (Lea
 
 ## Vad man ser
 
-- **Jämför**: fyra kartor över Frankrike i samma ram, ett gemensamt tidsreglage, tidslinjerna sida vid sida på samma tidsaxel och en jämförelsetabell.
-- **Alternativ 1–4**: stor karta (hela rutten eller bara Frankrike), tidslinje, dag för dag, fordon och sträckor, vin, alternativa mötesplatser, avvägningar och osäkerheter.
+- **Jämför**: en karta per alternativ över Frankrike i samma ram, ett gemensamt tidsreglage, tidslinjerna sida vid sida på samma tidsaxel och en jämförelsetabell.
+- **Alternativ 1–6**: stor karta (hela rutten eller bara Frankrike), tidslinje, dag för dag, fordon och sträckor, vin, alternativa mötesplatser, avvägningar och osäkerheter.
 - **Tid**: dra i reglaget överst, klicka eller dra i tidslinjerna, ▶ eller mellanslag för att spela upp, Skift + ←/→ för en dag i taget.
   Adressen bär med vy och tid (`#/2?t=312`, timmar sedan dag 1 klockan 00:00), så att ett ögonblick går att dela.
 
@@ -26,7 +26,7 @@ Så läser man kartan och tidslinjen:
 |---|---|
 | Blått / orange | Par A / Par B |
 | Mörk heldragen färg | De reser tillsammans (samma bil, samma tåg) |
-| Blå och orange streck om vartannat | De reser tillsammans i två bilar (alternativ 4) |
+| Blå och orange streck om vartannat | De reser tillsammans i två bilar (alternativ 4 och 6) |
 | Streckat / prickat / finprickat | Bil / tåg / flyg |
 | Vinrött | Béziers och vinavhämtningen |
 | Snedstreckat fält i tidslinjen | Hemma |
@@ -38,6 +38,8 @@ Positionen mellan två orter är interpolerad längs linjen efter tid.
 
 - [`data/frankrike-2027.json`](data/frankrike-2027.json) med schema [`data/frankrike-2027.schema.json`](data/frankrike-2027.schema.json) (JSON Schema 2020-12). Underlaget är skapat 2026-11-01.
 - Tid anges som timmar sedan dag 1 klockan 00:00 (`at_hour = (dag - 1) * 24 + klockslag`). Varje alternativ har sin egen relativa dag 1, så jämförelsen gäller resdagar, inte kalenderdatum.
+- Alternativens nummer följer ordningen i `scenarios`; id:na (`s1`–`s4`) är bara beteckningar. Alternativ 1 är underlagets förstaval (`recommendation.first_choice_scenario_id`), alltså `s2`.
+- Alternativ 5 och 6 (`s5`, `s6`) är korta varianter av Flyg till Paris: ungefär en vecka tillsammans i stället för över två, med en gemensam hyrbil respektive en hyrbil var. De är byggda av etapper som redan finns i underlaget (Paris–Clermont-Ferrand, Clermont-Ferrand–Béziers, Béziers–Beaune och Beaune–Paris), så sträckor och tider är lika grova som i övriga alternativ. Schemat tillåter numera valfritt antal alternativ; tidigare krävdes exakt fyra.
 - Schemat kontrollerar bara struktur. Referenser, tidsspår, händelser och summor kontrollerades separat mot reglerna i `web_app_contract.validation_rules` när underlaget lades in (inga avvikelser). `npm test` täcker den logik som visualiseringen bygger på.
 - Det som visas (rutter, positioner, när paren är tillsammans, nätter, nyckeltal) räknas ut ur datan i [`js/data.js`](js/data.js). Ändra i JSON-filen och ladda om.
 

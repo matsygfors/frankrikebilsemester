@@ -53,7 +53,7 @@ const sameMovement = (a, b) =>
 
 /**
  * One route per movement. Two single-party legs that make the same trip at the same time
- * in different vehicles (scenario 4) are merged into a "parallel" route: same line, two cars.
+ * in different vehicles (the two-car alternatives) are merged into a "parallel" route: same line, two cars.
  */
 function buildRoutes(sc) {
   const taken = new Set();

@@ -9,11 +9,13 @@ import { HOW_LABEL, describeState } from '../js/text.js';
 
 const raw = JSON.parse(readFileSync(new URL('../data/frankrike-2027.json', import.meta.url), 'utf8'));
 const data = prepare(raw);
-const [s1, s2, s3, s4] = data.scenarios;
+// Alternatives are numbered by their position in the data, so look them up by id.
+const [s1, s2, s3, s4, s5, s6] = ['s1', 's2', 's3', 's4', 's5', 's6'].map((id) => data.scenarios.find((s) => s.id === id));
 
-test('four scenarios with the expected shape', () => {
-  assert.deepEqual(data.scenarios.map((s) => s.id), ['s1', 's2', 's3', 's4']);
-  assert.deepEqual(data.scenarios.map((s) => s.hours), [19 * 24, 20 * 24, 22 * 24, 21 * 24]);
+test('six scenarios with the expected shape, the first choice numbered 1', () => {
+  assert.deepEqual(data.scenarios.map((s) => [s.number, s.id]), [[1, 's2'], [2, 's1'], [3, 's3'], [4, 's4'], [5, 's5'], [6, 's6']]);
+  assert.equal(data.scenarios[0].id, raw.recommendation.first_choice_scenario_id);
+  assert.deepEqual(data.scenarios.map((s) => s.hours), [20 * 24, 19 * 24, 22 * 24, 21 * 24, 9 * 24, 9 * 24]);
   assert.equal(s1.title, 'Flyg till Paris');
   assert.equal(s1.subtitle, 'Normandie och Atlanten, hem via inlandet');
 });
@@ -22,9 +24,12 @@ test('two single-party legs making the same trip become one parallel route', () 
   assert.equal(s4.raw.legs.length, 18);
   assert.equal(s4.routes.length, 15);
   assert.equal(s4.routes.filter((r) => r.kind === 'parallel').length, 3);
-  for (const other of [s1, s2, s3]) assert.equal(other.routes.length, other.raw.legs.length);
+  for (const other of [s1, s2, s3, s5]) assert.equal(other.routes.length, other.raw.legs.length);
   // both legs resolve to the same route, so either party animates along it
   assert.equal(s4.routeOfLeg.get('s4_leg_06'), s4.routeOfLeg.get('s4_leg_09'));
+  assert.equal(s6.raw.legs.length, 10);
+  assert.equal(s6.routes.filter((r) => r.kind === 'parallel').length, 4);
+  assert.equal(s6.routeOfLeg.get('s6_leg_02'), s6.routeOfLeg.get('s6_leg_03'));
 });
 
 test('time formatting', () => {
@@ -42,7 +47,7 @@ test('nights are the midnights strictly inside a stay', () => {
 });
 
 test('nights in Béziers', () => {
-  assert.deepEqual(data.scenarios.map((s) => s.kpis.bezierNights), [4, 5, 5, 5]);
+  assert.deepEqual(data.scenarios.map((s) => s.kpis.bezierNights), [5, 4, 5, 5, 4, 4]);
 });
 
 test('partial paths and interpolation', () => {
@@ -82,10 +87,10 @@ test('together intervals cover the whole shared period without gaps', () => {
   }
 });
 
-test('only scenario 4 has two vehicles travelling together', () => {
+test('only the two-car alternatives have two vehicles travelling together', () => {
   const kinds = (sc) => new Set(sc.together.map((x) => x.how));
-  assert.ok(kinds(s4).has('convoy'));
-  for (const sc of [s1, s2, s3]) assert.ok(!kinds(sc).has('convoy'), sc.id);
+  for (const sc of [s4, s6]) assert.ok(kinds(sc).has('convoy'), sc.id);
+  for (const sc of [s1, s2, s3, s5]) assert.ok(!kinds(sc).has('convoy'), sc.id);
 });
 
 test('couples start at home and end at home', () => {
@@ -106,6 +111,18 @@ test('headline numbers come from the data', () => {
   assert.equal(s3.kpis.longest.id, 's3_leg_04');
   assert.deepEqual(s2.kpis.byParty.B, { carKm: 1600, flights: 0, trains: 2 });
   assert.deepEqual(s1.kpis.byParty.A, { carKm: 2190, flights: 2, trains: 0 });
+  assert.equal(s5.kpis.fleetKm, 1605);
+  assert.equal(s6.kpis.fleetKm, 3210);
+  assert.equal(s6.kpis.cars, 2);
+});
+
+test('the short variants of Flyg till Paris share less than half the time of the long one', () => {
+  for (const short of [s5, s6]) {
+    assert.ok(short.kpis.sharedDays < s1.kpis.sharedDays / 2, short.id);
+    assert.equal(short.kpis.bezierNights, s1.kpis.bezierNights, short.id);
+  }
+  assert.ok(Math.abs(s5.kpis.sharedDays - 7.58) < 0.01);
+  assert.equal(s6.kpis.sharedDays, s5.kpis.sharedDays);
 });
 
 test('status wording', () => {
@@ -117,6 +134,8 @@ test('status wording', () => {
   assert.equal(describeState(s2, 'A', hoursOf(10)).text, 'I Béziers');
   assert.equal(describeState(s2, 'A', hoursOf(10)).sub, '5 nätter');
   assert.equal(HOW_LABEL[togetherAt(s4, hoursOf(7, 12))], 'Reser i två bilar');
+  assert.equal(HOW_LABEL[togetherAt(s6, hoursOf(2, 12))], 'Reser i två bilar');
+  assert.equal(HOW_LABEL[togetherAt(s5, hoursOf(2, 12))], 'Reser tillsammans');
 });
 
 test('phases and milestones', () => {

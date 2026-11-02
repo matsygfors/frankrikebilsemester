@@ -68,7 +68,7 @@ async function main() {
     // On narrow screens the tab strip scrolls sideways: keep the current tab in view.
     const active = tabsEl.querySelector('[aria-current]');
     tabsEl.scrollLeft = active.offsetLeft - (tabsEl.clientWidth - active.offsetWidth) / 2;
-    document.title = sc ? `Alternativ ${sc.number}: ${sc.title} · Frankrike 2027` : 'Frankrike 2027 · fyra sätt att komma till Béziers';
+    document.title = sc ? `Alternativ ${sc.number}: ${sc.title} · Frankrike 2027` : 'Frankrike 2027 · resealternativ till Béziers';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 

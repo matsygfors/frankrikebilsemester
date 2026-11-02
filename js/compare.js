@@ -1,7 +1,7 @@
-// "Jämför": the four alternatives side by side on one shared clock.
+// "Jämför": the alternatives side by side on one shared clock.
 
 import { togetherAt } from './data.js';
-import { esc, fmtDec, fmtInt, fmtRange } from './format.js';
+import { countWord, esc, fmtDec, fmtInt, fmtRange } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
 import { legendHTML } from './legend.js';
@@ -11,12 +11,14 @@ import { HOW_LABEL, WINE_TRANSPORT, describeState, legTitle, modesText, vehicleL
 export function mountCompare(root, { data, store, mapMode }) {
   const { scenarios } = data;
   const maxT = Math.max(...scenarios.map((s) => s.hours));
-  const tags = recommendationTags(data.raw.recommendation);
+  const tags = recommendationTags(data.raw.recommendation, scenarios);
+  const count = countWord(scenarios.length);
+  const Count = count[0].toUpperCase() + count.slice(1);
 
   root.innerHTML = `
     <section class="intro">
-      <h1>Fyra sätt att ta sig till Béziers</h1>
-      <p>Fyra grova upplägg för sommaren 2027. Inget är bokat: tider och körsträckor är egna uppskattningar.
+      <h1>${Count} sätt att ta sig till Béziers</h1>
+      <p>${Count} grova upplägg för sommaren 2027. Inget är bokat: tider och körsträckor är egna uppskattningar.
          Dra i tidsreglaget högst upp (eller i tidslinjerna längre ner) för att se var Par A och Par B befinner sig i varje alternativ.</p>
     </section>
     ${legendHTML()}
@@ -24,7 +26,7 @@ export function mountCompare(root, { data, store, mapMode }) {
     <section class="panel">
       <div class="panel__head">
         <h2>Tidslinjer sida vid sida</h2>
-        <p>Samma tidsaxis för alla fyra: hur länge man är borta, när man möts och var vinet köps.</p>
+        <p>Samma tidsaxis för alla ${count}: hur länge man är borta, när man möts och var vinet köps.</p>
       </div>
       <div data-lanes></div>
     </section>
@@ -66,13 +68,20 @@ export function mountCompare(root, { data, store, mapMode }) {
   };
 }
 
-function recommendationTags(rec) {
-  return new Map([
+function recommendationTags(rec, scenarios) {
+  const tags = new Map([
     [rec.first_choice_scenario_id, 'Förstaval i underlaget'],
     [rec.if_paris_is_priority, 'Om Paris är viktigast'],
     [rec.if_nice_is_priority, 'Om Nice är viktigast'],
     [rec.if_independence_is_priority, 'Om frihet är viktigast'],
   ]);
+  // The data recommends only by name; the alternatives with the least time together get a tag of their own.
+  const least = Math.min(...scenarios.map((s) => s.kpis.sharedDays));
+  for (const sc of scenarios) {
+    if (tags.has(sc.id) || sc.kpis.sharedDays > least + 0.05) continue;
+    tags.set(sc.id, sc.kpis.cars > 1 ? 'Om kort tid och frihet är viktigast' : 'Om kort tid tillsammans är viktigast');
+  }
+  return tags;
 }
 
 function card(sc, tag) {
@@ -137,7 +146,7 @@ function table(scenarios, tags) {
     ['Fördelar och avvägningar', (s) => list(s.raw.tradeoffs)],
     ['Osäkerheter', (s) => list(s.raw.uncertainties)],
   ];
-  return `<div class="table-scroll"><table class="cmp">
+  return `<div class="table-scroll"><table class="cmp" style="--cols:${scenarios.length}">
     <thead><tr><td></td>${scenarios.map((s) => `<th scope="col"><a href="#/${s.number}"><span class="num">${s.number}</span>${esc(s.title)}</a><small>${esc(s.subtitle)}</small></th>`).join('')}</tr></thead>
     <tbody>${rows.map(([label, cell]) => `<tr><th scope="row">${label}</th>${scenarios.map((s) => `<td>${cell(s)}</td>`).join('')}</tr>`).join('')}</tbody>
   </table></div>`;

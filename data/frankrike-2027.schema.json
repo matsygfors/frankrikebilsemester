@@ -55,8 +55,7 @@
       "items": {
         "$ref": "#/$defs/scenario"
       },
-      "minItems": 4,
-      "maxItems": 4
+      "minItems": 1
     },
     "wine_logistics": {
       "$ref": "#/$defs/wine_logistics"

@@ -12,6 +12,10 @@ export const fmtDec = (n) => decFmt.format(n);
 export const fmtRange = (r) => `${fmtInt(r.min)}–${fmtInt(r.max)}`;
 export const plural = (n, one, many) => `${fmtDec(n)} ${n === 1 ? one : many}`;
 
+const COUNT_WORDS = ['noll', 'ett', 'två', 'tre', 'fyra', 'fem', 'sex', 'sju', 'åtta', 'nio', 'tio'];
+/** Swedish number word for a small count ("sex"), digits beyond ten. */
+export const countWord = (n) => COUNT_WORDS[n] ?? String(n);
+
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ESCAPES[c]);
 
