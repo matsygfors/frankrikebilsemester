@@ -1,11 +1,11 @@
-// Minimal static file server for local development: `npm start` -> http://localhost:5173
+// Minimal static file server for local development: `npm start` -> http://localhost:2027
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
-const port = Number(process.env.PORT) || 5173;
+const port = Number(process.env.PORT) || 2027; // not 5173: Vite and friends already use that
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',

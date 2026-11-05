@@ -31,8 +31,8 @@ export function vehicleLine(scn, v) {
 export function modesText(scn, party) {
   const k = scn.kpis.byParty[party];
   const bits = [];
-  if (k.flights) bits.push(`Flyg ${k.flights} resor`);
-  if (k.trains) bits.push(`Tåg ${k.trains} resor`);
+  if (k.flights) bits.push(`Flyg ${plural(k.flights, 'resa', 'resor')}`);
+  if (k.trains) bits.push(`Tåg ${plural(k.trains, 'resa', 'resor')}`);
   if (k.carKm) bits.push(`Bil ${fmtInt(k.carKm)} km`);
   return bits.join(' · ') || '–';
 }

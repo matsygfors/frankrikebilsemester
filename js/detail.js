@@ -26,7 +26,7 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
           <li><b>${fmtInt(k.fleetKm)}</b> km bil</li>
           <li><b>${fmtInt(k.driveHours)}</b> h körtid</li>
           <li><b>${k.cars}</b> ${k.cars === 1 ? 'bil' : 'bilar'}</li>
-          <li><b>${k.bezierNights}</b> nätter i Béziers-trakten</li>
+          ${k.wineNights ? `<li><b>${k.wineNights}</b> nätter i Béziers-trakten</li>` : ''}
         </ul>
       </header>
       <div class="detail__grid">
@@ -157,6 +157,7 @@ function vehiclesPanel(sc) {
 
 function winePanel(sc, data) {
   const w = sc.raw.wine_plan;
+  if (!w) return panel('Vin', '<p class="prose">Ingen vinbonus i den här rutten: Béziers ligger inte på vägen.</p>');
   const rules = data.raw.wine_logistics;
   const keys = w.transport_method === 'own_car_self_transport' ? ['self_transport', 'reference_quantity', 'handling'] : ['flight', 'shipping', 'reference_quantity', 'handling'];
   return panel(

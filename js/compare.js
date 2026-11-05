@@ -11,28 +11,27 @@ import { HOW_LABEL, WINE_TRANSPORT, describeState, legTitle, modesText, vehicleL
 export function mountCompare(root, { data, store, mapMode }) {
   const { scenarios } = data;
   const maxT = Math.max(...scenarios.map((s) => s.hours));
-  const tags = recommendationTags(data.raw.recommendation, scenarios);
   const count = countWord(scenarios.length);
   const Count = count[0].toUpperCase() + count.slice(1);
 
   root.innerHTML = `
     <section class="intro">
-      <h1>${Count} sätt att ta sig till Béziers</h1>
-      <p>${Count} grova upplägg för sommaren 2027. Inget är bokat: tider och körsträckor är egna uppskattningar.
+      <h1>${Count} roadtrips i Frankrike</h1>
+      <p>${Count} grova upplägg för sommaren 2027, var och en i sitt hörn av landet. Vin från Béziers är en bonus i de rutter där A har egen bil. Inget är bokat: tider och körsträckor är egna uppskattningar.
          Dra i tidsreglaget högst upp (eller i tidslinjerna längre ner) för att se var Par A och Par B befinner sig i varje alternativ.</p>
     </section>
     ${legendHTML()}
-    <div class="cards">${scenarios.map((sc) => card(sc, tags.get(sc.id))).join('')}</div>
+    <div class="cards">${scenarios.map((sc) => card(sc, tagOf(sc))).join('')}</div>
     <section class="panel">
       <div class="panel__head">
         <h2>Tidslinjer sida vid sida</h2>
-        <p>Samma tidsaxis för alla ${count}: hur länge man är borta, när man möts och var vinet köps.</p>
+        <p>Samma tidsaxis för alla ${count}: hur länge man är borta, när man möts och var vinet köps (om det köps).</p>
       </div>
       <div data-lanes></div>
     </section>
     <section class="panel">
       <div class="panel__head"><h2>Jämförelse i siffror</h2></div>
-      ${table(scenarios, tags)}
+      ${table(scenarios)}
     </section>
     <details class="panel assumptions">
       <summary>Antaganden bakom underlaget</summary>
@@ -68,20 +67,11 @@ export function mountCompare(root, { data, store, mapMode }) {
   };
 }
 
-function recommendationTags(rec, scenarios) {
-  const tags = new Map([
-    [rec.first_choice_scenario_id, 'Förstaval i underlaget'],
-    [rec.if_paris_is_priority, 'Om Paris är viktigast'],
-    [rec.if_nice_is_priority, 'Om Nice är viktigast'],
-    [rec.if_independence_is_priority, 'Om frihet är viktigast'],
-  ]);
-  // The data recommends only by name; the alternatives with the least time together get a tag of their own.
-  const least = Math.min(...scenarios.map((s) => s.kpis.sharedDays));
-  for (const sc of scenarios) {
-    if (tags.has(sc.id) || sc.kpis.sharedDays > least + 0.05) continue;
-    tags.set(sc.id, sc.kpis.cars > 1 ? 'Om kort tid och frihet är viktigast' : 'Om kort tid tillsammans är viktigast');
-  }
-  return tags;
+/** A short label for what sets an alternative apart: the wine bonus, or flying and renting. */
+function tagOf(sc) {
+  if (sc.raw.wine_plan) return 'Med vinbonus i Béziers';
+  if (sc.kpis.byParty.A.flights) return 'Flyg och hyrbil';
+  return null;
 }
 
 function card(sc, tag) {
@@ -126,13 +116,12 @@ function statusHTML(sc, t) {
 const bar = (value, max) => `<span class="bar" aria-hidden="true"><i style="width:${((value / max) * 100).toFixed(1)}%"></i></span>`;
 const list = (items) => `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
-function table(scenarios, tags) {
+function table(scenarios) {
   const max = (pick) => Math.max(...scenarios.map(pick));
   const maxDays = max((s) => s.kpis.days);
   const maxKm = max((s) => s.kpis.fleetKm);
   const maxHours = max((s) => s.kpis.driveHours);
   const rows = [
-    ['Passar om', (s) => esc(tags.get(s.id) ?? '–')],
     ['Resdagar', (s) => `${s.kpis.days} <small>(${s.kpis.flex.min}–${s.kpis.flex.max})</small>${bar(s.kpis.days, maxDays)}`],
     ['Tillsammans', (s) => `${fmtDec(s.kpis.sharedDays)} dygn`],
     ['Längst på samma ort', stayCell],
@@ -142,8 +131,7 @@ function table(scenarios, tags) {
     ['Bilkilometer', (s) => `${fmtInt(s.kpis.fleetKm)} km<small> mellan orter, alla bilar<br>${fmtRange(s.kpis.totalKmRange)} km inkl. lokalt</small>${bar(s.kpis.fleetKm, maxKm)}`],
     ['Körtid', (s) => `${fmtInt(s.kpis.driveHours)} h<small> utan långa stopp</small>${bar(s.kpis.driveHours, maxHours)}`],
     ['Längsta kördag', longestDriveCell],
-    ['Nätter i Béziers-trakten', (s) => s.kpis.bezierNights],
-    ['Vin hem', (s) => esc(WINE_TRANSPORT[s.raw.wine_plan.transport_method])],
+    ['Vinbonus i Béziers', wineCell],
     ['Fördelar och avvägningar', (s) => list(s.raw.tradeoffs)],
     ['Osäkerheter', (s) => list(s.raw.uncertainties)],
   ];
@@ -165,4 +153,11 @@ function stayCell(s) {
   const { nights, loc } = s.kpis.longestStay;
   const over = nights > STAY_LIMIT_NIGHTS;
   return `<span class="${over ? 'over' : ''}">${plural(nights, 'natt', 'nätter')}</span><small> i ${esc(loc.short)}${over ? `<br>mer än ${STAY_LIMIT_NIGHTS}` : ''}</small>`;
+}
+
+/** Whether the route includes buying wine in Béziers, and how many nights are spent in the wine area. */
+function wineCell(s) {
+  const w = s.raw.wine_plan;
+  if (!w) return 'Nej';
+  return `Ja, ${plural(s.kpis.wineNights, 'natt', 'nätter')}<small><br>inköp dag ${w.purchase_day} · ${esc(WINE_TRANSPORT[w.transport_method])}</small>`;
 }

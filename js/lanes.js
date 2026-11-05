@@ -1,7 +1,7 @@
 // Timeline lanes: one row per couple (stays and journeys), a "together" spine between them,
 // event pins above, and a playhead you can drag. Several scenarios can share one time axis.
 
-import { segmentAt } from './data.js';
+import { isHomeStay, segmentAt } from './data.js';
 import { clamp, dayOf, esc } from './format.js';
 import { icon } from './icons.js';
 import { EVENT_ICON, eventTip, legTip, partiesLabel, stayTip, togetherTip } from './text.js';
@@ -102,7 +102,7 @@ function segment(sc, party, s, i, segs) {
   const pos = `left:${pct(s.start_hour / sc.hours)};width:${pct((s.end_hour - s.start_hour) / sc.hours)}`;
   if (s.kind === 'stay') {
     const loc = sc.locations.get(s.location_id);
-    const home = (i === 0 || i === segs.length - 1) && s.location_id === sc.raw.party_initial_location_ids[party];
+    const home = isHomeStay(sc, party, segs, i);
     const cls = ['seg', 'seg--stay', `is-${party}`, s.location_id === 'beziers' && 'is-wine', home && 'is-home'].filter(Boolean).join(' ');
     return `<div class="${cls}" style="${pos}" data-tip="${esc(stayTip(sc, party, s))}"><span class="seg__label">${esc(loc.short)}</span></div>`;
   }

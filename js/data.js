@@ -12,7 +12,8 @@ export async function loadData(url) {
 
 export function prepare(raw) {
   const locations = new Map(raw.locations.map((loc) => [loc.id, withNames(loc)]));
-  const scenarios = raw.scenarios.map((sc, i) => prepareScenario(sc, i, locations));
+  const homes = new Map(raw.parties.map((p) => [p.id, new Set(p.available_home_location_ids)]));
+  const scenarios = raw.scenarios.map((sc, i) => prepareScenario(sc, i, locations, homes));
   return { raw, locations, parties: raw.parties, scenarios };
 }
 
@@ -22,7 +23,7 @@ function withNames(loc) {
   return { ...loc, short: head.replace(/ nära .+$/, ''), region };
 }
 
-function prepareScenario(sc, index, locations) {
+function prepareScenario(sc, index, locations, homes) {
   const routes = buildRoutes(sc);
   const [title, subtitle = ''] = sc.title.split(' – ');
   const scn = {
@@ -33,6 +34,7 @@ function prepareScenario(sc, index, locations) {
     raw: sc,
     hours: sc.duration_days * 24,
     locations,
+    homes,
     legs: new Map(sc.legs.map((l) => [l.id, l])),
     tracks: new Map(sc.timeline_tracks.map((t) => [t.party_id, t.segments])),
     routes,
@@ -147,15 +149,14 @@ function buildPlaces(scn) {
       const nights = countNights(s.start_hour, s.end_hour);
       place.parties.add(party);
       place.nights[party] = (place.nights[party] ?? 0) + nights;
-      place.visits.push({ party, start: s.start_hour, end: s.end_hour, nights, home: isHome(scn, party, segs, i) });
+      place.visits.push({ party, start: s.start_hour, end: s.end_hour, nights, home: isHomeStay(scn, party, segs, i) });
     });
   }
   return places;
 }
 
-// A party is "home" in its first and last stay, if that is where it started.
-const isHome = (scn, party, segs, i) =>
-  (i === 0 || i === segs.length - 1) && segs[i].location_id === scn.raw.party_initial_location_ids[party];
+/** A party is "home" in its first and last stay when that is one of its homes (B has one in Paris and one in Nice). */
+export const isHomeStay = (scn, party, segs, i) => (i === 0 || i === segs.length - 1) && scn.homes.get(party).has(segs[i].location_id);
 
 function buildKpis(scn) {
   const { raw } = scn;
@@ -182,12 +183,12 @@ function buildKpis(scn) {
     cars: raw.vehicles.length,
     longest,
     byParty,
-    bezierNights: sum([...scn.places.values()].filter((p) => inWineArea(p.loc)).map((p) => p.nights.A ?? 0)),
+    wineNights: sum([...scn.places.values()].filter((p) => inWineArea(p.loc)).map((p) => p.nights.A ?? 0)),
     longestStay: longestStayTogether(scn),
   };
 }
 
-// Béziers and the villages around it that the data lists as bases or wine areas.
+// Béziers and the villages around it that the data lists as bases or wine areas: the wine bonus.
 const inWineArea = (loc) => loc.id === 'beziers' || loc.kind === 'optional_base' || loc.kind === 'optional_wine_area';
 
 /** The longest stretch the couples spend together in one place: where, for how many hours and nights. */
@@ -216,7 +217,7 @@ export function stateAt(scn, partyId, t) {
       seg,
       loc,
       latlng: [loc.latitude, loc.longitude],
-      home: isHome(scn, partyId, segs, segs.indexOf(seg)),
+      home: isHomeStay(scn, partyId, segs, segs.indexOf(seg)),
       nights: countNights(seg.start_hour, seg.end_hour),
     };
   }

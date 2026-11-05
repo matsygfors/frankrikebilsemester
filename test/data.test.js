@@ -9,26 +9,22 @@ import { HOW_LABEL, describeState } from '../js/text.js';
 
 const raw = JSON.parse(readFileSync(new URL('../data/frankrike-2027.json', import.meta.url), 'utf8'));
 const data = prepare(raw);
-// Alternatives are numbered by their position in the data, so look them up by id.
 const [s1, s2, s3, s4, s5, s6] = ['s1', 's2', 's3', 's4', 's5', 's6'].map((id) => data.scenarios.find((s) => s.id === id));
 
-test('six scenarios with the expected shape, the first choice numbered 1', () => {
-  assert.deepEqual(data.scenarios.map((s) => [s.number, s.id]), [[1, 's2'], [2, 's1'], [3, 's3'], [4, 's4'], [5, 's5'], [6, 's6']]);
-  assert.equal(data.scenarios[0].id, raw.recommendation.first_choice_scenario_id);
-  assert.deepEqual(data.scenarios.map((s) => s.hours), [20 * 24, 19 * 24, 22 * 24, 21 * 24, 9 * 24, 9 * 24]);
-  assert.equal(s1.title, 'Flyg till Paris');
-  assert.equal(s1.subtitle, 'Normandie och Atlanten, hem via inlandet');
+test('six road trips with the expected shape', () => {
+  assert.deepEqual(data.scenarios.map((s) => [s.number, s.id]), [[1, 's1'], [2, 's2'], [3, 's3'], [4, 's4'], [5, 's5'], [6, 's6']]);
+  assert.deepEqual(data.scenarios.map((s) => s.hours), [18 * 24, 17 * 24, 19 * 24, 17 * 24, 9 * 24, 9 * 24]);
+  assert.equal(s1.title, 'Rivieran, Provence och Languedoc');
+  assert.equal(s1.subtitle, 'Nice till Béziers');
+  assert.equal(raw.recommendation, undefined);
 });
 
 test('two single-party legs making the same trip become one parallel route', () => {
-  assert.equal(s4.raw.legs.length, 24);
-  assert.equal(s4.routes.length, 18);
-  assert.equal(s4.routes.filter((r) => r.kind === 'parallel').length, 6);
-  for (const other of [s1, s2, s3, s5]) assert.equal(other.routes.length, other.raw.legs.length);
-  // both legs resolve to the same route, so either party animates along it
-  assert.equal(s4.routeOfLeg.get('s4_leg_06'), s4.routeOfLeg.get('s4_leg_09'));
+  for (const other of [s1, s2, s3, s4, s5]) assert.equal(other.routes.length, other.raw.legs.length);
   assert.equal(s6.raw.legs.length, 14);
+  assert.equal(s6.routes.length, 8);
   assert.equal(s6.routes.filter((r) => r.kind === 'parallel').length, 6);
+  // both legs resolve to the same route, so either party animates along it
   assert.equal(s6.routeOfLeg.get('s6_leg_02'), s6.routeOfLeg.get('s6_leg_03'));
 });
 
@@ -46,8 +42,16 @@ test('nights are the midnights strictly inside a stay', () => {
   assert.equal(countNights(474, 480), 0);
 });
 
-test('nights in Béziers', () => {
-  assert.deepEqual(data.scenarios.map((s) => s.kpis.bezierNights), [5, 4, 5, 5, 4, 4]);
+test('the wine bonus is in the routes that end in Béziers', () => {
+  assert.deepEqual(data.scenarios.map((s) => s.kpis.wineNights), [2, 0, 2, 3, 0, 0]);
+  assert.deepEqual(data.scenarios.map((s) => s.raw.wine_plan?.purchase_day ?? null), [12, null, 13, 11, null, null]);
+  for (const sc of [s1, s3, s4]) {
+    const pickup = sc.raw.events.find((e) => e.kind === 'wine_pickup');
+    assert.equal(pickup.location_id, 'beziers', sc.id);
+    assert.equal(pickup.day, sc.raw.wine_plan.purchase_day, sc.id);
+    assert.equal(sc.raw.wine_plan.vehicle_id, sc.raw.vehicles[0].id, sc.id);
+  }
+  for (const sc of [s2, s5, s6]) assert.ok(!sc.raw.events.some((e) => e.kind === 'wine_pickup'), sc.id);
 });
 
 test('partial paths and interpolation', () => {
@@ -87,83 +91,91 @@ test('together intervals cover the whole shared period without gaps', () => {
   }
 });
 
-test('only the two-car alternatives have two vehicles travelling together', () => {
+test('only the two-car alternative has two vehicles travelling together', () => {
   const kinds = (sc) => new Set(sc.together.map((x) => x.how));
-  for (const sc of [s4, s6]) assert.ok(kinds(sc).has('convoy'), sc.id);
-  for (const sc of [s1, s2, s3, s5]) assert.ok(!kinds(sc).has('convoy'), sc.id);
+  assert.ok(kinds(s6).has('convoy'));
+  for (const sc of [s1, s2, s3, s4, s5]) assert.ok(!kinds(sc).has('convoy'), sc.id);
 });
 
-test('couples start at home and end at home', () => {
+test('couples start and end at one of their homes, B in Paris or Nice', () => {
   for (const sc of data.scenarios) {
     for (const id of ['A', 'B']) {
       assert.equal(stateAt(sc, id, 0).home, true, `${sc.id} ${id} start`);
       assert.equal(stateAt(sc, id, sc.hours).home, true, `${sc.id} ${id} end`);
     }
   }
-  assert.equal(stateAt(s1, 'A', 9 + 3.5).kind, 'travel');
-  assert.equal(stateAt(s1, 'A', 9 + 3.5).leg.mode, 'flight');
+  // the Alps trip: B starts in the Paris apartment and ends in the one in Nice
+  assert.equal(stateAt(s2, 'B', 0).loc.id, 'paris');
+  assert.equal(stateAt(s2, 'B', s2.hours).loc.id, 'nice');
+  assert.equal(stateAt(s5, 'A', 9 + 3.5).leg.mode, 'flight');
 });
 
-test('headline numbers come from the data', () => {
-  // the old totals plus the hops between the wine villages (and a shorter way out of Faugères in alternative 2)
-  assert.equal(s2.kpis.fleetKm, 5630 + 35 + 40 + 60 - 10);
-  assert.equal(s4.kpis.fleetKm, 7250 + 2 * (35 + 40 + 60 + 45));
-  assert.equal(s4.kpis.cars, 2);
-  assert.deepEqual(s2.kpis.byParty.B, { carKm: 1600 + 35 + 40 + 60 - 10, flights: 0, trains: 2 });
-  assert.deepEqual(s1.kpis.byParty.A, { carKm: 2190 - 40 + 40 + 35, flights: 2, trains: 0 });
-  assert.equal(s5.kpis.fleetKm, 440 + 350 + 40 + 35 + 510 + 315);
-  assert.equal(s6.kpis.fleetKm, 2 * s5.kpis.fleetKm);
+test('A drives the own car past Paris, and flies and rents when the trip starts there', () => {
+  for (const sc of [s1, s2, s3, s4]) {
+    assert.equal(sc.raw.vehicles[0].kind, 'own_car', sc.id);
+    for (const l of sc.raw.legs) {
+      assert.ok(![l.from_location_id, l.to_location_id, ...l.via_location_ids].includes('paris') || l.mode === 'train', `${sc.id} ${l.id} takes the car through Paris`);
+    }
+  }
+  for (const sc of [s5, s6]) {
+    assert.ok(sc.raw.vehicles.every((v) => v.kind === 'rental_car'), sc.id);
+    assert.deepEqual(sc.kpis.byParty.A, { carKm: sc.kpis.fleetKm / sc.kpis.cars, flights: 2, trains: 0 }, sc.id);
+  }
+  assert.equal(s5.kpis.cars, 1);
   assert.equal(s6.kpis.cars, 2);
 });
 
-test('no stop together lasts more than two nights, and no driving day is well over 60 mil', () => {
+test('headline numbers come from the data', () => {
+  const car = [615, 510, 500];
+  const down = (...rest) => car.concat(rest);
+  const total = (xs) => xs.reduce((a, b) => a + b, 0);
+  assert.equal(s1.kpis.fleetKm, total(down(335, 385, 470)) + total([175, 115, 85, 170]) + total([330, 340, 560, 500, 510, 615]));
+  assert.equal(s2.kpis.fleetKm, total(down(335, 400)) + total([95, 150, 150, 110, 170]) + total([470, 385, 335, 500, 510, 615]));
+  assert.equal(s5.kpis.fleetKm, 200 + 115 + 180 + 190 + 345 + 230);
+  assert.equal(s6.kpis.fleetKm, 2 * s5.kpis.fleetKm);
+  assert.deepEqual(s2.kpis.byParty.B, { carKm: 95 + 150 + 150 + 110 + 170, flights: 0, trains: 1 });
+  assert.deepEqual(s1.kpis.byParty.B, { carKm: 175 + 115 + 85 + 170, flights: 0, trains: 1 });
+});
+
+test('about a week together, no stop longer than two nights, no driving day well over 60 mil', () => {
   for (const sc of data.scenarios) {
     const { loc, nights } = sc.kpis.longestStay;
     assert.ok(nights <= STAY_LIMIT_NIGHTS, `${sc.id}: ${nights} nights in ${loc.id}`);
     assert.ok(!isLongDrive(sc.kpis.longest.distance_km), `${sc.id}: ${sc.kpis.longest.id} is ${sc.kpis.longest.distance_km} km`);
+    assert.ok(sc.kpis.sharedDays >= 6 && sc.kpis.sharedDays <= 8, `${sc.id}: ${sc.kpis.sharedDays} days together`);
   }
-  // the wine stay is split over villages, mostly one night each and two in Béziers
   const nights = (sc, ids) => ids.map((id) => sc.places.get(id).nights.A);
-  assert.deepEqual(nights(s1, ['minerve', 'saint_chinian', 'beziers']), [1, 1, 2]);
-  assert.deepEqual(nights(s2, ['beziers', 'saint_chinian', 'minerve', 'faugeres']), [2, 1, 1, 1]);
-  assert.deepEqual(nights(s3, ['saint_chinian', 'minerve', 'faugeres', 'beziers']), [1, 1, 1, 2]);
-  assert.deepEqual(nights(s4, ['saint_chinian', 'minerve', 'faugeres', 'beziers']), [1, 1, 1, 2]);
-  assert.deepEqual(nights(s5, ['faugeres', 'saint_chinian', 'beziers']), [1, 1, 2]);
-  // where the wine is collected follows the way out: Faugères on the road north in alternative 2, Béziers elsewhere
-  assert.equal(s2.raw.wine_plan.purchase_location_id, 'faugeres');
-  assert.equal(s2.raw.events.find((e) => e.kind === 'wine_pickup').location_id, 'faugeres');
-  assert.equal(s3.raw.wine_plan.purchase_location_id, 'beziers');
-  // alternative 3: the 720 km day is two days, so the couples meet a day later and Nice is two nights
-  assert.equal(s3.raw.events.find((e) => e.kind === 'meet').at_hour, hoursOf(6, 19));
-  assert.equal(s3.raw.legs.find((l) => l.id === 's3_leg_04').to_location_id, 'mulhouse');
-});
-
-test('the short variants of Flyg till Paris share less than half the time of the long one', () => {
-  for (const short of [s5, s6]) {
-    assert.ok(short.kpis.sharedDays < s1.kpis.sharedDays / 2, short.id);
-    assert.equal(short.kpis.bezierNights, s1.kpis.bezierNights, short.id);
-  }
-  assert.ok(Math.abs(s5.kpis.sharedDays - 7.58) < 0.01);
-  assert.equal(s6.kpis.sharedDays, s5.kpis.sharedDays);
+  assert.deepEqual(nights(s1, ['nice', 'moustiers', 'gordes', 'arles', 'beziers']), [2, 1, 1, 1, 2]);
+  assert.deepEqual(nights(s2, ['annecy', 'chamonix', 'val_disere', 'briancon', 'barcelonnette', 'nice']), [1, 1, 1, 1, 1, 2]);
+  assert.deepEqual(nights(s3, ['bordeaux', 'arcachon', 'biarritz', 'carcassonne', 'beziers']), [2, 1, 2, 1, 2]);
+  // Clermont-Ferrand twice for A: one night together on the way in, one alone on the way home
+  assert.deepEqual(nights(s4, ['clermont', 'salers', 'millau', 'florac', 'faugeres', 'beziers']), [2, 1, 1, 1, 1, 2]);
+  assert.deepEqual(nights(s5, ['honfleur', 'bayeux', 'saint_malo', 'vannes', 'amboise']), [1, 2, 1, 1, 1]);
 });
 
 test('status wording', () => {
-  assert.equal(describeState(s2, 'A', 0).text, 'Hemma i Stockholm');
-  assert.equal(describeState(s2, 'A', 12).text, 'Kör Stockholm → Malmö');
+  assert.equal(describeState(s1, 'A', 0).text, 'Hemma i Stockholm');
+  assert.equal(describeState(s1, 'A', 12).text, 'Kör Stockholm → Malmö');
+  assert.equal(describeState(s1, 'B', 12).text, 'Hemma i Nice');
+  assert.equal(describeState(s5, 'A', 12).text, 'Flyger Stockholm → Paris');
   assert.equal(describeState(s2, 'B', 12).text, 'Hemma i Paris');
-  assert.equal(describeState(s1, 'A', 12).text, 'Flyger Stockholm → Paris');
-  assert.equal(describeState(s2, 'B', hoursOf(4, 12)).text, 'Åker tåg Paris → Strasbourg');
-  assert.equal(describeState(s2, 'A', hoursOf(10)).text, 'I Béziers');
-  assert.equal(describeState(s2, 'A', hoursOf(10)).sub, '2 nätter');
-  assert.equal(HOW_LABEL[togetherAt(s4, hoursOf(7, 12))], 'Reser i två bilar');
+  assert.equal(describeState(s2, 'B', hoursOf(5, 12)).text, 'Åker tåg Paris → Annecy');
+  assert.equal(describeState(s2, 'B', s2.hours - 1).text, 'Hemma i Nice');
+  assert.equal(describeState(s1, 'A', hoursOf(12)).text, 'I Béziers');
+  assert.equal(describeState(s1, 'A', hoursOf(12)).sub, '2 nätter');
+  assert.equal(describeState(s1, 'A', hoursOf(9, 20)).sub, '1 natt');
   assert.equal(HOW_LABEL[togetherAt(s6, hoursOf(2, 12))], 'Reser i två bilar');
   assert.equal(HOW_LABEL[togetherAt(s5, hoursOf(2, 12))], 'Reser tillsammans');
 });
 
 test('phases and milestones', () => {
-  assert.equal(phaseAt(s2, hoursOf(9)).title, 'Béziers och vin');
-  assert.equal(phaseAt(s2, hoursOf(10)).title, 'Saint-Chinian');
-  assert.equal(phaseAt(s2, s2.hours).title, 'Reserv och A:s hemresa');
+  assert.equal(phaseAt(s1, hoursOf(8, 12)).title, 'Gorges du Verdon');
+  assert.equal(phaseAt(s1, hoursOf(12)).title, 'Béziers och vin');
+  assert.equal(phaseAt(s1, s1.hours).title, 'Hem');
+  for (const sc of data.scenarios) {
+    const days = sc.raw.phases.flatMap((p) => Array.from({ length: p.end_day_inclusive - p.start_day + 1 }, (_, i) => p.start_day + i));
+    assert.deepEqual(days, Array.from({ length: sc.hours / 24 }, (_, i) => i + 1), `${sc.id} phases cover every day once`);
+  }
   const marks = milestones(s2);
   assert.equal(marks[0], 0);
   assert.equal(marks.at(-1), s2.hours);

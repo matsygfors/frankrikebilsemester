@@ -70,34 +70,6 @@
     "web_app_contract": {
       "$ref": "#/$defs/web_contract"
     },
-    "recommendation": {
-      "type": "object",
-      "properties": {
-        "first_choice_scenario_id": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "if_paris_is_priority": {
-          "type": "string"
-        },
-        "if_nice_is_priority": {
-          "type": "string"
-        },
-        "if_independence_is_priority": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "first_choice_scenario_id",
-        "reason",
-        "if_paris_is_priority",
-        "if_nice_is_priority",
-        "if_independence_is_priority"
-      ],
-      "additionalProperties": false
-    },
     "sources": {
       "type": "array",
       "items": {
@@ -122,7 +94,6 @@
     "wine_logistics",
     "open_questions",
     "web_app_contract",
-    "recommendation",
     "sources"
   ],
   "additionalProperties": false,
@@ -1007,7 +978,14 @@
           "minItems": 1
         },
         "wine_plan": {
-          "$ref": "#/$defs/wine"
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/wine"
+            }
+          ]
         },
         "uncertainties": {
           "type": "array",
