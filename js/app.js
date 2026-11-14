@@ -9,7 +9,8 @@ import { createStore } from './store.js';
 import { hideTip } from './tooltip.js';
 import { createTransport } from './transport.js';
 
-const DATA_URL = 'data/frankrike-2027.json';
+// The data file gets the same ?v= as this module (see scripts/stamp.mjs), so it is never older than the code.
+const DATA_URL = `data/frankrike-2027.json${new URL(import.meta.url).search}`;
 const MAP_MODE = { compare: 'france', detail: 'all' };
 
 const viewEl = document.querySelector('#view');

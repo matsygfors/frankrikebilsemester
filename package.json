@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Fyra resealternativ till Béziers sommaren 2027, visualiserade på karta och tidslinje.",
+  "description": "Roadtrips i Frankrike sommaren 2027, visualiserade på karta och tidslinje.",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "stamp": "node scripts/stamp.mjs"
   }
 }

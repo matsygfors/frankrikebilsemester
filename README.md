@@ -9,6 +9,7 @@ Allt är grova planeringsuppskattningar: inget är bokat och körsträckor och t
 ```bash
 npm start      # http://localhost:2027
 npm test       # kontrollerar datalogiken mot data/frankrike-2027.json
+npm run stamp  # stämplar en version i index.html efter ändringar i js/, css/ eller data/
 ```
 
 Inga beroenden att installera. Sidan behöver internet för kartbiblioteket (Leaflet från cdnjs) och kartrutorna (OpenStreetMap).
