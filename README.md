@@ -65,10 +65,10 @@ GitHub Pages låter webbläsare spara varje fil i tio minuter, och det går inte
 
 ## Dolda rutter
 
-Sidan visar just nu bara rutt 1 och 2 (Paris–Normandie–Bretagne–Loire). Alperna, Atlantkusten och Rivieran/Languedoc är dolda men sparade i [`data/archive/frankrike-2027.alla-rutter.json`](data/archive/frankrike-2027.alla-rutter.json), som innehåller alla rutter och som sidan inte läser. Sidans data, `data/frankrike-2027.json`, skrivs från arkivet:
+Sidan visar just nu bara rutt 1 (Paris, Mont-Saint-Michel och Loire). Rutt 2 (Normandie, Bretagne och Loire med Honfleur och Dinan), Alperna, Atlantkusten och Rivieran/Languedoc är dolda men sparade i [`data/archive/frankrike-2027.alla-rutter.json`](data/archive/frankrike-2027.alla-rutter.json), som innehåller alla rutter och som sidan inte läser. Sidans data, `data/frankrike-2027.json`, skrivs från arkivet:
 
 ```bash
-node scripts/select-routes.mjs paris normandie                                   # som nu
+node scripts/select-routes.mjs paris                                             # som nu
 node scripts/select-routes.mjs paris normandie alperna atlantkusten languedoc    # alla rutter igen
 npm run stamp
 ```

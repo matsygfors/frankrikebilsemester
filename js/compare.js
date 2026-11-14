@@ -24,8 +24,8 @@ export function mountCompare(root, { data, store, mapMode }) {
   // Both variants of every route are drawn up front and only shown or hidden, so switching is instant.
   root.innerHTML = `
     <section class="intro">
-      <h1>${Heading} roadtrips i Frankrike</h1>
-      <p>Varje rutt går att göra på två sätt med samma stopp: A kör egen bil från Sverige, eller alla flyger och hyr en bil. Inget är bokat: tider och körsträckor är egna uppskattningar.
+      <h1>${data.routes.length === 1 ? 'En roadtrip i Frankrike' : `${Heading} roadtrips i Frankrike`}</h1>
+      <p>${data.routes.length === 1 ? 'Rutten går' : 'Varje rutt går'} att göra på två sätt med samma stopp: A kör egen bil från Sverige, eller alla flyger och hyr en bil. Inget är bokat: tider och körsträckor är egna uppskattningar.
          Dra i tidsreglaget högst upp för att se var Par A och Par B befinner sig.</p>
       <div class="intro__all" data-all>${allSwitchHTML(data, selection)}</div>
       ${layerBarHTML(store.get(), ['chargers'])}

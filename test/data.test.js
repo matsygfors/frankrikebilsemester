@@ -290,7 +290,7 @@ test('places of interest by category near the routes', () => {
 });
 
 test('the page shows only the chosen routes, and the archive keeps all of them', () => {
-  assert.deepEqual([...new Set(shown.scenarios.map((s) => s.route_id))], ['paris', 'normandie']);
+  assert.deepEqual([...new Set(shown.scenarios.map((s) => s.route_id))], ['paris']);
   assert.deepEqual([...new Set(raw.scenarios.map((s) => s.route_id))], ['paris', 'normandie', 'alperna', 'atlantkusten', 'languedoc']);
   // the shown scenarios are the archive's, untouched
   for (const sc of shown.scenarios) assert.deepEqual(sc, raw.scenarios.find((s) => s.id === sc.id), sc.id);
