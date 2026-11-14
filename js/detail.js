@@ -16,7 +16,7 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
   root.innerHTML = `
     <div class="detail">
       <header class="detail__head">
-        <a class="back" href="#/jamfor">${icon('left', 16)}Jämför alla</a>
+        ${data.routes.length > 1 ? `<a class="back" href="#/jamfor">${icon('left', 16)}Jämför alla</a>` : ''}
         <div class="detail__title">
           <span class="num num--lg">${sc.number}</span>
           <div><h1>${esc(sc.route.title)}</h1></div>

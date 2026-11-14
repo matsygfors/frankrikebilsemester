@@ -16,18 +16,19 @@ const MAP_MODE = { compare: 'france', detail: 'all' };
 
 const viewEl = document.querySelector('#view');
 const tabsEl = document.querySelector('#tabs');
-const store = createStore({ t: 0, maxT: 0, playing: false, speed: 24, mapMode: MAP_MODE.compare, variants: {}, ...LAYER_DEFAULTS });
+const store = createStore({ t: 0, maxT: 0, playing: false, speed: 24, mapMode: MAP_MODE.detail, variants: {}, ...LAYER_DEFAULTS });
 
 function parseHash() {
   const [path, query = ''] = location.hash.replace(/^#\/?/, '').split('?');
   const params = new URLSearchParams(query);
   const t = params.get('t');
-  return { name: path || 'jamfor', t: t === null || t === '' ? null : Number(t) };
+  return { name: path, t: t === null || t === '' ? null : Number(t) };
 }
 
 function renderTabs(data) {
+  // With one route there is nothing to compare: the page opens on the route itself.
   tabsEl.innerHTML = [
-    '<a class="tab" href="#/jamfor" data-name="jamfor">Jämför</a>',
+    data.routes.length > 1 ? '<a class="tab" href="#/jamfor" data-name="jamfor">Jämför</a>' : '',
     ...data.routes.map((r) => `<a class="tab" href="#/${r.number}" data-name="${r.number}"><span class="num">${r.number}</span>${esc(r.title)}</a>`),
   ].join('');
 }
@@ -52,11 +53,13 @@ async function main() {
     unsubscribe?.();
     view?.destroy();
     hideTip();
-    const { name, t } = parseHash();
+    const single = data.routes.length === 1;
+    const { name: asked, t } = parseHash();
+    const name = asked || (single ? '1' : 'jamfor');
     const selection = store.get().variants;
-    const picked = data.routes.find((r) => String(r.number) === name);
+    const picked = data.routes.find((r) => String(r.number) === name) ?? (single && name !== 'jamfor' ? data.routes[0] : undefined);
     const sc = picked && (picked.variants[selection[picked.id]] ?? picked.variants.own_car);
-    current = sc ? name : 'jamfor';
+    current = sc ? String(picked.number) : 'jamfor';
     const mapMode = sc ? MAP_MODE.detail : MAP_MODE.compare;
     view = sc ? mountDetail(viewEl, { data, store, sc, mapMode }) : mountCompare(viewEl, { data, store, mapMode });
 
