@@ -1,7 +1,7 @@
 # Frankrike 2027
 
-Roadtrips i Frankrike sommaren 2027, visualiserade på karta och tidslinje så att vi kan prata om dem: sex förslag i fem olika delar av landet.
-Par A åker från Stockholm, helst med egen bil, och vill kunna köpa vin kring Béziers som bonus. Par B äger en lägenhet i Paris och en i Nice.
+Roadtrips i Frankrike sommaren 2027, visualiserade på karta och tidslinje så att vi kan prata om dem: fyra rutter, var och en på två sätt.
+Par A åker från Stockholm och Par B har en lägenhet i Paris och en i Nice. På varje rutt kan man växla mellan att A kör egen bil från Sverige och möter B, eller att alla flyger och hyr en bil.
 Allt är grova planeringsuppskattningar: inget är bokat och körsträckor och tider är egna bedömningar.
 
 ## Köra
@@ -15,11 +15,11 @@ Inga beroenden att installera. Sidan behöver internet för kartbiblioteket (Lea
 
 ## Vad man ser
 
-- **Jämför**: en karta per roadtrip över Frankrike i samma ram, ett gemensamt tidsreglage, tidslinjerna sida vid sida på samma tidsaxel och en jämförelsetabell.
-- **Alternativ 1–6**: stor karta (hela rutten eller bara Frankrike), tidslinje, dag för dag, fordon och sträckor, vin, alternativa mötesplatser, avvägningar och osäkerheter.
-- **Längst på samma ort**: det längsta stoppet tillsammans visas i jämförelsetabellen och som chip i varje alternativ. Mer än två nätter markeras rött (gränsen `STAY_LIMIT_NIGHTS` i `js/data.js`). Längsta kördag markeras på samma sätt om den är klart över 60 mil (`DRIVE_LIMIT_KM`, med några procents marginal så att Stockholm–Malmö går an).
+- **Jämför**: en enda omkopplare överst (egen bil från Sverige eller flyg + hyrbil, med antal dagar) som gäller alla rutter, och ett kort per rutt med karta, tidsreglage och nyckeltal. Båda varianterna är ritade i förväg och bara visas eller döljs, så växlingen går direkt. Tidslinjer sida vid sida, jämförelsetabellen, teckenförklaringen och antagandena ligger i utfällbara avsnitt.
+- **Rutt 1–4**: en egen omkopplare för just den rutten, stor karta (hela rutten eller bara Frankrike), tidslinje och dag för dag. Avvägningar, osäkerheter, fordon, vin och alternativa mötesplatser ligger i utfällbara avsnitt.
+- **Längst på samma ort**: det längsta stoppet tillsammans visas i jämförelsetabellen. Mer än två nätter markeras rött (gränsen `STAY_LIMIT_NIGHTS` i `js/data.js`). Längsta kördag markeras på samma sätt om den är klart över 60 mil (`DRIVE_LIMIT_KM`, med några procents marginal så att Stockholm–Malmö går an).
 - **Tid**: dra i reglaget överst, klicka eller dra i tidslinjerna, ▶ eller mellanslag för att spela upp, Skift + ←/→ för en dag i taget.
-  Adressen bär med vy och tid (`#/2?t=312`, timmar sedan dag 1 klockan 00:00), så att ett ögonblick går att dela.
+  Adressen bär med vy, tid och val (`#/2?t=312&v=bfbb`, timmar sedan dag 1 klockan 00:00 och en bokstav per rutt: b = egen bil, f = flyg + hyrbil), så att ett ögonblick och ett val går att dela.
 
 Så läser man kartan och tidslinjen:
 
@@ -27,7 +27,7 @@ Så läser man kartan och tidslinjen:
 |---|---|
 | Blått / orange | Par A / Par B |
 | Mörk heldragen färg | De reser tillsammans (samma bil, samma tåg) |
-| Blå och orange streck om vartannat | De reser tillsammans i två bilar (alternativ 6) |
+| Blå och orange streck om vartannat | De reser tillsammans i två bilar (ingen rutt använder det just nu) |
 | Streckat / prickat / finprickat | Bil / tåg / flyg |
 | Vinrött | Béziers och vinavhämtningen |
 | Snedstreckat fält i tidslinjen | Hemma |
@@ -39,17 +39,15 @@ Positionen mellan två orter är interpolerad längs linjen efter tid.
 
 - [`data/frankrike-2027.json`](data/frankrike-2027.json) med schema [`data/frankrike-2027.schema.json`](data/frankrike-2027.schema.json) (JSON Schema 2020-12). Underlaget är skapat 2026-11-01 och gjordes om till roadtrips 2026-11-05.
 - Tid anges som timmar sedan dag 1 klockan 00:00 (`at_hour = (dag - 1) * 24 + klockslag`). Varje alternativ har sin egen relativa dag 1, så jämförelsen gäller resdagar, inte kalenderdatum.
-- Alternativens nummer följer ordningen i `scenarios`; id:na (`s1`–`s6`) är bara beteckningar. Det finns ingen "förstahandsrekommendation" i underlaget: gruppen väljer.
-- De sex alternativen:
-  1. **Rivieran, Provence och Languedoc** – Nice via Gorges du Verdon, Luberon och Camargue till Béziers. Egen bil, vinbonus.
-  2. **Route des Grandes Alpes** – Annecy till Nice över de höga passen. Egen bil, ingen vinbonus. B börjar i Paris och slutar i Nice.
-  3. **Atlantkusten och Baskien** – Bordeaux, Dune du Pilat, Biarritz och Carcassonne till Béziers. Egen bil, vinbonus.
-  4. **Auvergne, Tarn och Cévennes** – Clermont-Ferrand, Millau, Tarnkanjonen och Cévennerna till Béziers. Egen bil, vinbonus.
-  5. **Normandie, Bretagne och Loire** – flyg till Paris och en hyrbil. Ingen vinbonus.
-  6. Som 5, men två hyrbilar (en var).
-- Gruppens utgångspunkter: A kör helst inte egen bil in i Paris, så rutter som börjar där använder flyg och hyrbil (en eller två) och rutterna med egen bil går förbi Paris (B tar tåg dit). Vin från Béziers är en bonus och finns bara där A har egen bil och Béziers ligger på vägen; vinplanen (`wine_plan`) är `null` i de andra. Helst en natt på samma ort och högst två där det finns något att se, högst cirka 60 mil per körsträcka och ungefär en vecka tillsammans.
-- Bilrutternas sträckor Stockholm–Frankfurt och Frankfurt–Lyon–Nice är desamma som tidigare; sträckorna inom Frankrike är egna uppskattningar (högalpina pass, bergsvägar och småvägar är långsammare än motorväg och tiderna är grova). Tågtider är bara ungefärliga restider.
-- Schemat tillåter valfritt antal alternativ, och `wine_plan` får vara `null`. Blocket `recommendation` är borttaget.
+- Rutternas nummer följer ordningen av `route_id` i `scenarios`; id:na (`s1`–`s8`) är bara beteckningar. Det finns ingen "förstahandsrekommendation" i underlaget: gruppen väljer.
+- Rutterna (varje rutt har två scenarier med samma stopp, `route_id` och `variant` = `own_car` eller `fly_rent`):
+  1. **Franska Alperna** – Nice norrut över Bonette, Izoard, Galibier och Iseran till Chamonix och Annecy. Egen bil: B tar tåget hem från Annecy. Flyg: hyrbil från Nice och tillbaka dit.
+  2. **Normandie, Bretagne och Loire** – Honfleur, Bayeux, Mont-Saint-Michel, Saint-Malo, Vannes och Amboise. Egen bil via Nederländerna och Belgien, möte i Rouen. Flyg: till Paris.
+  3. **Atlantkusten och Pyrenéerna** – Bordeaux, Dune du Pilat, Biarritz och Pau. Egen bil förbi Paris, ungefär sex dagar ner och sex hem. Flyg: till Bordeaux.
+  4. **Rivieran, Provence och Languedoc** – Nice, Verdon, Luberon, Camargue och Béziers, med vinbonus. Flyg: till Nice, vinet hem i bagage eller leverans.
+- Gruppens utgångspunkter: en gemensam bil (inte två), A kör helst inte egen bil in i Paris, B äger en lägenhet i Paris och en i Nice (och kan börja i den ena och sluta i den andra), helst en natt på samma ort och högst två där det finns något att se, högst cirka 60 mil per körsträcka och ungefär en vecka tillsammans. B röstar för Atlantkusten; någon annan föredrar Medelhavskusten om ni åker tidigt.
+- Sträckorna Stockholm–Frankfurt och Frankfurt–Lyon–Nice är desamma som i tidigare versioner; sträckorna inom Frankrike är egna uppskattningar (högalpina pass, bergsvägar och småvägar är långsammare än motorväg). Tågtider är bara ungefärliga restider.
+- Schemat tillåter valfritt antal scenarier, `wine_plan` får vara `null` och varje scenario har `route_id` och `variant`. Blocket `recommendation` är borttaget.
 - Schemat kontrollerar bara struktur. Referenser, tidsspår, händelser och summor kontrollerades separat mot reglerna i `web_app_contract.validation_rules` när underlaget skapades (inga avvikelser). `npm test` täcker den logik som visualiseringen bygger på.
 - Det som visas (rutter, positioner, när paren är tillsammans, nätter, nyckeltal) räknas ut ur datan i [`js/data.js`](js/data.js). Ändra i JSON-filen och ladda om.
 

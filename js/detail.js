@@ -1,12 +1,14 @@
 // One alternative in depth: big map, full timeline, and the plan, vehicles, wine and caveats beside it.
 
 import { STAY_LIMIT_NIGHTS, milestones, phaseAt, togetherAt } from './data.js';
+import { fold } from './compare.js';
 import { esc, fmtDec, fmtInt, fmtMoment, fmtRange, hoursOf } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
 import { legendHTML } from './legend.js';
 import { createMap } from './map-view.js';
 import { HOW_LABEL, WINE_TRANSPORT, describeState, vehicleLine } from './text.js';
+import { bindSwitches, switchHTML } from './variant.js';
 
 export function mountDetail(root, { data, store, sc, mapMode }) {
   const k = sc.kpis;
@@ -16,16 +18,14 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
         <a class="back" href="#/jamfor">${icon('left', 16)}Jämför alla</a>
         <div class="detail__title">
           <span class="num num--lg">${sc.number}</span>
-          <div><h1>${esc(sc.title)}</h1><p>${esc(sc.subtitle)}</p></div>
+          <div><h1>${esc(sc.route.title)}</h1></div>
         </div>
+        ${switchHTML(sc.route, sc.variant)}
         <p class="detail__summary">${esc(sc.raw.summary)}</p>
         <ul class="chips">
-          <li><b>${k.days}</b> dagar <small>(${k.flex.min}–${k.flex.max})</small></li>
+          <li><b>${k.days}</b> dagar</li>
           <li><b>${fmtDec(k.sharedDays)}</b> dygn tillsammans</li>
-          <li${k.longestStay.nights > STAY_LIMIT_NIGHTS ? ' class="over"' : ''}><b>${k.longestStay.nights}</b> ${k.longestStay.nights === 1 ? 'natt' : 'nätter'} som mest på samma ort</li>
           <li><b>${fmtInt(k.fleetKm)}</b> km bil</li>
-          <li><b>${fmtInt(k.driveHours)}</b> h körtid</li>
-          <li><b>${k.cars}</b> ${k.cars === 1 ? 'bil' : 'bilar'}</li>
           ${k.wineNights ? `<li><b>${k.wineNights}</b> nätter i Béziers-trakten</li>` : ''}
         </ul>
       </header>
@@ -42,26 +42,25 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
               </div>
             </div>
           </div>
-          ${legendHTML()}
           <section class="panel">
             <div class="panel__head"><h2>Tidslinje</h2><p>Dra i tidslinjen eller klicka på en händelse.</p></div>
             <div data-lanes></div>
           </section>
-          <div class="pair">
-            ${listPanel('Avvägningar', sc.raw.tradeoffs)}
-            ${listPanel('Osäkerheter', sc.raw.uncertainties)}
-          </div>
+          ${fold('Teckenförklaring', legendHTML())}
         </div>
         <aside class="detail__side">
           ${phasesPanel(sc)}
-          ${vehiclesPanel(sc)}
-          ${winePanel(sc, data)}
-          ${alternativesPanel(sc)}
+          ${fold('Avvägningar', bullets(sc.raw.tradeoffs))}
+          ${fold('Osäkerheter', bullets(sc.raw.uncertainties))}
+          ${fold('Fordon och sträckor', vehiclesList(sc))}
+          ${fold('Vin', wineBody(sc, data))}
+          ${fold('Alternativa mötesplatser', alternativesList(sc))}
         </aside>
       </div>
     </div>`;
 
   const page = root.querySelector('.detail');
+  bindSwitches(page, data, store);
   const map = createMap(page.querySelector('[data-map]'), sc, { mode: mapMode });
   const lanes = createLanes(page.querySelector('[data-lanes]'), [sc], {
     axisHours: sc.hours,
@@ -128,7 +127,7 @@ function nowHTML(sc, t) {
 // ---- Side panels ----
 
 const panel = (title, inner) => `<section class="panel"><div class="panel__head"><h2>${title}</h2></div>${inner}</section>`;
-const listPanel = (title, items) => panel(title, `<ul class="bullets">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`);
+const bullets = (items) => `<ul class="bullets">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
 
 function phasesPanel(sc) {
   const items = sc.raw.phases
@@ -140,7 +139,7 @@ function phasesPanel(sc) {
   return panel('Dag för dag', `<ol class="phases">${items}</ol>`);
 }
 
-function vehiclesPanel(sc) {
+function vehiclesList(sc) {
   const items = sc.raw.distance_summary.by_vehicle
     .map((bv) => {
       const v = sc.raw.vehicles.find((x) => x.id === bv.vehicle_id);
@@ -152,17 +151,15 @@ function vehiclesPanel(sc) {
       </li>`;
     })
     .join('');
-  return panel('Fordon och sträckor', `<ul class="stack">${items}</ul>`);
+  return `<ul class="stack">${items}</ul>`;
 }
 
-function winePanel(sc, data) {
+function wineBody(sc, data) {
   const w = sc.raw.wine_plan;
-  if (!w) return panel('Vin', '<p class="prose">Ingen vinbonus i den här rutten: Béziers ligger inte på vägen.</p>');
+  if (!w) return '<p class="prose">Ingen vinbonus i den här rutten: Béziers ligger inte på vägen.</p>';
   const rules = data.raw.wine_logistics;
   const keys = w.transport_method === 'own_car_self_transport' ? ['self_transport', 'reference_quantity', 'handling'] : ['flight', 'shipping', 'reference_quantity', 'handling'];
-  return panel(
-    'Vin',
-    `<dl class="facts">
+  return `<dl class="facts">
       <div><dt>Inköp</dt><dd>${esc(sc.locations.get(w.purchase_location_id).short)}, dag ${w.purchase_day} · Par ${w.buyer_party_id}</dd></div>
       <div><dt>Hem med</dt><dd>${esc(WINE_TRANSPORT[w.transport_method])}</dd></div>
       <div><dt>Mängd</dt><dd>${w.quantity_bottles ?? 'inte bestämd'}</dd></div>
@@ -172,11 +169,10 @@ function winePanel(sc, data) {
       <summary>Regler att kontrollera</summary>
       <ul class="bullets">${keys.map((key) => `<li>${esc(rules[key])}</li>`).join('')}</ul>
       <p class="note">Kontrollerat ${esc(rules.rules_checked_date)}. Kontrollera igen före avresa.</p>
-    </details>`,
-  );
+    </details>`;
 }
 
-function alternativesPanel(sc) {
+function alternativesList(sc) {
   const items = sc.raw.alternative_meetings
     .map(
       (m) => `<li class="alt">
@@ -187,5 +183,5 @@ function alternativesPanel(sc) {
       </li>`,
     )
     .join('');
-  return panel('Alternativa mötesplatser', `<ul class="stack">${items}</ul>`);
+  return `<ul class="stack">${items}</ul>`;
 }

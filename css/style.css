@@ -499,3 +499,29 @@ details[open] summary { margin-bottom: 8px; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ---- Variant switch and folded panels ---- */
+
+.switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 3px; border: 1px solid var(--line-2); border-radius: 12px; background: var(--surface-2); }
+.switch button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 7px 11px;
+  border: 0; border-radius: 9px; background: transparent; color: var(--ink-2); font: inherit; text-align: left; cursor: pointer;
+}
+.switch button b { color: var(--ink); font-size: 13.5px; font-weight: 600; }
+.switch button small { font-size: 12px; font-variant-numeric: tabular-nums; }
+.switch button:hover { background: var(--surface); }
+.switch button[aria-pressed='true'] { background: var(--ink); color: var(--bg); }
+.switch button[aria-pressed='true'] b { color: var(--bg); }
+.switch--all { display: inline-grid; }
+.switch--all button { padding: 6px 14px; }
+.intro__all { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 14px; color: var(--ink-2); font-size: 13.5px; }
+
+.fold { padding: 0; }
+.fold > summary { padding: 14px 18px; font: 600 17px/1.2 var(--font-display); cursor: pointer; }
+.fold[open] > summary { border-bottom: 1px solid var(--line); }
+.fold__body { padding: 16px 18px; }
+.fold__hint { margin-bottom: 12px; color: var(--ink-2); font-size: 13.5px; }
+.detail__side .fold { padding: 0; }
+.fold .bullets { margin: 0; }
+.switch button[aria-pressed='true'] small { color: var(--bg); opacity: 0.82; }
+.card[hidden] { display: none; }

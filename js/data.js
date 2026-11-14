@@ -13,8 +13,15 @@ export async function loadData(url) {
 export function prepare(raw) {
   const locations = new Map(raw.locations.map((loc) => [loc.id, withNames(loc)]));
   const homes = new Map(raw.parties.map((p) => [p.id, new Set(p.available_home_location_ids)]));
-  const scenarios = raw.scenarios.map((sc, i) => prepareScenario(sc, i, locations, homes));
-  return { raw, locations, parties: raw.parties, scenarios };
+  // Each route has two variants with the same stops: A drives the own car from Sweden, or everyone flies and rents a car.
+  const routeIds = [...new Set(raw.scenarios.map((sc) => sc.route_id))];
+  const scenarios = raw.scenarios.map((sc) => prepareScenario(sc, routeIds.indexOf(sc.route_id) + 1, locations, homes));
+  const routes = routeIds.map((id, i) => {
+    const variants = Object.fromEntries(scenarios.filter((s) => s.raw.route_id === id).map((s) => [s.variant, s]));
+    return { id, number: i + 1, title: variants.own_car.title, variants };
+  });
+  for (const scn of scenarios) scn.route = routes[scn.number - 1];
+  return { raw, locations, parties: raw.parties, scenarios, routes };
 }
 
 // "Beaune / Bourgogne" -> short "Beaune", region "Bourgogne"; "Colombiers nära Béziers" -> "Colombiers".
@@ -23,12 +30,13 @@ function withNames(loc) {
   return { ...loc, short: head.replace(/ nära .+$/, ''), region };
 }
 
-function prepareScenario(sc, index, locations, homes) {
+function prepareScenario(sc, number, locations, homes) {
   const routes = buildRoutes(sc);
   const [title, subtitle = ''] = sc.title.split(' – ');
   const scn = {
     id: sc.id,
-    number: index + 1,
+    number,
+    variant: sc.variant,
     title,
     subtitle,
     raw: sc,
@@ -247,3 +255,8 @@ export function milestones(scn) {
   for (const segs of scn.tracks.values()) for (const s of segs) times.add(s.start_hour).add(s.end_hour);
   return [...times].sort((a, b) => a - b);
 }
+
+export const VARIANTS = ['own_car', 'fly_rent'];
+
+/** The scenario to show for each route, given the chosen variant per route id (own car unless chosen otherwise). */
+export const chosen = (data, selection) => data.routes.map((r) => r.variants[selection[r.id]] ?? r.variants.own_car);

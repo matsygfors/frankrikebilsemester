@@ -885,6 +885,15 @@
         "id": {
           "type": "string"
         },
+        "route_id": {
+          "type": "string"
+        },
+        "variant": {
+          "enum": [
+            "own_car",
+            "fly_rent"
+          ]
+        },
         "title": {
           "type": "string"
         },
@@ -1034,6 +1043,8 @@
       },
       "required": [
         "id",
+        "route_id",
+        "variant",
         "title",
         "summary",
         "duration_days",

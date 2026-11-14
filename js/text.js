@@ -5,6 +5,7 @@ import { esc, fmtDec, fmtInt, fmtMoment, fmtSpan, plural } from './format.js';
 
 export const MODE_LABEL = { car: 'Bil', flight: 'Flyg', train: 'Tåg' };
 export const MODE_VERB = { car: 'Kör', flight: 'Flyger', train: 'Åker tåg' };
+export const VARIANT_LABEL = { own_car: 'Egen bil från Sverige', fly_rent: 'Flyg + hyrbil' };
 export const HOW_LABEL = { vehicle: 'Reser tillsammans', convoy: 'Reser i två bilar', place: 'På samma ort' };
 export const EVENT_ICON = { meet: 'users', split: 'split', wine_pickup: 'wine', vehicle_pickup: 'key', vehicle_return: 'key' };
 export const WINE_TRANSPORT = {

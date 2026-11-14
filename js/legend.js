@@ -8,7 +8,6 @@ export function legendHTML() {
     <li><span class="dot dot--A">A</span>Par A (från Stockholm)</li>
     <li><span class="dot dot--B">B</span>Par B (från Paris eller Nice)</li>
     <li>${sample('route--shared route--car')}Reser tillsammans</li>
-    <li>${sample('route--parallel-A route--car', 'route--parallel-B route--car')}Tillsammans i två bilar</li>
     <li>${sample('route--A route--car')}Bil</li>
     <li>${sample('route--A route--train')}Tåg</li>
     <li>${sample('route--A route--flight')}Flyg</li>
