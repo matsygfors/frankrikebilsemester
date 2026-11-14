@@ -421,6 +421,15 @@
       "coordinate_accuracy": "approximate_city_or_area_centre"
     },
     {
+      "id": "chartres",
+      "name": "Chartres / Eure-et-Loir",
+      "country_code": "FR",
+      "latitude": 48.4469,
+      "longitude": 1.4891,
+      "kind": "city",
+      "coordinate_accuracy": "approximate_city_or_area_centre"
+    },
+    {
       "id": "sisteron",
       "name": "Sisteron / Provence",
       "country_code": "FR",
@@ -520,15 +529,6 @@
       "coordinate_accuracy": "approximate_city_or_area_centre"
     },
     {
-      "id": "rouen",
-      "name": "Rouen / Normandie",
-      "country_code": "FR",
-      "latitude": 49.4432,
-      "longitude": 1.0993,
-      "kind": "city",
-      "coordinate_accuracy": "approximate_city_or_area_centre"
-    },
-    {
       "id": "limoges",
       "name": "Limoges",
       "country_code": "FR",
@@ -616,14 +616,14 @@
         {
           "start_day": 10,
           "end_day_inclusive": 10,
-          "title": "Rouen",
-          "description": "Cirka 29 mil norrut via Chartres till Rouen med gotisk katedral, korsvirkeshus och bra restauranger. En natt. Superchargers enligt Teslas lista: Chartres (Kyriad, ungefär halvvägs) och Rouen (Novotel, Saint-Étienne-du-Rouvray)."
+          "title": "Chartres",
+          "description": "Kort dag, cirka 15 mil, norrut till Chartres med sin världsberömda katedral, gamla stan vid floden Eure och trevliga restauranger. En natt. Supercharger i Chartres enligt Teslas lista (Kyriad, Avenue Gustave Eiffel, 20 platser). Dagen är valfri: hoppar ni över Chartres kör ni Amboise–Paris direkt, cirka 23 mil, och resan blir en dag kortare."
         },
         {
           "start_day": 11,
           "end_day_inclusive": 11,
           "title": "Tillbaka till Paris",
-          "description": "Kort körning från Rouen till Paris, cirka 14 mil. En natt."
+          "description": "Kort körning från Chartres till Paris, cirka 9 mil (eller direkt från Amboise, cirka 23 mil, om ni hoppar över Chartres). En natt."
         },
         {
           "start_day": 12,
@@ -1024,22 +1024,22 @@
           "vehicle_id": "s1_A_car",
           "mode": "car",
           "from_location_id": "amboise",
-          "to_location_id": "rouen",
+          "to_location_id": "chartres",
           "via_location_ids": [],
           "start_hour": 226,
-          "end_hour": 231.5,
+          "end_hour": 230,
           "departure_day": 10,
           "departure_clock_hour": 10,
-          "planned_elapsed_hours": 5.5,
-          "distance_km": 290,
+          "planned_elapsed_hours": 4,
+          "distance_km": 150,
           "distance_km_range": {
-            "min": 275,
-            "max": 320
+            "min": 140,
+            "max": 170
           },
-          "driving_hours": 3.3,
+          "driving_hours": 1.8,
           "elapsed_hours_range": {
-            "min": 4.4,
-            "max": 7.5
+            "min": 3.2,
+            "max": 6
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -1051,14 +1051,14 @@
                 47.4126
               ],
               [
-                1.0993,
-                49.4432
+                1.4891,
+                48.4469
               ]
             ]
           },
           "road_geometry": null,
           "geometry_status": "schematic_waypoint_lines_not_navigable",
-          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Via Chartres."
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Via Vendôme och Châteaudun."
         },
         {
           "id": "s1_leg_09",
@@ -1068,23 +1068,23 @@
           ],
           "vehicle_id": "s1_A_car",
           "mode": "car",
-          "from_location_id": "rouen",
+          "from_location_id": "chartres",
           "to_location_id": "paris",
           "via_location_ids": [],
           "start_hour": 250,
-          "end_hour": 253.5,
+          "end_hour": 253,
           "departure_day": 11,
           "departure_clock_hour": 10,
-          "planned_elapsed_hours": 3.5,
-          "distance_km": 135,
+          "planned_elapsed_hours": 3,
+          "distance_km": 90,
           "distance_km_range": {
-            "min": 125,
-            "max": 150
+            "min": 85,
+            "max": 105
           },
-          "driving_hours": 1.7,
+          "driving_hours": 1.1,
           "elapsed_hours_range": {
-            "min": 2.8,
-            "max": 5.5
+            "min": 2.4,
+            "max": 4.5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -1092,8 +1092,8 @@
             "type": "LineString",
             "coordinates": [
               [
-                1.0993,
-                49.4432
+                1.4891,
+                48.4469
               ],
               [
                 2.3522,
@@ -1372,7 +1372,7 @@
             "mont_saint_michel",
             "saint_malo",
             "amboise",
-            "rouen",
+            "chartres",
             "paris",
             "eindhoven",
             "hamburg",
@@ -1395,7 +1395,7 @@
             "mont_saint_michel",
             "saint_malo",
             "amboise",
-            "rouen",
+            "chartres",
             "paris"
           ],
           "active_travel_days": 5
@@ -1528,30 +1528,30 @@
             {
               "kind": "travel",
               "start_hour": 226,
-              "end_hour": 231.5,
+              "end_hour": 230,
               "location_id": null,
               "leg_id": "s1_leg_08",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 231.5,
+              "start_hour": 230,
               "end_hour": 250,
-              "location_id": "rouen",
+              "location_id": "chartres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
               "start_hour": 250,
-              "end_hour": 253.5,
+              "end_hour": 253,
               "location_id": null,
               "leg_id": "s1_leg_09",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 253.5,
+              "start_hour": 253,
               "end_hour": 273,
               "location_id": "paris",
               "leg_id": null,
@@ -1685,30 +1685,30 @@
             {
               "kind": "travel",
               "start_hour": 226,
-              "end_hour": 231.5,
+              "end_hour": 230,
               "location_id": null,
               "leg_id": "s1_leg_08",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 231.5,
+              "start_hour": 230,
               "end_hour": 250,
-              "location_id": "rouen",
+              "location_id": "chartres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
               "start_hour": 250,
-              "end_hour": 253.5,
+              "end_hour": 253,
               "location_id": null,
               "leg_id": "s1_leg_09",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 253.5,
+              "start_hour": 253,
               "end_hour": 360,
               "location_id": "paris",
               "leg_id": null,
@@ -1761,41 +1761,41 @@
         "by_vehicle": [
           {
             "vehicle_id": "s1_A_car",
-            "intercity_km": 5495,
+            "intercity_km": 5310,
             "local_km_range": {
               "min": 100,
               "max": 250
             },
             "total_km_range": {
-              "min": 5300,
-              "max": 6315
+              "min": 5125,
+              "max": 6120
             },
-            "driving_hours_without_long_stops": 62.8
+            "driving_hours_without_long_stops": 60.7
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 5495,
+            "intercity_car_passenger_km": 5310,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1215,
+            "intercity_car_passenger_km": 1030,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 5495,
+          "intercity_km": 5310,
           "local_km_range": {
             "min": 100,
             "max": 250
           },
           "total_km_range": {
-            "min": 5300,
-            "max": 6315
+            "min": 5125,
+            "max": 6120
           },
-          "driving_hours_without_long_stops": 62.8
+          "driving_hours_without_long_stops": 60.7
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },
@@ -1862,14 +1862,14 @@
         {
           "start_day": 7,
           "end_day_inclusive": 7,
-          "title": "Rouen",
-          "description": "Cirka 29 mil norrut via Chartres till Rouen med gotisk katedral, korsvirkeshus och bra restauranger. En natt. Superchargers enligt Teslas lista: Chartres (Kyriad, ungefär halvvägs) och Rouen (Novotel, Saint-Étienne-du-Rouvray)."
+          "title": "Chartres",
+          "description": "Kort dag, cirka 15 mil, norrut till Chartres med sin världsberömda katedral, gamla stan vid floden Eure och trevliga restauranger. En natt. Supercharger i Chartres enligt Teslas lista (Kyriad, Avenue Gustave Eiffel, 20 platser). Dagen är valfri: hoppar ni över Chartres kör ni Amboise–Paris direkt, cirka 23 mil, och resan blir en dag kortare."
         },
         {
           "start_day": 8,
           "end_day_inclusive": 8,
           "title": "Tillbaka till Paris",
-          "description": "Kort körning från Rouen till Paris, cirka 14 mil. En natt."
+          "description": "Kort körning från Chartres till Paris, cirka 9 mil (eller direkt från Amboise, cirka 23 mil, om ni hoppar över Chartres). En natt."
         },
         {
           "start_day": 9,
@@ -2092,22 +2092,22 @@
           "vehicle_id": "s2_rental",
           "mode": "car",
           "from_location_id": "amboise",
-          "to_location_id": "rouen",
+          "to_location_id": "chartres",
           "via_location_ids": [],
           "start_hour": 154,
-          "end_hour": 159.5,
+          "end_hour": 158,
           "departure_day": 7,
           "departure_clock_hour": 10,
-          "planned_elapsed_hours": 5.5,
-          "distance_km": 290,
+          "planned_elapsed_hours": 4,
+          "distance_km": 150,
           "distance_km_range": {
-            "min": 275,
-            "max": 320
+            "min": 140,
+            "max": 170
           },
-          "driving_hours": 3.3,
+          "driving_hours": 1.8,
           "elapsed_hours_range": {
-            "min": 4.4,
-            "max": 7.5
+            "min": 3.2,
+            "max": 6
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -2119,14 +2119,14 @@
                 47.4126
               ],
               [
-                1.0993,
-                49.4432
+                1.4891,
+                48.4469
               ]
             ]
           },
           "road_geometry": null,
           "geometry_status": "schematic_waypoint_lines_not_navigable",
-          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Via Chartres."
+          "notes": "Körtid utan längre stopp; tidsfönstret inkluderar raster men inte extrema köer. Via Vendôme och Châteaudun."
         },
         {
           "id": "s2_leg_06",
@@ -2136,23 +2136,23 @@
           ],
           "vehicle_id": "s2_rental",
           "mode": "car",
-          "from_location_id": "rouen",
+          "from_location_id": "chartres",
           "to_location_id": "paris",
           "via_location_ids": [],
           "start_hour": 178,
-          "end_hour": 181.5,
+          "end_hour": 181,
           "departure_day": 8,
           "departure_clock_hour": 10,
-          "planned_elapsed_hours": 3.5,
-          "distance_km": 135,
+          "planned_elapsed_hours": 3,
+          "distance_km": 90,
           "distance_km_range": {
-            "min": 125,
-            "max": 150
+            "min": 85,
+            "max": 105
           },
-          "driving_hours": 1.7,
+          "driving_hours": 1.1,
           "elapsed_hours_range": {
-            "min": 2.8,
-            "max": 5.5
+            "min": 2.4,
+            "max": 4.5
           },
           "estimate_status": "planning_estimate_not_routing_api_or_timetable",
           "source_ids": [],
@@ -2160,8 +2160,8 @@
             "type": "LineString",
             "coordinates": [
               [
-                1.0993,
-                49.4432
+                1.4891,
+                48.4469
               ],
               [
                 2.3522,
@@ -2291,7 +2291,7 @@
             "mont_saint_michel",
             "saint_malo",
             "amboise",
-            "rouen",
+            "chartres",
             "paris",
             "stockholm"
           ],
@@ -2311,7 +2311,7 @@
             "mont_saint_michel",
             "saint_malo",
             "amboise",
-            "rouen",
+            "chartres",
             "paris"
           ],
           "active_travel_days": 5
@@ -2396,30 +2396,30 @@
             {
               "kind": "travel",
               "start_hour": 154,
-              "end_hour": 159.5,
+              "end_hour": 158,
               "location_id": null,
               "leg_id": "s2_leg_05",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 159.5,
+              "start_hour": 158,
               "end_hour": 178,
-              "location_id": "rouen",
+              "location_id": "chartres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
               "start_hour": 178,
-              "end_hour": 181.5,
+              "end_hour": 181,
               "location_id": null,
               "leg_id": "s2_leg_06",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 181.5,
+              "start_hour": 181,
               "end_hour": 201,
               "location_id": "paris",
               "leg_id": null,
@@ -2505,30 +2505,30 @@
             {
               "kind": "travel",
               "start_hour": 154,
-              "end_hour": 159.5,
+              "end_hour": 158,
               "location_id": null,
               "leg_id": "s2_leg_05",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 159.5,
+              "start_hour": 158,
               "end_hour": 178,
-              "location_id": "rouen",
+              "location_id": "chartres",
               "leg_id": null,
               "position_precision": "base_location_not_live_gps"
             },
             {
               "kind": "travel",
               "start_hour": 178,
-              "end_hour": 181.5,
+              "end_hour": 181,
               "location_id": null,
               "leg_id": "s2_leg_06",
               "position_precision": "schematic_estimate"
             },
             {
               "kind": "stay",
-              "start_hour": 181.5,
+              "start_hour": 181,
               "end_hour": 216,
               "location_id": "paris",
               "leg_id": null,
@@ -2579,41 +2579,41 @@
         "by_vehicle": [
           {
             "vehicle_id": "s2_rental",
-            "intercity_km": 1215,
+            "intercity_km": 1030,
             "local_km_range": {
               "min": 100,
               "max": 250
             },
             "total_km_range": {
-              "min": 1245,
-              "max": 1595
+              "min": 1070,
+              "max": 1400
             },
-            "driving_hours_without_long_stops": 14.1
+            "driving_hours_without_long_stops": 12
           }
         ],
         "by_party": [
           {
             "party_id": "A",
-            "intercity_car_passenger_km": 1215,
+            "intercity_car_passenger_km": 1030,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           },
           {
             "party_id": "B",
-            "intercity_car_passenger_km": 1215,
+            "intercity_car_passenger_km": 1030,
             "notes": "En persons ressträcka i paret, inte multiplicerat med två personer. Lokala körningar, tåg och flyg ingår inte."
           }
         ],
         "fleet": {
-          "intercity_km": 1215,
+          "intercity_km": 1030,
           "local_km_range": {
             "min": 100,
             "max": 250
           },
           "total_km_range": {
-            "min": 1245,
-            "max": 1595
+            "min": 1070,
+            "max": 1400
           },
-          "driving_hours_without_long_stops": 14.1
+          "driving_hours_without_long_stops": 12
         },
         "notes": "Alla vägsträckor är avrundade planeringsbedömningar. Samma bil räknas en gång även när båda paren åker med. Två bilar på samma väg räknas var för sig. Ingen navigationsmotor har använts."
       },

@@ -33,7 +33,7 @@ test('the chosen variant per route', () => {
 test('both variants of a route visit the same stops together', () => {
   const stops = {
     alperna: ['barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy'],
-    paris: ['paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'rouen'],
+    paris: ['paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'chartres'],
     atlantkusten: ['bordeaux', 'saint_emilion', 'arcachon', 'biarritz', 'pau'],
     languedoc: ['moustiers', 'gordes', 'arles', 'beziers'],
   };
@@ -150,8 +150,8 @@ test('headline numbers come from the data', () => {
   const down = [615, 510, 500, 335, 385, 470]; // Stockholm to Nice
   assert.equal(alpsOwn.kpis.fleetKm, total(down) + total([170, 110, 150, 150, 95]) + total([400, 335, 500, 510, 615]));
   assert.equal(alpsFly.kpis.fleetKm, total([170, 110, 150, 150, 95, 255, 215]));
-  assert.equal(bretFly.kpis.fleetKm, total([400, 55, 335, 290, 135]));
-  assert.equal(bretOwn.kpis.fleetKm, total([615, 510, 530, 510]) + total([400, 55, 335, 290, 135]) + total([500, 490, 510, 615]));
+  assert.equal(bretFly.kpis.fleetKm, total([400, 55, 335, 150, 90]));
+  assert.equal(bretOwn.kpis.fleetKm, total([615, 510, 530, 510]) + total([400, 55, 335, 150, 90]) + total([500, 490, 510, 615]));
   assert.equal(atlFly.kpis.fleetKm, total([40, 100, 190, 115, 200]));
   assert.equal(langFly.kpis.fleetKm, total([175, 115, 85, 170, 235, 180]));
   // the whole drive is A's: B only rides in the shared stretch
@@ -170,7 +170,7 @@ test('about a week together, no stop longer than two nights, no driving day well
   const nights = (sc, ids) => ids.map((id) => sc.places.get(id).nights.A);
   assert.deepEqual(nights(alpsOwn, ['nice', 'barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy']), [1, 1, 1, 1, 1, 1]);
   assert.deepEqual(nights(alpsFly, ['nice', 'barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy']), [2, 1, 1, 1, 1, 1]);
-  assert.deepEqual(nights(bretOwn, ['zandvoort', 'paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'rouen']), [1, 4, 1, 1, 1, 1]); // three Paris nights before the round and one after
+  assert.deepEqual(nights(bretOwn, ['zandvoort', 'paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'chartres']), [1, 4, 1, 1, 1, 1]); // three Paris nights before the round and one after
   assert.deepEqual(nights(atlOwn, ['bordeaux', 'saint_emilion', 'arcachon', 'biarritz', 'pau']), [1, 1, 1, 2, 2]);
   assert.deepEqual(nights(langOwn, ['nice', 'moustiers', 'gordes', 'arles', 'beziers']), [1, 1, 1, 1, 2]);
 });
