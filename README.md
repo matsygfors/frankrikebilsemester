@@ -42,7 +42,7 @@ Positionen mellan två orter är interpolerad längs linjen efter tid.
 - Tid anges som timmar sedan dag 1 klockan 00:00 (`at_hour = (dag - 1) * 24 + klockslag`). Varje alternativ har sin egen relativa dag 1, så jämförelsen gäller resdagar, inte kalenderdatum.
 - Rutternas nummer följer ordningen av `route_id` i `scenarios`; id:na (`s1`–`s8`) är bara beteckningar. Det finns ingen "förstahandsrekommendation" i underlaget: gruppen väljer.
 - Rutterna (varje rutt har två scenarier med samma stopp, `route_id` och `variant` = `own_car` eller `fly_rent`):
-  1. **Paris, Mont-Saint-Michel och Loire** – tre dagar i Paris, en första dag på ca 40 mil via Honfleur (paus och laddstopp, ingen övernattning) till Mont-Saint-Michel, vidare till Saint-Malo, Amboise vid Loire och Chartres, och tillbaka till Paris. Mysiga ställen, bra restauranger och fina hotell är viktigare än avstånd. Dagsetapperna har Superchargers utsatta enligt Teslas stationslista (kontrollera före avresa). Egen bil: A kör hela vägen till Paris, längs den holländska kusten (Afsluitdijk, Zandvoort och Scheveningen) och vidare via Antwerpen och Lille, och hem därifrån. Flyg: till Paris.
+  1. **Paris, Mont-Saint-Michel och Loire** – tre dagar i Paris, en första dag på ca 40 mil via Honfleur (paus och laddstopp, ingen övernattning) till Mont-Saint-Michel, vidare till Saint-Malo, Amboise vid Loire, och tillbaka till Paris (direkt från Amboise, ca 23 mil). Mysiga ställen, bra restauranger och fina hotell är viktigare än avstånd. Dagsetapperna har Superchargers utsatta enligt Teslas stationslista (kontrollera före avresa). Egen bil: A kör hela vägen till Paris, längs den holländska kusten (Afsluitdijk, Zandvoort och Scheveningen) och vidare via Antwerpen och Lille, och hem därifrån. Flyg: till Paris.
   2. **Franska Alperna** – Nice norrut över Bonette, Izoard, Galibier och Iseran till Chamonix och Annecy, en natt vardera. Egen bil: B tar tåget hem från Annecy. Flyg: hyrbil från Nice, och tillbaka dit via Sisteron.
   3. **Atlantkusten och Pyrenéerna** – Bordeaux (en natt), Saint-Émilion, Dune du Pilat, Biarritz och Pau. Egen bil förbi Paris, ungefär sex dagar ner och sex hem. Flyg: till Bordeaux.
   4. **Rivieran, Provence och Languedoc** – Nice, Verdon, Luberon, Camargue och Béziers, med vinbonus. Flyg: till Nice, tillbaka via Aix-en-Provence, vinet hem i bagage eller leverans.
@@ -51,6 +51,29 @@ Positionen mellan två orter är interpolerad längs linjen efter tid.
 - Schemat tillåter valfritt antal scenarier, `wine_plan` får vara `null` och varje scenario har `route_id` och `variant`. Blocket `recommendation` är borttaget.
 - Schemat kontrollerar bara struktur. Referenser, tidsspår, händelser och summor kontrollerades separat mot reglerna i `web_app_contract.validation_rules` när underlaget skapades (inga avvikelser). `npm test` täcker den logik som visualiseringen bygger på.
 - Det som visas (rutter, positioner, när paren är tillsammans, nätter, nyckeltal) räknas ut ur datan i [`js/data.js`](js/data.js). Ändra i JSON-filen och ladda om.
+
+## Alltid senaste versionen
+
+GitHub Pages låter webbläsare spara varje fil i tio minuter, och det går inte att ändra. Därför: alla filer får en versionsstämpel i adressen (`?v=…`, räknad ur filernas innehåll), och `index.html` frågar `version.json` utan cache vid varje besök. Är sidan äldre än filen på servern laddas den nya sidan direkt (en gång, utan loop). Efter ändringar i `js/`, `css/` eller `data/` kör du `npm run stamp`; `npm test` fallerar om du glömt det.
+
+## Superchargers och exempel på hotell
+
+- **Superchargers** (små röda prickar på kartorna) kommer från OpenStreetMap och är hämtade i förväg till [`data/superchargers.json`](data/superchargers.json): de som ligger inom 25 km från en bilsträcka (rutterna är raka streck, så det är en korridor, inte exakt vägen). Sidan anropar aldrig någon extern tjänst för dem. Uppdatera med `node scripts/fetch-superchargers.mjs` (kräver internet, tar några minuter) och därefter `npm run stamp`. Superchargers som är kända från Teslas stationslista längs rutt 1 och 2 ligger i [`data/superchargers-known.json`](data/superchargers-known.json) och läggs alltid till, även om OpenStreetMap-hämtningen är ofullständig (`node scripts/known-superchargers.mjs`). Superchargers i Paris (inom 20 km från centrum) visas inte. Data © OpenStreetMap-bidragsgivare (ODbL). Stationerna kan vara äldre än verkligheten: kontrollera i bilen eller Tesla-appen.
+- **Exempel på hotell** (bruna ikoner, bara på den stora kartan) ligger i [`data/hotels.json`](data/hotels.json): några mysiga hotell i mellanklassen med bra mat, hämtade från Logis-listor, turistbyråer och gästomdömen. De är inte valda efter höga TripAdvisor-betyg (som ofta gynnar billiga ställen) och inte bland de dyraste, och restaurangerna behöver inte vara Michelin. Priser är inte kontrollerade och de är exempel, inte rekommendationer.
+- **Smultronställen och intressepunkter** ligger i [`data/places.json`](data/places.json), sorterade i flikar på ruttsidan: *Mysiga små hotell med personlig touch* (hjärtan på kartan), *Mysiga restauranger* (bestick) och *Intressepunkter* (kompass: upplevelser, små byar och vin). De är inlagda efter underlag från gruppen och inte kontrollerade; platser märkta ungefärliga är satta i orten. Fliken *Exempel på hotell* visar mellanklasshotellen ovan.
+- Lagren slås av och på med rutorna ovanför kartan (på första sidan bara Superchargers).
+
+## Dolda rutter
+
+Sidan visar just nu bara rutt 1 och 2 (Paris–Normandie–Bretagne–Loire). Alperna, Atlantkusten och Rivieran/Languedoc är dolda men sparade i [`data/archive/frankrike-2027.alla-rutter.json`](data/archive/frankrike-2027.alla-rutter.json), som innehåller alla rutter och som sidan inte läser. Sidans data, `data/frankrike-2027.json`, skrivs från arkivet:
+
+```bash
+node scripts/select-routes.mjs paris normandie                                   # som nu
+node scripts/select-routes.mjs paris normandie alperna atlantkusten languedoc    # alla rutter igen
+npm run stamp
+```
+
+Testerna kör mot arkivet, så de dolda rutterna är fortfarande kontrollerade. Ändrar du en rutt, ändra den i arkivet och kör skriptet.
 
 ## Struktur
 

@@ -2,15 +2,33 @@
 // who is where at a given time, when the two couples are together, and headline numbers.
 
 import { clamp, sum } from './format.js';
-import { cumulative, pointAt } from './geo.js';
+import { cumulative, distanceKm, distanceToPathKm, pointAt } from './geo.js';
 
-export async function loadData(url) {
+export async function loadData(url, extraUrls = {}) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Kunde inte läsa ${url} (${res.status})`);
-  return prepare(await res.json());
+  // Superchargers and example hotels are extras: the page works without them.
+  const optional = async (u) => {
+    try {
+      const r = await fetch(u);
+      return r.ok ? await r.json() : null;
+    } catch {
+      return null;
+    }
+  };
+  const [chargers, hotels, places] = await Promise.all([optional(extraUrls.chargers), optional(extraUrls.hotels), optional(extraUrls.places)]);
+  return prepare(await res.json(), { chargers: chargers?.stations ?? [], hotels: hotels?.hotels ?? [], places: places?.places ?? [], categories: places?.categories ?? [], placesNote: places?.note ?? '', hotelsNote: hotels?.note ?? '' });
 }
 
-export function prepare(raw) {
+/** Superchargers in Paris are not interesting for the trip (the car stands parked there), so they are left out. */
+export const PARIS = { latlng: [48.8566, 2.3522], km: 20 };
+const notInParis = (c) => distanceKm([c.lat, c.lng], PARIS.latlng) > PARIS.km;
+
+/** Extras (Superchargers, example hotels) within `km` of any route of a scenario. */
+const NEAR_KM = 25;
+const near = (items, routes) => items.filter((it) => routes.some((r) => distanceToPathKm([it.lat, it.lng], r.path) <= NEAR_KM));
+
+export function prepare(raw, extras = {}) {
   const locations = new Map(raw.locations.map((loc) => [loc.id, withNames(loc)]));
   const homes = new Map(raw.parties.map((p) => [p.id, new Set(p.available_home_location_ids)]));
   // Each route has two variants with the same stops: A drives the own car from Sweden, or everyone flies and rents a car.
@@ -20,8 +38,13 @@ export function prepare(raw) {
     const variants = Object.fromEntries(scenarios.filter((s) => s.raw.route_id === id).map((s) => [s.variant, s]));
     return { id, number: i + 1, title: variants.own_car.title, variants };
   });
-  for (const scn of scenarios) scn.route = routes[scn.number - 1];
-  return { raw, locations, parties: raw.parties, scenarios, routes };
+  for (const scn of scenarios) {
+    scn.route = routes[scn.number - 1];
+    scn.chargers = near((extras.chargers ?? []).filter(notInParis), scn.routes.filter((r) => r.mode === 'car'));
+    scn.hotels = near(extras.hotels ?? [], scn.routes.filter((r) => r.mode === 'car'));
+    scn.pois = near(extras.places ?? [], scn.routes.filter((r) => r.mode === 'car')); // places of interest (scn.places are the stays)
+  }
+  return { raw, locations, parties: raw.parties, scenarios, routes, categories: extras.categories ?? [], placesNote: extras.placesNote ?? '', hotelsNote: extras.hotelsNote ?? '' };
 }
 
 // "Beaune / Bourgogne" -> short "Beaune", region "Bourgogne"; "Colombiers nära Béziers" -> "Colombiers".

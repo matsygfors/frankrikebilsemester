@@ -75,4 +75,9 @@ export function placeTip(place) {
 export const eventTip = (scn, e) =>
   tip(e.title, `${fmtMoment(e.at_hour)} · ${scn.locations.get(e.location_id).short}`, partiesLabel(e.party_ids));
 
+export const chargerTip = (c) => tip(`${c.name} (Supercharger)`, c.stalls ? `${c.stalls} platser${c.kw ? ` · upp till ${c.kw} kW` : ''}` : '', 'Enligt OpenStreetMap; kontrollera i bilen eller Tesla-appen');
+export const hotelTip = (h) => tip(h.name, 'Exempel på hotell', h.place, h.why);
+export const placeLine = (p) => (p.approx ? `${p.place} (ungefärlig plats)` : p.place);
+export const poiTip = (p, categoryTitle) => tip(p.name, categoryTitle, placeLine(p), p.why, p.price);
+
 export const togetherTip = (x) => tip(HOW_LABEL[x.how], fmtSpan(x.t0, x.t1));

@@ -5,7 +5,7 @@ import { stateAt } from './data.js';
 import { clamp, esc } from './format.js';
 import { partial } from './geo.js';
 import { icon } from './icons.js';
-import { EVENT_ICON, eventTip, placeTip, routeTip } from './text.js';
+import { EVENT_ICON, chargerTip, eventTip, hotelTip, placeTip, poiTip, routeTip } from './text.js';
 
 // OpenStreetMap's own tiles (fine for light use, see their tile usage policy). The map is toned
 // down, and darkened in dark mode, with CSS filters on .leaflet-tile-pane rather than a second tile set.
@@ -26,7 +26,7 @@ const whoIcon = (id, pair) =>
   });
 
 /** mode: 'france' (common frame) or 'all' (the whole route, Sweden included). */
-export function createMap(el, scn, { compact = false, mode = 'france' } = {}) {
+export function createMap(el, scn, { compact = false, mode = 'france', layers = {}, categories = new Map() } = {}) {
   const map = L.map(el, {
     zoomControl: !compact,
     scrollWheelZoom: !compact,
@@ -123,6 +123,42 @@ export function createMap(el, scn, { compact = false, mode = 'france' } = {}) {
     return { marker, first: Math.min(...evs.map((e) => e.at_hour)) };
   });
 
+  // Superchargers (small red dots) and example hotels (only on the big map), each a layer that can be switched off.
+  const chargerLayer = L.layerGroup();
+  for (const c of scn.chargers) {
+    L.circleMarker([c.lat, c.lng], { radius: compact ? 2.5 : 4.5, className: 'charger' }).bindTooltip(chargerTip(c), { className: 'tip-leaf', direction: 'top' }).addTo(chargerLayer);
+  }
+  const hotelLayer = L.layerGroup();
+  const markers = new Map(); // 'category:id' -> marker, so a place picked from a list can be shown
+  if (!compact) {
+    for (const h of scn.hotels) {
+      const hotelMarker = L.marker([h.lat, h.lng], { icon: L.divIcon({ className: 'hotel-wrap', html: `<span class="hotel">${icon('bed', 13)}</span>`, iconSize: [24, 24], iconAnchor: [12, 12] }), keyboard: false, zIndexOffset: 300 })
+        .bindTooltip(hotelTip(h), { className: 'tip-leaf', direction: 'top', offset: [0, -10] })
+        .addTo(hotelLayer);
+      markers.set(`examples:${h.id}`, hotelMarker);
+    }
+  }
+  // Points of interest by category (small hosts, restaurants, experiences), each a layer of its own.
+  const poiIcon = { hotell: 'heart', restauranger: 'utensils', intresse: 'compass' };
+  const poiLayers = { hotell: L.layerGroup(), restauranger: L.layerGroup(), intresse: L.layerGroup() };
+  if (!compact) {
+    for (const p of scn.pois) {
+      const title = categories.get(p.category) ?? p.category;
+      const poiMarker = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: 'poi-wrap', html: `<span class="poi poi--${p.category}">${icon(poiIcon[p.category] ?? 'pin', 13)}</span>`, iconSize: [24, 24], iconAnchor: [12, 12] }), keyboard: false, zIndexOffset: 300 })
+        .bindTooltip(poiTip(p, title), { className: 'tip-leaf', direction: 'top', offset: [0, -10] })
+        .addTo(poiLayers[p.category] ?? poiLayers.intresse);
+      markers.set(`${p.category}:${p.id}`, poiMarker);
+    }
+  }
+  const setLayers = (on) => {
+    const groups = [[chargerLayer, on.chargers], [hotelLayer, on.examples], ...Object.entries(poiLayers).map(([key, group]) => [group, on[key]])];
+    for (const [group, show] of groups) {
+      if (show && !map.hasLayer(group)) group.addTo(map);
+      if (!show && map.hasLayer(group)) map.removeLayer(group);
+    }
+  };
+  setLayers(layers);
+
   // The couples.
   const who = Object.fromEntries(
     ['A', 'B'].map((id) => [id, L.marker([0, 0], { icon: whoIcon(id, false), interactive: false, keyboard: false, zIndexOffset: 1000 }).addTo(map)]),
@@ -167,6 +203,17 @@ export function createMap(el, scn, { compact = false, mode = 'france' } = {}) {
     setFrame(next) {
       mode = next;
       fit();
+    },
+    setLayers,
+    /** Pan to a place from a list, show its tooltip and let the marker pulse. Its layer must be on. */
+    focusPlace(key) {
+      const marker = markers.get(key);
+      if (!marker) return;
+      map.setView(marker.getLatLng(), Math.max(map.getZoom(), 11), { animate: true });
+      marker.openTooltip();
+      const el = marker.getElement();
+      el?.classList.add('is-focus');
+      setTimeout(() => el?.classList.remove('is-focus'), 3000);
     },
     destroy() {
       resizer.disconnect();

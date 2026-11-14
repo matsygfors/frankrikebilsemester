@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { STAY_LIMIT_NIGHTS, chosen, countNights, isLongDrive, isLongRoundDay, milestones, phaseAt, prepare, stateAt, togetherAt } from '../js/data.js';
@@ -7,33 +7,39 @@ import { clock, fmtMoment, hoursOf } from '../js/format.js';
 import { cumulative, distanceKm, partial, pointAt } from '../js/geo.js';
 import { HOW_LABEL, describeState } from '../js/text.js';
 
-const raw = JSON.parse(readFileSync(new URL('../data/frankrike-2027.json', import.meta.url), 'utf8'));
-const data = prepare(raw);
+const read = (file) => JSON.parse(readFileSync(new URL(`../data/${file}`, import.meta.url), 'utf8'));
+const raw = read('archive/frankrike-2027.alla-rutter.json'); // all routes, shown or hidden
+const shown = read('frankrike-2027.json'); // what the page shows now
+const placeFile = read('places.json');
+const hotelFile = read('hotels.json');
+const chargerFile = existsSync(new URL('../data/superchargers.json', import.meta.url)) ? read('superchargers.json') : { stations: [] };
+const data = prepare(raw, { chargers: chargerFile.stations, hotels: hotelFile.hotels, places: placeFile.places, categories: placeFile.categories });
 // own car from Sweden / flight and rental car, for Normandy, the Alps, the Atlantic coast and Languedoc
-const [bretOwn, bretFly, alpsOwn, alpsFly, atlOwn, atlFly, langOwn, langFly] = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'].map((id) => data.scenarios.find((s) => s.id === id));
-const ownCar = [alpsOwn, bretOwn, atlOwn, langOwn];
-const flyRent = [alpsFly, bretFly, atlFly, langFly];
+const [bretOwn, bretFly, normOwn, normFly, alpsOwn, alpsFly, atlOwn, atlFly, langOwn, langFly] = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'].map((id) => data.scenarios.find((s) => s.id === id));
+const ownCar = [bretOwn, normOwn, alpsOwn, atlOwn, langOwn];
+const flyRent = [bretFly, normFly, alpsFly, atlFly, langFly];
 
 test('four routes, each in two variants', () => {
-  assert.deepEqual(data.routes.map((r) => [r.number, r.id]), [[1, 'paris'], [2, 'alperna'], [3, 'atlantkusten'], [4, 'languedoc']]);
-  assert.deepEqual(data.routes.map((r) => r.title), ['Paris, Mont-Saint-Michel och Loire', 'Franska Alperna', 'Atlantkusten och Pyrenéerna', 'Rivieran, Provence och Languedoc']);
+  assert.deepEqual(data.routes.map((r) => [r.number, r.id]), [[1, 'paris'], [2, 'normandie'], [3, 'alperna'], [4, 'atlantkusten'], [5, 'languedoc']]);
+  assert.deepEqual(data.routes.map((r) => r.title), ['Paris, Mont-Saint-Michel och Loire', 'Normandie, Bretagne och Loire', 'Franska Alperna', 'Atlantkusten och Pyrenéerna', 'Rivieran, Provence och Languedoc']);
   for (const r of data.routes) {
     assert.deepEqual(Object.keys(r.variants).sort(), ['fly_rent', 'own_car'], r.id);
     for (const sc of Object.values(r.variants)) assert.equal(sc.number, r.number, sc.id);
   }
-  assert.deepEqual(data.scenarios.map((s) => s.hours / 24), [15, 9, 16, 9, 18, 9, 17, 9]);
+  assert.deepEqual(data.scenarios.map((s) => s.hours / 24), [14, 8, 15, 9, 16, 9, 18, 9, 17, 9]);
   assert.equal(raw.recommendation, undefined);
 });
 
 test('the chosen variant per route', () => {
-  assert.deepEqual(chosen(data, {}).map((s) => s.id), ['s1', 's3', 's5', 's7']);
-  assert.deepEqual(chosen(data, { alperna: 'fly_rent', languedoc: 'fly_rent' }).map((s) => s.id), ['s1', 's4', 's5', 's8']);
+  assert.deepEqual(chosen(data, {}).map((s) => s.id), ['s1', 's3', 's5', 's7', 's9']);
+  assert.deepEqual(chosen(data, { alperna: 'fly_rent', languedoc: 'fly_rent' }).map((s) => s.id), ['s1', 's3', 's6', 's7', 's10']);
 });
 
 test('both variants of a route visit the same stops together', () => {
   const stops = {
     alperna: ['barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy'],
-    paris: ['paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'chartres'],
+    paris: ['paris', 'mont_saint_michel', 'saint_malo', 'amboise'],
+    normandie: ['honfleur', 'mont_saint_michel', 'dinan', 'amboise'],
     atlantkusten: ['bordeaux', 'saint_emilion', 'arcachon', 'biarritz', 'pau'],
     languedoc: ['moustiers', 'gordes', 'arles', 'beziers'],
   };
@@ -69,9 +75,9 @@ test('A drives the own car from Sweden, or everyone flies and rents one car', ()
   }
 });
 
-test('A drives the own car into Paris only on route 1', () => {
+test('A drives the own car into Paris only on routes 1 and 2', () => {
   const touches = (sc) => sc.raw.legs.some((l) => l.mode === 'car' && [l.from_location_id, l.to_location_id, ...l.via_location_ids].includes('paris'));
-  assert.ok(touches(bretOwn));
+  assert.ok(touches(bretOwn) && touches(normOwn));
   assert.deepEqual(bretOwn.raw.legs.filter((l) => l.mode === 'car').slice(2, 4).map((l) => l.to_location_id), ['zandvoort', 'paris']); // along the Dutch coast
   for (const sc of [alpsOwn, atlOwn, langOwn]) {
     for (const l of sc.raw.legs) {
@@ -150,8 +156,9 @@ test('headline numbers come from the data', () => {
   const down = [615, 510, 500, 335, 385, 470]; // Stockholm to Nice
   assert.equal(alpsOwn.kpis.fleetKm, total(down) + total([170, 110, 150, 150, 95]) + total([400, 335, 500, 510, 615]));
   assert.equal(alpsFly.kpis.fleetKm, total([170, 110, 150, 150, 95, 255, 215]));
-  assert.equal(bretFly.kpis.fleetKm, total([400, 55, 335, 150, 90]));
-  assert.equal(bretOwn.kpis.fleetKm, total([615, 510, 530, 510]) + total([400, 55, 335, 150, 90]) + total([500, 490, 510, 615]));
+  assert.equal(bretFly.kpis.fleetKm, total([400, 55, 335, 230]));
+  assert.equal(normOwn.kpis.fleetKm, total([615, 510, 530, 510]) + total([200, 205, 100, 330, 230]) + total([500, 490, 510, 615]));
+  assert.equal(bretOwn.kpis.fleetKm, total([615, 510, 530, 510]) + total([400, 55, 335, 230]) + total([500, 490, 510, 615]));
   assert.equal(atlFly.kpis.fleetKm, total([40, 100, 190, 115, 200]));
   assert.equal(langFly.kpis.fleetKm, total([175, 115, 85, 170, 235, 180]));
   // the whole drive is A's: B only rides in the shared stretch
@@ -170,7 +177,8 @@ test('about a week together, no stop longer than two nights, no driving day well
   const nights = (sc, ids) => ids.map((id) => sc.places.get(id).nights.A);
   assert.deepEqual(nights(alpsOwn, ['nice', 'barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy']), [1, 1, 1, 1, 1, 1]);
   assert.deepEqual(nights(alpsFly, ['nice', 'barcelonnette', 'briancon', 'val_disere', 'chamonix', 'annecy']), [2, 1, 1, 1, 1, 1]);
-  assert.deepEqual(nights(bretOwn, ['zandvoort', 'paris', 'mont_saint_michel', 'saint_malo', 'amboise', 'chartres']), [1, 4, 1, 1, 1, 1]); // three Paris nights before the round and one after
+  assert.deepEqual(nights(normOwn, ['zandvoort', 'paris', 'honfleur', 'mont_saint_michel', 'dinan', 'amboise']), [1, 4, 1, 1, 1, 1]);
+  assert.deepEqual(nights(bretOwn, ['zandvoort', 'paris', 'mont_saint_michel', 'saint_malo', 'amboise']), [1, 4, 1, 1, 1]); // three Paris nights before the round and one after
   assert.deepEqual(nights(atlOwn, ['bordeaux', 'saint_emilion', 'arcachon', 'biarritz', 'pau']), [1, 1, 1, 2, 2]);
   assert.deepEqual(nights(langOwn, ['nice', 'moustiers', 'gordes', 'arles', 'beziers']), [1, 1, 1, 1, 2]);
 });
@@ -242,4 +250,51 @@ test('the round trip keeps to about 30 mil a day, route 1 to 1-4 hours, with Par
     const doubles = [...sc.places].filter(([id, p]) => id !== 'paris' && p.nights.B >= 2).map(([id]) => id);
     assert.deepEqual(doubles, [], sc.id);
   }
+});
+
+test('example hotels and Superchargers near the routes', () => {
+  // the hotels are mid-range examples (Logis lists, tourist offices), not the most expensive and not picked by TripAdvisor score
+  const ids = ['france_chateaubriand', 'hotel_de_la_cite', 'la_breche', 'la_tour_brette', 'le_blason'];
+  assert.deepEqual(hotelFile.hotels.map((h) => h.id).sort(), ids);
+  assert.ok(hotelFile.note.startsWith('Exempel på hotell') && hotelFile.note.includes('TripAdvisor'));
+  for (const h of hotelFile.hotels) assert.ok(h.url.startsWith('https://') && h.why && h.place, h.id);
+  const [paris] = data.scenarios;
+  assert.deepEqual(paris.hotels.map((h) => h.id).sort(), ids);
+  assert.equal(alpsOwn.hotels.length, 0);
+  // Superchargers in Paris are left out: none within 20 km of the city centre
+  for (const sc of data.scenarios) for (const c of sc.chargers) assert.ok(distanceKm([c.lat, c.lng], [48.8566, 2.3522]) > 20, `${sc.id} ${c.name} is in Paris`);
+  for (const sc of data.scenarios) {
+    for (const c of sc.chargers) assert.ok(Number.isFinite(c.lat) && Number.isFinite(c.lng) && c.name, `${sc.id} ${c.name}`);
+  }
+  if (chargerFile.stations.length) {
+    // Honfleur's Supercharger is on route 1, which is the one the first day of the round trip stops at
+    assert.ok(paris.chargers.some((c) => Math.hypot((c.lat - 49.4189) * 111, (c.lng - 0.2337) * 73) < 5), 'a Supercharger at Honfleur');
+  }
+});
+
+test('places of interest by category near the routes', () => {
+  assert.deepEqual(placeFile.categories.map((c) => c.id), ['hotell', 'restauranger', 'intresse']);
+  assert.deepEqual(placeFile.categories.map((c) => c.title), ['Mysiga små hotell med personlig touch', 'Mysiga restauranger', 'Intressepunkter']);
+  assert.ok(placeFile.note.startsWith('Smultronställen och intressepunkter'));
+  const count = (id) => placeFile.places.filter((p) => p.category === id).length;
+  assert.deepEqual([count('hotell'), count('restauranger'), count('intresse')], [6, 5, 7]);
+  for (const p of placeFile.places) {
+    assert.ok(Number.isFinite(p.lat) && Number.isFinite(p.lng) && p.name && p.why && typeof p.approx === 'boolean', p.id);
+    assert.ok(placeFile.categories.some((c) => c.id === p.category), p.id);
+  }
+  // route 2 passes Haarlem/Zandvoort, Honfleur, Mont-Saint-Michel, Saint-Malo, Dinan and Amboise; the Alps none of them
+  const normandie = data.scenarios.find((s) => s.id === 's3');
+  assert.ok(normandie.pois.length >= 15, `${normandie.pois.length} places near route 2`);
+  assert.ok(normandie.pois.some((p) => p.id === 'l_ilot') && normandie.pois.some((p) => p.id === 'la_maison_pavie'));
+  assert.equal(data.scenarios.find((s) => s.id === 's5').pois.length, 0);
+});
+
+test('the page shows only the chosen routes, and the archive keeps all of them', () => {
+  assert.deepEqual([...new Set(shown.scenarios.map((s) => s.route_id))], ['paris', 'normandie']);
+  assert.deepEqual([...new Set(raw.scenarios.map((s) => s.route_id))], ['paris', 'normandie', 'alperna', 'atlantkusten', 'languedoc']);
+  // the shown scenarios are the archive's, untouched
+  for (const sc of shown.scenarios) assert.deepEqual(sc, raw.scenarios.find((s) => s.id === sc.id), sc.id);
+  // and every place they refer to is in the shown file
+  const ids = new Set(shown.locations.map((l) => l.id));
+  for (const sc of shown.scenarios) for (const l of sc.legs) for (const id of [l.from_location_id, l.to_location_id, ...l.via_location_ids]) assert.ok(ids.has(id), `${sc.id} ${id}`);
 });

@@ -6,6 +6,7 @@ import { countWord, esc, fmtDec, fmtInt, fmtRange, plural } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
 import { legendHTML } from './legend.js';
+import { bindLayerBar, layerBarHTML } from './layers.js';
 import { createMap } from './map-view.js';
 import { HOW_LABEL, VARIANT_LABEL, WINE_TRANSPORT, describeState, legTitle, modesText, vehicleLine } from './text.js';
 import { allSwitchHTML, bindSwitches } from './variant.js';
@@ -27,6 +28,7 @@ export function mountCompare(root, { data, store, mapMode }) {
       <p>Varje rutt går att göra på två sätt med samma stopp: A kör egen bil från Sverige, eller alla flyger och hyr en bil. Inget är bokat: tider och körsträckor är egna uppskattningar.
          Dra i tidsreglaget högst upp för att se var Par A och Par B befinner sig.</p>
       <div class="intro__all" data-all>${allSwitchHTML(data, selection)}</div>
+      ${layerBarHTML(store.get(), ['chargers'])}
     </section>
     <div class="cards">${data.scenarios.map((sc) => card(sc)).join('')}</div>
     ${fold('Tidslinjer sida vid sida', '<p class="fold__hint">Samma tidsaxel för alla: hur länge man är borta, när man möts och var vinet köps.</p><div data-lanes></div>')}
@@ -35,6 +37,7 @@ export function mountCompare(root, { data, store, mapMode }) {
     ${fold('Antaganden bakom underlaget', `<ul class="bullets">${data.raw.assumptions.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>`)}`;
 
   bindSwitches(root, data, store);
+  bindLayerBar(root, store);
   const maps = new Map();
   const statusEls = new Map(data.scenarios.map((sc) => [sc.id, root.querySelector(`[data-status="${sc.id}"]`)]));
   const lastStatus = new Map();
@@ -47,7 +50,7 @@ export function mountCompare(root, { data, store, mapMode }) {
 
   const ensureMap = (sc) => {
     if (maps.has(sc.id)) return maps.get(sc.id);
-    const m = createMap(root.querySelector(`[data-map="${sc.id}"]`), sc, { compact: true, mode });
+    const m = createMap(root.querySelector(`[data-map="${sc.id}"]`), sc, { compact: true, mode, layers: store.get() });
     m.update(lastT);
     maps.set(sc.id, m);
     return m;
@@ -96,6 +99,7 @@ export function mountCompare(root, { data, store, mapMode }) {
       mode = next;
       maps.forEach((m) => m.setFrame(next));
     },
+    setLayers: (s) => maps.forEach((m) => m.setLayers(s)),
     destroy() {
       timers.forEach(clearTimeout);
       maps.forEach((m) => m.destroy());

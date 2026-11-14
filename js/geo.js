@@ -32,3 +32,18 @@ export function partial(path, cum, f) {
 }
 
 export const pointAt = (path, cum, f) => partial(path, cum, f).at(-1);
+
+/** Distance in km from a [lat, lng] point to a path of [lat, lng] points, on a flat map around the point. */
+export function distanceToPathKm([lat, lng], path) {
+  const kx = 111.32 * Math.cos(rad(lat));
+  const ky = 110.57;
+  let best = Infinity;
+  for (let i = 0; i + 1 < path.length; i++) {
+    const [x1, y1] = [(path[i][1] - lng) * kx, (path[i][0] - lat) * ky];
+    const [x2, y2] = [(path[i + 1][1] - lng) * kx, (path[i + 1][0] - lat) * ky];
+    const [dx, dy] = [x2 - x1, y2 - y1];
+    const t = dx || dy ? Math.max(0, Math.min(1, -(x1 * dx + y1 * dy) / (dx * dx + dy * dy))) : 0;
+    best = Math.min(best, Math.hypot(x1 + t * dx, y1 + t * dy));
+  }
+  return best;
+}

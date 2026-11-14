@@ -6,8 +6,9 @@ import { esc, fmtDec, fmtInt, fmtMoment, fmtRange, hoursOf } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
 import { legendHTML } from './legend.js';
+import { bindLayerBar, layerBarHTML } from './layers.js';
 import { createMap } from './map-view.js';
-import { HOW_LABEL, WINE_TRANSPORT, describeState, vehicleLine } from './text.js';
+import { HOW_LABEL, WINE_TRANSPORT, describeState, placeLine, vehicleLine } from './text.js';
 import { bindSwitches, switchHTML } from './variant.js';
 
 export function mountDetail(root, { data, store, sc, mapMode }) {
@@ -31,6 +32,7 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
       </header>
       <div class="detail__grid">
         <div class="detail__main">
+          ${layerBarHTML(store.get())}
           <div class="map-wrap">
             <div class="detail__map" data-map role="img" aria-label="Karta över alternativ ${sc.number}"></div>
             <div class="map-status">
@@ -46,6 +48,7 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
             <div class="panel__head"><h2>Tidslinje</h2><p>Dra i tidslinjen eller klicka på en händelse.</p></div>
             <div data-lanes></div>
           </section>
+          ${placesPanel(sc, data)}
           ${fold('Teckenförklaring', legendHTML())}
         </div>
         <aside class="detail__side">
@@ -61,7 +64,8 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
 
   const page = root.querySelector('.detail');
   bindSwitches(page, data, store);
-  const map = createMap(page.querySelector('[data-map]'), sc, { mode: mapMode });
+  bindLayerBar(page, store);
+  const map = createMap(page.querySelector('[data-map]'), sc, { mode: mapMode, layers: store.get(), categories: new Map(data.categories.map((c) => [c.id, c.title])) });
   const lanes = createLanes(page.querySelector('[data-lanes]'), [sc], {
     axisHours: sc.hours,
     onScrub: (t) => store.set({ t, playing: false }),
@@ -76,6 +80,21 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
     const phase = e.target.closest('[data-phase]');
     if (phase) {
       store.set({ t: hoursOf(sc.raw.phases[Number(phase.dataset.phase)].start_day, 8), playing: false });
+      return;
+    }
+    const place = e.target.closest('[data-poi]');
+    if (place && !e.target.closest('a')) {
+      // a place picked from a list: make sure its layer is on, then show it on the map
+      const layer = place.dataset.poi.split(':')[0];
+      if (!store.get()[layer]) store.set({ [layer]: true });
+      page.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      map.focusPlace(place.dataset.poi);
+      return;
+    }
+    const tab = e.target.closest('[data-ptab]');
+    if (tab) {
+      for (const b of page.querySelectorAll('[data-ptab]')) b.setAttribute('aria-selected', String(b === tab));
+      for (const p of page.querySelectorAll('[data-ppanel]')) p.hidden = p.dataset.ppanel !== tab.dataset.ptab;
       return;
     }
     const nav = e.target.closest('[data-nav]');
@@ -103,6 +122,7 @@ export function mountDetail(root, { data, store, sc, mapMode }) {
       }
     },
     setMapMode: (mode) => map.setFrame(mode),
+    setLayers: (s) => map.setLayers(s),
     destroy() {
       map.destroy();
       root.replaceChildren();
@@ -184,4 +204,23 @@ function alternativesList(sc) {
     )
     .join('');
   return `<ul class="stack">${items}</ul>`;
+}
+
+/** Tabs: small hotels with a personal touch, cosy restaurants, points of interest, and the example hotels. */
+function placesPanel(sc, data) {
+  const tabs = data.categories.map((c) => ({ id: c.id, title: c.title, items: sc.pois.filter((p) => p.category === c.id) }));
+  tabs.push({ id: 'examples', title: 'Exempel på hotell', items: sc.hotels.map((h) => ({ ...h, approx: false, price: null })) });
+  const shown = tabs.filter((tab) => tab.items.length);
+  if (!shown.length) return '';
+  const buttons = shown.map((tab, i) => `<button type="button" role="tab" class="ptab" data-ptab="${tab.id}" aria-selected="${i === 0}">${esc(tab.title)} <small>${tab.items.length}</small></button>`).join('');
+  const panels = shown
+    .map((tab, i) => {
+      const items = tab.items
+        .map((p) => `<li data-poi="${tab.id}:${p.id}"><b>${esc(p.name)}</b><span class="places__where">${esc(placeLine(p))}</span><p>${esc(p.why)}</p>${p.price ? `<small>${esc(p.price)}</small>` : ''}${p.url ? `<a class="places__link" href="${esc(p.url)}" target="_blank" rel="noopener">Läs mer</a>` : ''}<button type="button" class="places__show" data-poi="${tab.id}:${p.id}">Visa på kartan</button></li>`)
+        .join('');
+      return `<div role="tabpanel" data-ppanel="${tab.id}"${i ? ' hidden' : ''}><ul class="places">${items}</ul></div>`;
+    })
+    .join('');
+  const note = shown.some((tab) => tab.id === 'examples') ? `${data.placesNote} ${data.hotelsNote}` : data.placesNote;
+  return `<section class="panel"><div class="panel__head"><h2>Smultronställen och intressepunkter</h2></div><div class="ptabs" role="tablist">${buttons}</div>${panels}<p class="note">${esc(note)}</p></section>`;
 }

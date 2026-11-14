@@ -5,6 +5,7 @@ import { mountCompare } from './compare.js';
 import { loadData } from './data.js';
 import { mountDetail } from './detail.js';
 import { clamp, esc } from './format.js';
+import { LAYER_DEFAULTS, LAYER_KEYS } from './layers.js';
 import { createStore } from './store.js';
 import { hideTip } from './tooltip.js';
 import { createTransport } from './transport.js';
@@ -15,7 +16,7 @@ const MAP_MODE = { compare: 'france', detail: 'all' };
 
 const viewEl = document.querySelector('#view');
 const tabsEl = document.querySelector('#tabs');
-const store = createStore({ t: 0, maxT: 0, playing: false, speed: 24, mapMode: MAP_MODE.compare, variants: {} });
+const store = createStore({ t: 0, maxT: 0, playing: false, speed: 24, mapMode: MAP_MODE.compare, variants: {}, ...LAYER_DEFAULTS });
 
 function parseHash() {
   const [path, query = ''] = location.hash.replace(/^#\/?/, '').split('?');
@@ -34,7 +35,8 @@ function renderTabs(data) {
 async function main() {
   let data;
   try {
-    data = await loadData(DATA_URL);
+    const version = new URL(import.meta.url).search;
+    data = await loadData(DATA_URL, { chargers: `data/superchargers.json${version}`, hotels: `data/hotels.json${version}`, places: `data/places.json${version}` });
   } catch (err) {
     viewEl.innerHTML = `<p class="error">Det gick inte att läsa underlaget. ${esc(err.message)}</p>`;
     return;
@@ -62,6 +64,7 @@ async function main() {
     view.update(store.get().t);
     unsubscribe = store.subscribe((s, patch) => {
       if ('mapMode' in patch) view.setMapMode(s.mapMode);
+      if (LAYER_KEYS.some((key) => key in patch)) view.setLayers(s);
       if ('t' in patch) view.update(s.t);
     });
 

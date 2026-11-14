@@ -1,0 +1,218 @@
+{
+  "note": "Smultronställen och intressepunkter: små boenden där värdparet är en del av upplevelsen, restauranger med något utöver maten och upplevelser som är mer än ännu ett slott. Uppgifterna kommer ur underlag som gruppen lagt in och är inte kontrollerade av mig; priser, öppettider och lediga bord måste kollas. Platser markerade som ungefärliga är satta i orten, inte på adressen.",
+  "categories": [
+    {
+      "id": "hotell",
+      "title": "Mysiga små hotell med personlig touch"
+    },
+    {
+      "id": "restauranger",
+      "title": "Mysiga restauranger"
+    },
+    {
+      "id": "intresse",
+      "title": "Intressepunkter"
+    }
+  ],
+  "places": [
+    {
+      "id": "clos_saint_gilles",
+      "name": "Le Clos Saint-Gilles",
+      "place": "Nära Mont-Saint-Michel",
+      "lat": 48.58,
+      "lng": -1.5,
+      "approx": true,
+      "why": "Byggnad från 1600-talet som Tatiana och Thibaut har renoverat: tre gästrum, stor trädgård och utsikt mot Mont-Saint-Michel över landskapet. Lugnt och personligt, men ni bor inte på själva klosterön.",
+      "price": "2026: från cirka 200 € per rum och natt",
+      "category": "hotell"
+    },
+    {
+      "id": "la_haute_flourie",
+      "name": "La Haute Flourie",
+      "place": "Saint-Malo, historiskt redarhus från 1624",
+      "lat": 48.61874,
+      "lng": -2.00557,
+      "approx": false,
+      "why": "Loïk och Marie driver huset sedan 2016 och hjälper gärna gäster med utflykter och restauranger. Fem rum, stor trädgård, egen biodling och hembakad frukost; kopplat till kaparen René Duguay-Trouin. Starka omdömen om värdarnas bemötande.",
+      "price": null,
+      "category": "hotell"
+    },
+    {
+      "id": "la_maison_pavie",
+      "name": "La Maison Pavie",
+      "place": "Dinan, vid Place Saint-Sauveur",
+      "lat": 48.45332,
+      "lng": -2.04197,
+      "approx": false,
+      "why": "Restaurerat korsvirkeshus från 1400-talet med fem rum, drivet av Sophie Bannier och Ghislain. Mycket karaktär, hög nivå på inredning och frukost. Ett bra val för den flexibla extra natten.",
+      "price": null,
+      "url": "https://lamaisonpavie.com",
+      "category": "hotell"
+    },
+    {
+      "id": "la_meffrais",
+      "name": "La Meffrais 1741",
+      "place": "Strax utanför Dinan (Saint-Samson-sur-Rance)",
+      "lat": 48.48576,
+      "lng": -2.02592,
+      "approx": false,
+      "why": "Gammal herrgård där man på utvalda kvällar kan beställa en table d'hôte: en gemensam middag utifrån dagens råvaror. Bra om middag och boende ska bli en samlad upplevelse.",
+      "price": "Table d'hôte 48 € per person",
+      "category": "hotell"
+    },
+    {
+      "id": "clos_de_la_commanderie",
+      "name": "Le Clos de la Commanderie",
+      "place": "Amboise",
+      "lat": 47.4126,
+      "lng": 0.983,
+      "approx": true,
+      "why": "Litet B&B med trädgård och pool. Värden Thibaut är jazzmusiker, pianist och kör- och orkesterledare och historieintresserad; Marie arbetar inom sjukvården. Gästerna berömmer Thibauts bemötande och lokala tips.",
+      "price": "2026: enklare dubbelrum omkring 95–100 € under högsäsong enligt deras prislista",
+      "category": "hotell"
+    },
+    {
+      "id": "hotel_malts",
+      "name": "Bed & Breakfast Hotel Malts",
+      "place": "Haarlem, nära Zandvoort",
+      "lat": 52.38062,
+      "lng": 4.63752,
+      "approx": true,
+      "why": "Drivs av Henk och Annemarie i den historiska stadskärnan. Ett alternativ till natten vid den holländska kusten, med mycket starka omdömen om värdparet och frukosten.",
+      "price": null,
+      "category": "hotell"
+    },
+    {
+      "id": "relais_des_cyclistes",
+      "category": "restauranger",
+      "name": "Au Relais des Cyclistes",
+      "place": "Honfleur",
+      "lat": 49.41866,
+      "lng": 0.23369,
+      "approx": false,
+      "why": "Florence och Pascal Retout driver ett traditionellt matställe som Honfleurs kommuntidning lyft fram som samlingsplats för lokalbefolkningen: normandiska husmansrätter, enkel atmosfär och deras speciella päronpaj. En genuin lunch snarare än gastronomisk toppupplevelse.",
+      "price": null
+    },
+    {
+      "id": "effet_mer",
+      "category": "restauranger",
+      "name": "Effet Mer – cuisine de marché et de saisons",
+      "place": "Saint-Malo, Saint-Servan",
+      "lat": 48.63998,
+      "lng": -2.01861,
+      "approx": false,
+      "why": "Litet restaurangkök i Saint-Servan, utanför de mest turisttäta gatorna. Kort, säsongsstyrd meny och mycket fina omdömen om mat och personal. Värt att undersöka före restaurangerna vid det stora turiststråket. Bokning sker per telefon.",
+      "price": null
+    },
+    {
+      "id": "le_temps_devant_soi",
+      "category": "restauranger",
+      "name": "Le Temps devant soi",
+      "place": "Dinan",
+      "lat": 48.45379,
+      "lng": -2.04311,
+      "approx": false,
+      "why": "Laurence Sarfati är självlärd kock med intresse för kryddor från hela världen: franska råvaror möter smaker från Asien och Mellanöstern, och menyn byts varje vecka. Inte för en klassisk bretonsk middag, utan för något oväntat i en liten personlig miljö.",
+      "price": "Trerättersmeny 35 €; öppet onsdag–lördag kväll"
+    },
+    {
+      "id": "l_ilot",
+      "category": "restauranger",
+      "name": "Restaurant l’Ilôt",
+      "place": "Amboise",
+      "lat": 47.41037,
+      "lng": 0.9839,
+      "approx": false,
+      "why": "Kocken Olivier Vincent lagar maten på en köksö mitt i restaurangen så att gästerna kan se och prata med honom. Liten meny, lokala råvaror och personlig service; gästomdömen från augusti–november 2026 beskriver exceptionella måltider. För fyra personer: boka långt i förväg.",
+      "price": null
+    },
+    {
+      "id": "berthelot",
+      "category": "restauranger",
+      "name": "Restaurant Berthelot (Hôtel La Brèche)",
+      "place": "Amboise, lite utanför turiststråken",
+      "lat": 47.42036,
+      "lng": 0.98192,
+      "approx": false,
+      "why": "Tre generationer i samma familj: Jérôme Berthelot lagar maten tillsammans med dottern Justine, som gör desserterna, och Isabelle sköter matsalen. Gault&Millau gav 13,5/20 i 2026 års bedömning. Ett val för en mer ambitiös middag, särskilt om ni också bor på hotellet.",
+      "price": null
+    },
+    {
+      "id": "calvados_drouin",
+      "category": "intresse",
+      "name": "Calvados Christian Drouin",
+      "place": "Coudray-Rabut, före Honfleur",
+      "lat": 49.3044,
+      "lng": 0.16482,
+      "approx": false,
+      "why": "Familjedriven calvadosproducent i ett gårdskomplex från 1600-talet: rundvandring bland pressar, destillationsutrustning och äppelodlingar, med provsmakning. Rundturen tar ungefär en timme och är gratis; en picknick bland äppelträden kan bokas. Välj antingen detta eller en lång lunch i Honfleur, inte båda.",
+      "price": null
+    },
+    {
+      "id": "moulin_moidrey",
+      "category": "intresse",
+      "name": "Moulin de Moidrey",
+      "place": "Moidrey, fem kilometer från Mont-Saint-Michel",
+      "lat": 48.58524,
+      "lng": -1.50616,
+      "approx": false,
+      "why": "Fungerande väderkvarn från 1806 där mjölnaren berättar med passion och humor om hur den fungerar; guidningen tar cirka 35 minuter. En liten och annorlunda spontan avstickare i stället för ännu ett stort besöksmål.",
+      "price": null
+    },
+    {
+      "id": "barfota_havsbotten",
+      "category": "intresse",
+      "name": "Barfota på havsbotten",
+      "place": "Mont-Saint-Michel-bukten",
+      "lat": 48.6359,
+      "lng": -1.5115,
+      "approx": true,
+      "why": "Boka en kort vandring, till exempel 1,5–2 timmar, med lokalt godkänd guide och upplev sandbankarna, tidvattnet och kvicksanden under säkra förhållanden. Längre vandringar går mot ön Tombelaine. Kan bli en av resans största upplevelser, men tiderna styrs helt av tidvattnet: gå inte ut på egen hand.",
+      "price": null
+    },
+    {
+      "id": "cancale_ostron",
+      "category": "intresse",
+      "name": "Ostron direkt från odlarna",
+      "place": "Cancale, hamnen La Houle",
+      "lat": 48.67053,
+      "lng": -1.85577,
+      "approx": false,
+      "why": "Vid slutet av hamnen finns ostronmarknaden där producenterna säljer sina ostron direkt; ni kan få dem öppnade och äta dem vid havet. Inte okänt, men genuint och behöver inte bli ett stort restaurangbesök. Enligt kommunen öppet varje dag.",
+      "price": null
+    },
+    {
+      "id": "saint_suliac",
+      "category": "intresse",
+      "name": "Saint-Suliac",
+      "place": "Vid floden Rance, mellan Saint-Malo och Dinan",
+      "lat": 48.56996,
+      "lng": -1.97338,
+      "approx": false,
+      "why": "Gammal fiskeby med smala gränder, granithus, små fiskebåtar och en stillsam hamn; ett stopp på ungefär en timme. Galetter på Au Galichon eller en stund vid vattnet på Bistro de la Grève. Betydligt mindre turistpräglat än Saint-Malo.",
+      "price": null
+    },
+    {
+      "id": "lehon",
+      "category": "intresse",
+      "name": "Léhon",
+      "place": "Några kilometer från Dinan",
+      "lat": 48.43833,
+      "lng": -2.05589,
+      "approx": false,
+      "why": "Liten by med gammalt kloster, stenbro och promenadstråk längs Rance; värt 45 minuter hellre än ytterligare en stor turistattraktion. Café Gloutons i det gamla prästgårdshuset verkar ha stängt, så planera ingen måltid där utan ny bekräftelse.",
+      "price": null
+    },
+    {
+      "id": "pere_auguste",
+      "category": "intresse",
+      "name": "Les caves du Père Auguste",
+      "place": "Nära Chenonceau",
+      "lat": 47.3249,
+      "lng": 1.0703,
+      "approx": true,
+      "why": "Familjen Godeau har gjort vin här sedan 1875, i sex generationer; vinkällarna är grävda ur kalkstensberget. En guidad tur med vinodlare genom vingård och källare tar omkring två timmar, kortare besök finns. En utflykt att prioritera om ni får mer tid i Loiredalen.",
+      "price": null
+    }
+  ]
+}

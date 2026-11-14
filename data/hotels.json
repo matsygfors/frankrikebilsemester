@@ -1,0 +1,50 @@
+{
+  "note": "Exempel på hotell: några mysiga hotell i mellanklassen med bra mat, hämtade från Logis-listor, turistbyråer och gästomdömen. De är inte valda efter höga TripAdvisor-betyg (som ofta gynnar billiga ställen) och inte bland de dyraste. Priser är inte kontrollerade: det som står är vad en källa visade, och de växlar med datum. Exempel, inte rekommendationer att boka.",
+  "hotels": [
+    {
+      "id": "la_tour_brette",
+      "name": "Logis Hôtel La Tour Brette",
+      "place": "Pontorson, några kilometer från Mont-Saint-Michel",
+      "lat": 48.55319,
+      "lng": -1.51262,
+      "why": "Enkelt familjedrivet Logis med 9 rum och restaurang, rimligt pris. Gästomdömena är blandade (cirka 7 av 10 på en sajt), så läs recensionerna.",
+      "url": "https://logishotels.com/en/hotel/logis-hotel-de-la-tour-brette-2419"
+    },
+    {
+      "id": "france_chateaubriand",
+      "name": "Hôtel France et Chateaubriand",
+      "place": "Saint-Malo, innanför muren",
+      "lat": 48.65137,
+      "lng": -2.02372,
+      "why": "Trestjärnigt hotell i gamla stan med två restauranger med regional mat. En bokningssajt visade cirka 68 £ per natt.",
+      "url": "https://widgets.hotels.com/ho451485/hotel-france-chateaubriand-saint-malo-france"
+    },
+    {
+      "id": "hotel_de_la_cite",
+      "name": "Hôtel de la Cité",
+      "place": "Saint-Malo, innanför muren",
+      "lat": 48.65125,
+      "lng": -2.02516,
+      "why": "Charmigt litet hotell i gamla stan utan egen restaurang; gästerna äter hos systerhotellet France et Chateaubriand.",
+      "url": "https://www.dnatatravel.com/2-1510579-1/de-la-cite"
+    },
+    {
+      "id": "la_breche",
+      "name": "Logis Hôtel La Brèche",
+      "place": "Amboise, nära stationen",
+      "lat": 47.42036,
+      "lng": 0.98192,
+      "why": "Mellanklass-Logis med uppskattad restaurang; Logis anger menyer från cirka 44 € utan dryck.",
+      "url": "https://www.tourainevaldeloire.com/en/preparing-your-stay/accommodation/all-accommodation/hotel-la-breche-amboise-en-5152795/"
+    },
+    {
+      "id": "le_blason",
+      "name": "Hôtel Le Blason",
+      "place": "Amboise, centrum vid Place Richelieu",
+      "lat": 47.41063,
+      "lng": 0.98522,
+      "why": "Hus från 1400-talet med vit puts och bjälkar, mellanklass, intill restaurangen L'Alliance som en reseguide rekommenderar.",
+      "url": "https://francetravelplanner.com/go/loire/amboise/hotels/index.html"
+    }
+  ]
+}

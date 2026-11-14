@@ -1,0 +1,123 @@
+{
+ "source": "OpenStreetMap, Overpass API (brand=Tesla Supercharger)",
+ "license": "ODbL",
+ "fetched": "2026-11-14",
+ "near_km": 25,
+ "complete": false,
+ "stations": [
+  {
+   "name": "Tours (Grand Frais)",
+   "lat": 47.376,
+   "lng": 0.67,
+   "stalls": 6,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Angers (Aire des Portes d’Angers)",
+   "lat": 47.5011,
+   "lng": -0.4895,
+   "stalls": null,
+   "kw": null,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Rennes (Novotel Alma)",
+   "lat": 48.0818,
+   "lng": -1.6828,
+   "stalls": 8,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "lat": 48.09284,
+   "lng": -0.75863,
+   "name": "Tesla Supercharger Hôtel Campanile Laval Nord",
+   "city": null,
+   "stalls": 12,
+   "kw": 250
+  },
+  {
+   "name": "Dinan",
+   "lat": 48.4438,
+   "lng": -2.0669,
+   "stalls": 16,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Chartres (Kyriad)",
+   "lat": 48.446,
+   "lng": 1.5391,
+   "stalls": 20,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Mont-Saint-Michel (Ibis)",
+   "lat": 48.5681,
+   "lng": -1.5429,
+   "stalls": 8,
+   "kw": 150,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "lat": 48.84826,
+   "lng": -1.21176,
+   "name": "Superchargeur Villedieu les Poêles",
+   "city": null,
+   "stalls": 16,
+   "kw": 250
+  },
+  {
+   "lat": 48.90742,
+   "lng": -0.20697,
+   "name": "Supercharger Falaise",
+   "city": null,
+   "stalls": 12,
+   "kw": 250
+  },
+  {
+   "name": "Caen, Saint-Contest",
+   "lat": 49.2013,
+   "lng": -0.3988,
+   "stalls": 12,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Deauville, Touques (E.Leclerc)",
+   "lat": 49.3444,
+   "lng": 0.0979,
+   "stalls": 12,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Rouen, Saint-Étienne-du-Rouvray (Novotel)",
+   "lat": 49.3896,
+   "lng": 1.0606,
+   "stalls": 20,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  },
+  {
+   "name": "Honfleur (Normandy Outlet)",
+   "lat": 49.4154,
+   "lng": 0.2662,
+   "stalls": 20,
+   "kw": 250,
+   "city": null,
+   "src": "tesla"
+  }
+ ]
+}

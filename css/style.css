@@ -394,6 +394,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 22px var(--pad) 90px; ou
 .ev-wrap:not(.is-past) .ev { opacity: 0.55; }
 
 .leaflet-tooltip.tip-leaf {
+  width: max-content; max-width: min(280px, 70vw); white-space: normal; overflow-wrap: anywhere;
   padding: 8px 10px; border: 0; border-radius: 8px; background: var(--ink); color: var(--bg);
   box-shadow: var(--shadow); font: 12.5px/1.4 var(--font-ui);
 }
@@ -525,3 +526,46 @@ details[open] summary { margin-bottom: 8px; }
 .fold .bullets { margin: 0; }
 .switch button[aria-pressed='true'] small { color: var(--bg); opacity: 0.82; }
 .card[hidden] { display: none; }
+
+/* ---- Superchargers and example hotels on the maps ---- */
+
+.charger { fill: #e31937; fill-opacity: 0.85; stroke: #fff; stroke-width: 1px; }
+.hotel {
+  display: grid; place-items: center; width: 22px; height: 22px; border: 2px solid var(--surface); border-radius: 50%;
+  background: #7a5c14; color: #fff; box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+}
+.legend__dot--charger { display: inline-block; width: 10px; height: 10px; border: 1px solid #fff; border-radius: 50%; background: #e31937; box-shadow: 0 0 0 1px var(--line-2); }
+.legend__hotel { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #7a5c14; color: #fff; }
+.check { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); font-size: 12px; white-space: nowrap; }
+@media (max-width: 760px) { .check { display: none; } }
+
+.poi {
+  display: grid; place-items: center; width: 22px; height: 22px; border: 2px solid var(--surface); border-radius: 50%;
+  color: #fff; box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+}
+.poi--hotell, .legend__poi--hotell { background: #2f7d5b; }
+.poi--restauranger, .legend__poi--restauranger { background: #c2410c; }
+.poi--intresse, .legend__poi--intresse { background: #6d4aa0; }
+.legend__poi { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; color: #fff; }
+.layerbar { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 10px; }
+.layerbar .check { font-size: 13px; }
+.intro .layerbar { margin-top: 10px; }
+.ptabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.ptab { padding: 7px 12px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); font: inherit; font-size: 13.5px; cursor: pointer; }
+.ptab[aria-selected='true'] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.ptab small { opacity: 0.75; }
+.places { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.places li { display: grid; gap: 3px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.places li:last-child { border-bottom: 0; padding-bottom: 0; }
+.places__where { color: var(--ink-2); font-size: 13px; }
+.places p { color: var(--ink); font-size: 14px; }
+.places small { color: var(--ink-2); }
+.places__link { font-size: 13px; }
+
+/* a place picked from a list: highlighted on the map for a moment */
+.poi-wrap.is-focus .poi, .poi-wrap.is-focus .hotel { animation: poi-pulse 0.9s ease-in-out 3; }
+@keyframes poi-pulse { 50% { transform: scale(1.5); box-shadow: 0 0 0 6px rgb(255 255 255 / 0.55), 0 1px 4px rgb(0 0 0 / 0.3); } }
+.places li[data-poi] { cursor: pointer; }
+.places li[data-poi]:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.places__show { justify-self: start; padding: 3px 10px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12.5px; cursor: pointer; }
+.places__show:hover { border-color: var(--ink-3); color: var(--ink); }
