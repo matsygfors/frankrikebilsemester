@@ -108,6 +108,14 @@ export const STAY_LIMIT_NIGHTS = 2;
 
 /** The longest day's drive the group is happy with: about 60 mil. */
 export const DRIVE_LIMIT_KM = 600;
+/** The longest day the group wants on the round trip itself: about 30 mil, now and then 40. */
+export const ROUND_LIMIT_KM = 400;
+export const isLongRoundDay = (km) => km > ROUND_LIMIT_KM * 1.05;
+
+/** The longest car leg that both couples are in: the round trip, not the way there and back. */
+const longestRoundDay = (raw) =>
+  raw.legs.filter((l) => l.mode === 'car' && l.party_ids.length === 2).reduce((best, l) => (!best || l.distance_km > best.distance_km ? l : best), null);
+
 /** With a little margin, so that Stockholm–Malmö (61 mil) still goes. */
 export const isLongDrive = (km) => km > DRIVE_LIMIT_KM * 1.05;
 
@@ -190,6 +198,7 @@ function buildKpis(scn) {
     driveHours: fleet.driving_hours_without_long_stops,
     cars: raw.vehicles.length,
     longest,
+    longestRound: longestRoundDay(raw),
     byParty,
     wineNights: sum([...scn.places.values()].filter((p) => inWineArea(p.loc)).map((p) => p.nights.A ?? 0)),
     longestStay: longestStayTogether(scn),
@@ -199,7 +208,7 @@ function buildKpis(scn) {
 // Béziers and the villages around it that the data lists as bases or wine areas: the wine bonus.
 const inWineArea = (loc) => loc.id === 'beziers' || loc.kind === 'optional_base' || loc.kind === 'optional_wine_area';
 
-/** The longest stretch the couples spend together in one place: where, for how many hours and nights. */
+/** The longest stretch the couples spend together in one place that is not B's apartment: where, for how many hours and nights. */
 function longestStayTogether(scn) {
   const stays = scn.tracks.get('A').filter((s) => s.kind === 'stay');
   let best = null;
@@ -208,6 +217,7 @@ function longestStayTogether(scn) {
     const hours = x.t1 - x.t0;
     if (best && hours <= best.hours) continue;
     const stay = stays.find((s) => s.start_hour <= x.t0 && x.t0 < s.end_hour);
+    if (scn.homes.get('B').has(stay.location_id)) continue; // days in B's own apartment are no hotel stay
     best = { loc: scn.locations.get(stay.location_id), hours, nights: countNights(x.t0, x.t1) };
   }
   return best;

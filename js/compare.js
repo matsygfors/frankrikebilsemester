@@ -1,7 +1,7 @@
 // "Jämför": one card per route with a switch for how A travels. Timelines, the numbers and the
 // assumptions are folded away until asked for.
 
-import { DRIVE_LIMIT_KM, STAY_LIMIT_NIGHTS, chosen, isLongDrive, togetherAt } from './data.js';
+import { DRIVE_LIMIT_KM, ROUND_LIMIT_KM, STAY_LIMIT_NIGHTS, chosen, isLongDrive, isLongRoundDay, togetherAt } from './data.js';
 import { countWord, esc, fmtDec, fmtInt, fmtRange, plural } from './format.js';
 import { icon } from './icons.js';
 import { createLanes } from './lanes.js';
@@ -157,7 +157,8 @@ function table(scenarios) {
     ['Fordon', (s) => s.raw.vehicles.map((v) => esc(vehicleLine(s, v))).join('<br>')],
     ['Bilkilometer', (s) => `${fmtInt(s.kpis.fleetKm)} km<small> mellan orter<br>${fmtRange(s.kpis.totalKmRange)} km inkl. lokalt</small>${bar(s.kpis.fleetKm, maxKm)}`],
     ['Körtid', (s) => `${fmtInt(s.kpis.driveHours)} h<small> utan långa stopp</small>${bar(s.kpis.driveHours, maxHours)}`],
-    ['Längsta kördag', longestDriveCell],
+    ['Längsta dag på rundan', roundDayCell],
+    ['Längsta kördag totalt', longestDriveCell],
     ['Vinbonus i Béziers', wineCell],
     ['Fördelar och avvägningar', (s) => list(s.raw.tradeoffs)],
     ['Osäkerheter', (s) => list(s.raw.uncertainties)],
@@ -187,4 +188,11 @@ function wineCell(s) {
   const w = s.raw.wine_plan;
   if (!w) return 'Nej';
   return `Ja, ${plural(s.kpis.wineNights, 'natt', 'nätter')}<small><br>inköp dag ${w.purchase_day} · ${esc(WINE_TRANSPORT[w.transport_method])}</small>`;
+}
+
+/** The longest day of the round trip itself (both couples in the car), flagged when it is well over 40 mil. */
+function roundDayCell(s) {
+  const l = s.kpis.longestRound;
+  const over = isLongRoundDay(l.distance_km);
+  return `<span class="${over ? 'over' : ''}">${fmtInt(l.distance_km)} km · ${fmtDec(l.driving_hours)} h</span><small><br>${esc(legTitle(s, l))}, dag ${l.departure_day}${over ? `<br>mer än ${ROUND_LIMIT_KM / 10} mil` : ''}</small>`;
 }
