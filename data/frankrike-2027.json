@@ -581,7 +581,7 @@
           "start_day": 4,
           "end_day_inclusive": 4,
           "title": "Till Paris",
-          "description": "Förbi Scheveningen vid kusten och sedan Antwerpen och Lille till Paris. B är hemma i sin lägenhet; möte på kvällen."
+          "description": "Förbi Scheveningen vid kusten och sedan Antwerpen och Lille till Paris. B är hemma i sin lägenhet; möte på kvällen. Bilen parkeras på Parking Place des Fêtes i 19:e arrondissementet och står där tills rundan börjar."
         },
         {
           "start_day": 5,
@@ -593,13 +593,13 @@
           "start_day": 6,
           "end_day_inclusive": 6,
           "title": "Paris, dag 3",
-          "description": "En andra hel dag i Paris, i lugn takt: museum eller marknad, lunch och en god middag. En natt."
+          "description": "En andra hel dag i Paris, i lugn takt: museum eller marknad, lunch och en god middag. En natt. Dagen är valfri: hoppar ni över den blir Paris två dygn och resan en dag kortare."
         },
         {
           "start_day": 7,
           "end_day_inclusive": 7,
           "title": "Mont-Saint-Michel",
-          "description": "Första dagen på rundan, cirka 40 mil: paus och laddstopp i Honfleur (hamnkajen och lunch), sedan vidare till klosterön Mont-Saint-Michel. En natt, helst på ett litet hotell nära klosterön. Superchargers enligt Teslas lista: Honfleur (Normandy Outlet), Caen och vid Mont-Saint-Michel (Ibis, Saint-Georges-de-Gréhaigne)."
+          "description": "Hämta bilen på Parking Place des Fêtes. Första dagen på rundan, cirka 40 mil: paus och laddstopp i Honfleur (hamnkajen och lunch), sedan vidare till klosterön Mont-Saint-Michel. En natt, helst på ett litet hotell nära klosterön. Superchargers enligt Teslas lista: Honfleur (Normandy Outlet), Caen och vid Mont-Saint-Michel (Ibis, Saint-Georges-de-Gréhaigne)."
         },
         {
           "start_day": 8,
@@ -645,7 +645,7 @@
           "return_location_id": "stockholm",
           "availability_confirmed": false,
           "seats_required": 4,
-          "notes": "A:s egen bil hela vägen. A kör in i Paris, där B bor och är hemma hela resan. Kontrollera lastutrymmet när alla fyra sitter i bilen."
+          "notes": "A:s egen bil hela vägen. A kör in i Paris och parkerar bilen på Parking Place des Fêtes (19:e arrondissementet) under Paris-dagarna, två eller tre dygn efter eget val; B är hemma i Paris hela resan. Kontrollera lastutrymmet när alla fyra sitter i bilen."
         }
       ],
       "legs": [
@@ -1746,6 +1746,7 @@
       "uncertainties": [
         "Själva rundan har 1–4 timmars körning per dag; de långa dagarna är transporten: Hamburg–Zandvoort (cirka 53 mil), Zandvoort–Paris (cirka 51 mil) och hemresan Paris–Eindhoven–Hamburg.",
         "Kusten i Holland är bara Zandvoort och Scheveningen; Zeeland och Brygge skulle ge ungefär 7 mil extra och en natt till.",
+        "Parkering: bilen står på Parking Place des Fêtes i 19:e arrondissementet i två eller tre dygn; kontrollera pris för flera dygn, maxhöjd och om den går att ladda där, eller om en Supercharger i närheten behövs före avfärd.",
         "Hotell och restauranger är inte utvalda; prioriteten är mysiga ställen, bra restauranger och fina hotell. Boka tidigt för juli och augusti.",
         "Laddplatser längs vägen är inte kontrollerade, bortsett från att en Supercharger ska finnas i Honfleur; parkering och miljözon (Crit’Air) i Paris för en utlandsregistrerad bil behöver kontrolleras.",
         "Fyra personer och bagage ska rymmas i en bil; gruppens önskemål är en gemensam bil."
@@ -1838,7 +1839,7 @@
           "start_day": 3,
           "end_day_inclusive": 3,
           "title": "Paris, dag 3",
-          "description": "En andra hel dag i Paris, i lugn takt: museum eller marknad, lunch och en god middag. En natt."
+          "description": "En andra hel dag i Paris, i lugn takt: museum eller marknad, lunch och en god middag. En natt. Dagen är valfri: hoppar ni över den blir Paris två dygn och resan en dag kortare."
         },
         {
           "start_day": 4,
